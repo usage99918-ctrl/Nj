@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+*.egg-info/
+# Large/regenerable local data (raw history, caches, working DB)
+data/raw/
+data/cache/
+data/*.sqlite
+data/*.sqlite-*
+data/run/
+logs/

@@ -1,0 +1,28 @@
+name: network-probe
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/network-probe.yml"
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe public exchange endpoints from the GitHub runner
+        run: |
+          for url in \
+            "https://data-api.binance.vision/api/v3/time" \
+            "https://api.binance.com/api/v3/time" \
+            "https://api.kraken.com/0/public/Time" \
+            "https://api.exchange.coinbase.com/time" \
+            "https://www.okx.com/api/v5/public/time" \
+            "https://api.kucoin.com/api/v1/timestamp" \
+            "https://api.gateio.ws/api/v4/spot/time" \
+            "https://api.bybit.com/v5/market/time" \
+            "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1d/BTCUSDT-1d-2026-10.zip" ; do
+            code=$(curl -s -o /tmp/o -w "%{http_code}" --max-time 15 "$url" || echo ERR)
+            echo "PROBE $code $url $(head -c 80 /tmp/o | tr '\n' ' ')"
+          done
