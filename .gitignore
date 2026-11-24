@@ -10,3 +10,6 @@ data/*.sqlite
 data/*.sqlite-*
 data/run/
 logs/
+data/research/models/*.pkl
+data/research/*.parquet
+config/local.toml

@@ -1,0 +1,700 @@
+{
+ "created_utc": "2026-11-24T19:37:58.940582+00:00",
+ "candidate_symbols_incl_delisted": 684,
+ "candidates_with_daily_data": 544,
+ "universe_top_n": 30,
+ "universe_by_month": {
+  "2026-01": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "ZECUSDT",
+   "XRPUSDT",
+   "BNBUSDT",
+   "DOGEUSDT",
+   "SUIUSDT",
+   "TRXUSDT",
+   "ASTERUSDT",
+   "ADAUSDT",
+   "ATUSDT",
+   "LINKUSDT",
+   "AVAXUSDT",
+   "BCHUSDT",
+   "PEPEUSDT",
+   "LUNCUSDT",
+   "UNIUSDT",
+   "ENAUSDT",
+   "LUNAUSDT",
+   "LTCUSDT",
+   "XPLUSDT",
+   "NEARUSDT",
+   "TAOUSDT",
+   "GIGGLEUSDT",
+   "AAVEUSDT",
+   "PENGUUSDT",
+   "PUMPUSDT",
+   "HBARUSDT",
+   "WIFUSDT"
+  ],
+  "2026-02": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "XRPUSDT",
+   "BNBUSDT",
+   "ZECUSDT",
+   "DOGEUSDT",
+   "SUIUSDT",
+   "PEPEUSDT",
+   "TRXUSDT",
+   "DASHUSDT",
+   "ADAUSDT",
+   "BREVUSDT",
+   "LTCUSDT",
+   "BCHUSDT",
+   "ASTERUSDT",
+   "LINKUSDT",
+   "\u5e01\u5b89\u4eba\u751fUSDT",
+   "AVAXUSDT",
+   "PUMPUSDT",
+   "ENAUSDT",
+   "AXSUSDT",
+   "TAOUSDT",
+   "ZKPUSDT",
+   "NEARUSDT",
+   "BONKUSDT",
+   "ICPUSDT",
+   "UNIUSDT",
+   "PENGUUSDT",
+   "WLDUSDT"
+  ],
+  "2026-03": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "XRPUSDT",
+   "BNBUSDT",
+   "DOGEUSDT",
+   "SENTUSDT",
+   "ZECUSDT",
+   "ZAMAUSDT",
+   "SUIUSDT",
+   "TRXUSDT",
+   "ADAUSDT",
+   "PEPEUSDT",
+   "LINKUSDT",
+   "ASTERUSDT",
+   "AVAXUSDT",
+   "LTCUSDT",
+   "WLFIUSDT",
+   "BCHUSDT",
+   "UNIUSDT",
+   "TAOUSDT",
+   "NEARUSDT",
+   "PUMPUSDT",
+   "ENAUSDT",
+   "AAVEUSDT",
+   "KITEUSDT",
+   "HBARUSDT",
+   "ZROUSDT",
+   "FILUSDT",
+   "ENSOUSDT"
+  ],
+  "2026-04": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "NIGHTUSDT",
+   "SOLUSDT",
+   "XRPUSDT",
+   "DOGEUSDT",
+   "BNBUSDT",
+   "TAOUSDT",
+   "ZECUSDT",
+   "OPNUSDT",
+   "TRXUSDT",
+   "ADAUSDT",
+   "PEPEUSDT",
+   "SUIUSDT",
+   "ROBOUSDT",
+   "LINKUSDT",
+   "NEARUSDT",
+   "AVAXUSDT",
+   "TRUMPUSDT",
+   "KITEUSDT",
+   "LTCUSDT",
+   "FETUSDT",
+   "ASTERUSDT",
+   "WLDUSDT",
+   "ENAUSDT",
+   "BCHUSDT",
+   "PUMPUSDT",
+   "UNIUSDT",
+   "XPLUSDT",
+   "AAVEUSDT"
+  ],
+  "2026-05": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "XRPUSDT",
+   "DOGEUSDT",
+   "ZECUSDT",
+   "BNBUSDT",
+   "TAOUSDT",
+   "\u5e01\u5b89\u4eba\u751fUSDT",
+   "PEPEUSDT",
+   "STOUSDT",
+   "BARDUSDT",
+   "TRXUSDT",
+   "ADAUSDT",
+   "TONUSDT",
+   "SUIUSDT",
+   "AVAXUSDT",
+   "LINKUSDT",
+   "ORDIUSDT",
+   "ENJUSDT",
+   "AAVEUSDT",
+   "NIGHTUSDT",
+   "PENGUUSDT",
+   "KATUSDT",
+   "NEARUSDT",
+   "GIGGLEUSDT",
+   "AVNTUSDT",
+   "ENAUSDT",
+   "LTCUSDT",
+   "TRUMPUSDT"
+  ],
+  "2026-06": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "ZECUSDT",
+   "XRPUSDT",
+   "BNBUSDT",
+   "DOGEUSDT",
+   "CHIPUSDT",
+   "SUIUSDT",
+   "NEARUSDT",
+   "TONUSDT",
+   "TRXUSDT",
+   "XLMUSDT",
+   "TAOUSDT",
+   "PEPEUSDT",
+   "LINKUSDT",
+   "ONDOUSDT",
+   "ADAUSDT",
+   "WLDUSDT",
+   "SPKUSDT",
+   "DASHUSDT",
+   "LUNCUSDT",
+   "AVAXUSDT",
+   "FETUSDT",
+   "PENGUUSDT",
+   "LTCUSDT",
+   "UNIUSDT",
+   "ASTERUSDT",
+   "FILUSDT",
+   "INJUSDT"
+  ],
+  "2026-07": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "ZECUSDT",
+   "WLDUSDT",
+   "XRPUSDT",
+   "BNBUSDT",
+   "NEARUSDT",
+   "DOGEUSDT",
+   "XLMUSDT",
+   "TAOUSDT",
+   "TRXUSDT",
+   "SUIUSDT",
+   "XPLUSDT",
+   "ADAUSDT",
+   "ENAUSDT",
+   "MEGAUSDT",
+   "TONUSDT",
+   "AVAXUSDT",
+   "ALLOUSDT",
+   "LINKUSDT",
+   "PEPEUSDT",
+   "HOMEUSDT",
+   "NIGHTUSDT",
+   "AAVEUSDT",
+   "FETUSDT",
+   "ONDOUSDT",
+   "ASTERUSDT",
+   "UNIUSDT",
+   "\u5e01\u5b89\u4eba\u751fUSDT"
+  ],
+  "2026-08": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "REUSDT",
+   "ZECUSDT",
+   "XRPUSDT",
+   "BNBUSDT",
+   "BANKUSDT",
+   "DEXEUSDT",
+   "DOGEUSDT",
+   "TRXUSDT",
+   "XLMUSDT",
+   "OPNUSDT",
+   "NEARUSDT",
+   "ADAUSDT",
+   "GRAMUSDT",
+   "KITEUSDT",
+   "WLDUSDT",
+   "PEPEUSDT",
+   "AAVEUSDT",
+   "SUIUSDT",
+   "UNIUSDT",
+   "SENTUSDT",
+   "LTCUSDT",
+   "AIGENSYNUSDT",
+   "TAOUSDT",
+   "ONDOUSDT",
+   "ENAUSDT",
+   "LINKUSDT",
+   "VANAUSDT"
+  ],
+  "2026-09": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "XRPUSDT",
+   "ZECUSDT",
+   "BNBUSDT",
+   "DOGEUSDT",
+   "TUTUSDT",
+   "XPLUSDT",
+   "REUSDT",
+   "ENAUSDT",
+   "TRUMPUSDT",
+   "SUIUSDT",
+   "TRXUSDT",
+   "PUMPUSDT",
+   "PEPEUSDT",
+   "ADAUSDT",
+   "LINKUSDT",
+   "NEARUSDT",
+   "PYTHUSDT",
+   "UNIUSDT",
+   "ALLOUSDT",
+   "ACEUSDT",
+   "WLDUSDT",
+   "MMTUSDT",
+   "TAOUSDT",
+   "BMTUSDT",
+   "AVAXUSDT",
+   "AAVEUSDT",
+   "PLUMEUSDT"
+  ],
+  "2026-10": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "ZECUSDT",
+   "SOLUSDT",
+   "XRPUSDT",
+   "NEARUSDT",
+   "BNBUSDT",
+   "SUIUSDT",
+   "UNIUSDT",
+   "DOGEUSDT",
+   "ENAUSDT",
+   "AVAXUSDT",
+   "LINKUSDT",
+   "ARBUSDT",
+   "WLDUSDT",
+   "ADAUSDT",
+   "PEPEUSDT",
+   "TAOUSDT",
+   "PUMPUSDT",
+   "LTCUSDT",
+   "QNTUSDT",
+   "TRXUSDT",
+   "MARSCOINUSDT",
+   "ONDOUSDT",
+   "DASHUSDT",
+   "XLMUSDT",
+   "TRUMPUSDT",
+   "HBARUSDT",
+   "BCHUSDT",
+   "PROMUSDT"
+  ],
+  "2026-11": [
+   "BTCUSDT",
+   "ETHUSDT",
+   "SOLUSDT",
+   "ZECUSDT",
+   "NEARUSDT",
+   "XRPUSDT",
+   "BNBUSDT",
+   "SUIUSDT",
+   "DOGEUSDT",
+   "PEPEUSDT",
+   "UNIUSDT",
+   "WLDUSDT",
+   "ENAUSDT",
+   "HYPEUSDT",
+   "TRXUSDT",
+   "ADAUSDT",
+   "AVAXUSDT",
+   "PUMPUSDT",
+   "QNTUSDT",
+   "TAOUSDT",
+   "STRKUSDT",
+   "LINKUSDT",
+   "AAVEUSDT",
+   "LTCUSDT",
+   "ONDOUSDT",
+   "FETUSDT",
+   "ZROUSDT",
+   "INJUSDT",
+   "ARBUSDT",
+   "FILUSDT"
+  ]
+ },
+ "union_size": 83,
+ "union_currently_delisted": [
+  "TONUSDT"
+ ],
+ "minute_history": {
+  "AIGENSYNUSDT": {
+   "rows": 89280,
+   "missing_months": []
+  },
+  "ACEUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "ALLOUSDT": {
+   "rows": 175680,
+   "missing_months": []
+  },
+  "ADAUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "ATUSDT": {
+   "rows": 89280,
+   "missing_months": []
+  },
+  "ASTERUSDT": {
+   "rows": 349920,
+   "missing_months": []
+  },
+  "AVNTUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "AXSUSDT": {
+   "rows": 84960,
+   "missing_months": []
+  },
+  "BANKUSDT": {
+   "rows": 89280,
+   "missing_months": []
+  },
+  "BARDUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "BMTUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "BCHUSDT": {
+   "rows": 305280,
+   "missing_months": []
+  },
+  "BONKUSDT": {
+   "rows": 84960,
+   "missing_months": []
+  },
+  "BNBUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "BREVUSDT": {
+   "rows": 76920,
+   "missing_months": []
+  },
+  "CHIPUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "DASHUSDT": {
+   "rows": 260640,
+   "missing_months": []
+  },
+  "AAVEUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "AVAXUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "BTCUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "DEXEUSDT": {
+   "rows": 89280,
+   "missing_months": []
+  },
+  "ENJUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "ENAUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "FETUSDT": {
+   "rows": 296640,
+   "missing_months": []
+  },
+  "ETHUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "DOGEUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "GRAMUSDT": {
+   "rows": 87360,
+   "missing_months": []
+  },
+  "GIGGLEUSDT": {
+   "rows": 177120,
+   "missing_months": []
+  },
+  "HBARUSDT": {
+   "rows": 262080,
+   "missing_months": []
+  },
+  "HOMEUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "HYPEUSDT": {
+   "rows": 76320,
+   "missing_months": []
+  },
+  "ICPUSDT": {
+   "rows": 84960,
+   "missing_months": []
+  },
+  "KATUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "ENSOUSDT": {
+   "rows": 84960,
+   "missing_months": []
+  },
+  "KITEUSDT": {
+   "rows": 217440,
+   "missing_months": []
+  },
+  "LUNAUSDT": {
+   "rows": 89280,
+   "missing_months": []
+  },
+  "LINKUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "MARSCOINUSDT": {
+   "rows": 82740,
+   "missing_months": []
+  },
+  "LUNCUSDT": {
+   "rows": 177120,
+   "missing_months": []
+  },
+  "LTCUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "MEGAUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "MMTUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "NIGHTUSDT": {
+   "rows": 204990,
+   "missing_months": []
+  },
+  "NEARUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "ORDIUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "OPNUSDT": {
+   "rows": 170580,
+   "missing_months": []
+  },
+  "PENGUUSDT": {
+   "rows": 260640,
+   "missing_months": []
+  },
+  "ARBUSDT": {
+   "rows": 119520,
+   "missing_months": []
+  },
+  "PEPEUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "ONDOUSDT": {
+   "rows": 296640,
+   "missing_months": []
+  },
+  "PYTHUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "PUMPUSDT": {
+   "rows": 381600,
+   "missing_months": []
+  },
+  "QNTUSDT": {
+   "rows": 119520,
+   "missing_months": []
+  },
+  "REUSDT": {
+   "rows": 132480,
+   "missing_months": []
+  },
+  "ROBOUSDT": {
+   "rows": 82530,
+   "missing_months": []
+  },
+  "SENTUSDT": {
+   "rows": 174240,
+   "missing_months": []
+  },
+  "SPKUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "SOLUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "PROMUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "STRKUSDT": {
+   "rows": 76320,
+   "missing_months": []
+  },
+  "STOUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "PLUMEUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "SUIUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "TAOUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "TUTUSDT": {
+   "rows": 87840,
+   "missing_months": []
+  },
+  "TRXUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "TRUMPUSDT": {
+   "rows": 264960,
+   "missing_months": []
+  },
+  "UNIUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "WIFUSDT": {
+   "rows": 89280,
+   "missing_months": []
+  },
+  "WLFIUSDT": {
+   "rows": 84960,
+   "missing_months": []
+  },
+  "WLDUSDT": {
+   "rows": 469440,
+   "missing_months": []
+  },
+  "XLMUSDT": {
+   "rows": 264960,
+   "missing_months": []
+  },
+  "FILUSDT": {
+   "rows": 249120,
+   "missing_months": []
+  },
+  "XPLUSDT": {
+   "rows": 352800,
+   "missing_months": []
+  },
+  "VANAUSDT": {
+   "rows": 89280,
+   "missing_months": []
+  },
+  "ZAMAUSDT": {
+   "rows": 82740,
+   "missing_months": []
+  },
+  "ZKPUSDT": {
+   "rows": 75480,
+   "missing_months": []
+  },
+  "XRPUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  },
+  "\u5e01\u5b89\u4eba\u751fUSDT": {
+   "rows": 251160,
+   "missing_months": []
+  },
+  "TONUSDT": {
+   "rows": 129780,
+   "missing_months": [
+    "2026-07"
+   ]
+  },
+  "INJUSDT": {
+   "rows": 164160,
+   "missing_months": []
+  },
+  "ZROUSDT": {
+   "rows": 161280,
+   "missing_months": []
+  },
+  "ZECUSDT": {
+   "rows": 514080,
+   "missing_months": []
+  }
+ }
+}

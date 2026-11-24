@@ -1,0 +1,96 @@
+# Claude Crypto Research Lab — default configuration.
+# Every value here is a documented, pre-chosen default. Changing a value that
+# affects the live experiments requires a new model/experiment version (see
+# docs/PREREGISTRATION.md); results are never re-scored retroactively.
+
+[paths]
+data_dir = "data"                 # all records live under here
+db_file = "data/cryptolab.sqlite" # working database (rebuildable from the ledger)
+ledger_dir = "data/ledger"        # append-only, hash-chained JSONL (source of truth)
+raw_dir = "data/raw"              # downloaded history (regenerable, git-ignored)
+research_dir = "data/research"    # backtest outputs (committed, small)
+reports_dir = "reports"           # dashboard + exports
+log_dir = "logs"
+
+[http]
+timeout_s = 15
+max_retries = 4
+backoff_base_s = 1.0
+# Minimum spacing between requests to the same host (politeness / rate limits)
+min_interval_s = 0.06
+
+[exchanges]
+# Forecast exchange. Binance's public market-data mirror is used because it has
+# the widest liquid USDT spot universe AND exact historical trade lookup
+# (aggTrades by timestamp), which the verification step requires.
+forecast_exchange = "binance"
+binance_base = "https://data-api.binance.vision"
+binance_bulk_base = "https://data.binance.vision"
+coinbase_base = "https://api.exchange.coinbase.com"
+kraken_base = "https://api.kraken.com"
+okx_base = "https://www.okx.com"
+# Discovery-only exchanges (counted and quality-screened, not forecast)
+kucoin_base = "https://api.kucoin.com"
+gate_base = "https://api.gateio.ws"
+mexc_base = "https://api.mexc.com"
+bitfinex_base = "https://api-pub.bitfinex.com"
+bitstamp_base = "https://www.bitstamp.net"
+
+[quality]
+# A market must pass ALL of these to be "quality-passed".
+min_quote_volume_24h_usd = 5_000_000
+max_spread_bps = 10.0
+max_staleness_s = 180          # last trade/quote must be this recent
+max_tick_bps = 5.0             # tick size relative to price (avoids coarse prices / spurious "flat")
+usd_quotes = ["USDT", "USD", "USDC"]
+
+[universe]
+# Point-in-time universe used by BOTH backtest and live forecasting:
+# top-N Binance USDT spot pairs by trailing 30-day quote volume.
+top_n = 30
+volume_lookback_days = 30
+
+[costs]
+# Approximate public retail-tier taker fees (fraction per side). These are
+# ASSUMPTIONS — verify against your own account tier before relying on them.
+taker_fee = { binance = 0.0010, okx = 0.0010, kraken = 0.0040, coinbase = 0.0060 }
+# Backtest half-spread assumption (fraction) by liquidity rank; live forecasts
+# use the measured order-book spread instead.
+backtest_half_spread_top10 = 0.00005
+backtest_half_spread_other = 0.00015
+slippage_per_side = 0.0001     # extra market-impact assumption for ~$1k notional
+# Low-cost sensitivity scenario (maker/VIP-like) reported alongside base case
+low_cost_fee = 0.0002
+paper_notional_usd = 1000.0
+paper_starting_equity_usd = 10000.0
+short_borrow_cost_per_hour = 0.00002  # hypothetical margin short (not executable on spot)
+
+[experiments.A]
+name = "A_10min"
+horizon_min = 10
+cadence_min = 10
+# A slot is forecast only if the cycle starts within this many minutes of the
+# slot boundary; otherwise the slot is recorded as a gap (never back-filled).
+max_start_delay_min = 4
+
+[experiments.B]
+name = "B_60min"
+horizon_min = 60
+cadence_min = 60
+max_start_delay_min = 15
+
+[verification]
+# Exact-timestamp verification: last trade at or before the expiry instant.
+max_trade_gap_s = 60           # last trade must be within this many seconds of expiry
+fallback_trade_gap_s = 600     # wider search; result flagged "approximate"
+min_delay_after_expiry_s = 5   # wait for exchange to publish trades
+
+[backtest]
+history_start = "2025-12-01"   # warm-up month for features & universe ranking
+start = "2026-01-01"
+train_end = "2026-06-30"       # inclusive
+validation_end = "2026-09-30"  # inclusive
+test_end = "2026-11-22"        # inclusive; test period is untouched until pre-registration
+embargo_days = 1               # gap between training data and evaluation data
+refit_frequency = "monthly"    # walk-forward refit
+seed = 20261124
