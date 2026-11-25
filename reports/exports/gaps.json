@@ -1142,5 +1142,309 @@
   "recorded_ms": 1795602299797,
   "slot_ms": 1795601700000,
   "slot_utc": "2026-11-25T10:15:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795602900000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908007,
+  "slot_ms": 1795602900000,
+  "slot_utc": "2026-11-25T10:35:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795603200000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908009,
+  "slot_ms": 1795603200000,
+  "slot_utc": "2026-11-25T10:40:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795603500000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908014,
+  "slot_ms": 1795603500000,
+  "slot_utc": "2026-11-25T10:45:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795603800000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908016,
+  "slot_ms": 1795603800000,
+  "slot_utc": "2026-11-25T10:50:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795604100000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908019,
+  "slot_ms": 1795604100000,
+  "slot_utc": "2026-11-25T10:55:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795604400000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908020,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795604700000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908022,
+  "slot_ms": 1795604700000,
+  "slot_utc": "2026-11-25T11:05:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795605000000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908023,
+  "slot_ms": 1795605000000,
+  "slot_utc": "2026-11-25T11:10:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795605300000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908025,
+  "slot_ms": 1795605300000,
+  "slot_utc": "2026-11-25T11:15:00.000Z"
+ },
+ {
+  "experiment": "G2_5min",
+  "gap_id": "G2_5min:1795605600000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908026,
+  "slot_ms": 1795605600000,
+  "slot_utc": "2026-11-25T11:20:00.000Z"
+ },
+ {
+  "experiment": "G2_10min",
+  "gap_id": "G2_10min:1795603200000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908028,
+  "slot_ms": 1795603200000,
+  "slot_utc": "2026-11-25T10:40:00.000Z"
+ },
+ {
+  "experiment": "G2_10min",
+  "gap_id": "G2_10min:1795603800000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908029,
+  "slot_ms": 1795603800000,
+  "slot_utc": "2026-11-25T10:50:00.000Z"
+ },
+ {
+  "experiment": "G2_10min",
+  "gap_id": "G2_10min:1795604400000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908030,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "G2_10min",
+  "gap_id": "G2_10min:1795605000000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908031,
+  "slot_ms": 1795605000000,
+  "slot_utc": "2026-11-25T11:10:00.000Z"
+ },
+ {
+  "experiment": "G2_10min",
+  "gap_id": "G2_10min:1795605600000",
+  "reason": "slot start missed by > 5 min (scheduler not running)",
+  "recorded_ms": 1795605908033,
+  "slot_ms": 1795605600000,
+  "slot_utc": "2026-11-25T11:20:00.000Z"
+ },
+ {
+  "experiment": "G2_60min",
+  "gap_id": "G2_60min:1795604400000",
+  "reason": "slot start missed by > 20 min (scheduler not running)",
+  "recorded_ms": 1795605908034,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "A_10min",
+  "gap_id": "A_10min:1795603200000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908036,
+  "slot_ms": 1795603200000,
+  "slot_utc": "2026-11-25T10:40:00.000Z"
+ },
+ {
+  "experiment": "A_10min",
+  "gap_id": "A_10min:1795603800000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908038,
+  "slot_ms": 1795603800000,
+  "slot_utc": "2026-11-25T10:50:00.000Z"
+ },
+ {
+  "experiment": "A_10min",
+  "gap_id": "A_10min:1795604400000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908040,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "A_10min",
+  "gap_id": "A_10min:1795605000000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908042,
+  "slot_ms": 1795605000000,
+  "slot_utc": "2026-11-25T11:10:00.000Z"
+ },
+ {
+  "experiment": "A_10min",
+  "gap_id": "A_10min:1795605600000",
+  "reason": "slot start missed by > 5 min (scheduler not running)",
+  "recorded_ms": 1795605908043,
+  "slot_ms": 1795605600000,
+  "slot_utc": "2026-11-25T11:20:00.000Z"
+ },
+ {
+  "experiment": "B_60min",
+  "gap_id": "B_60min:1795604400000",
+  "reason": "slot start missed by > 20 min (scheduler not running)",
+  "recorded_ms": 1795605908045,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "KX_BTC_without",
+  "gap_id": "KX_BTC_without:1795602600000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908048,
+  "slot_ms": 1795602600000,
+  "slot_utc": "2026-11-25T10:30:00.000Z"
+ },
+ {
+  "experiment": "KX_BTC_without",
+  "gap_id": "KX_BTC_without:1795603500000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908051,
+  "slot_ms": 1795603500000,
+  "slot_utc": "2026-11-25T10:45:00.000Z"
+ },
+ {
+  "experiment": "KX_BTC_without",
+  "gap_id": "KX_BTC_without:1795604400000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908053,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "KX_BTC_without",
+  "gap_id": "KX_BTC_without:1795605300000",
+  "reason": "slot start missed by > 5 min (scheduler not running)",
+  "recorded_ms": 1795605908055,
+  "slot_ms": 1795605300000,
+  "slot_utc": "2026-11-25T11:15:00.000Z"
+ },
+ {
+  "experiment": "KX_BTC_with",
+  "gap_id": "KX_BTC_with:1795602600000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908057,
+  "slot_ms": 1795602600000,
+  "slot_utc": "2026-11-25T10:30:00.000Z"
+ },
+ {
+  "experiment": "KX_BTC_with",
+  "gap_id": "KX_BTC_with:1795603500000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908058,
+  "slot_ms": 1795603500000,
+  "slot_utc": "2026-11-25T10:45:00.000Z"
+ },
+ {
+  "experiment": "KX_BTC_with",
+  "gap_id": "KX_BTC_with:1795604400000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908060,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "KX_BTC_with",
+  "gap_id": "KX_BTC_with:1795605300000",
+  "reason": "slot start missed by > 5 min (scheduler not running)",
+  "recorded_ms": 1795605908061,
+  "slot_ms": 1795605300000,
+  "slot_utc": "2026-11-25T11:15:00.000Z"
+ },
+ {
+  "experiment": "KX_ETH_without",
+  "gap_id": "KX_ETH_without:1795602600000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908063,
+  "slot_ms": 1795602600000,
+  "slot_utc": "2026-11-25T10:30:00.000Z"
+ },
+ {
+  "experiment": "KX_ETH_without",
+  "gap_id": "KX_ETH_without:1795603500000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908064,
+  "slot_ms": 1795603500000,
+  "slot_utc": "2026-11-25T10:45:00.000Z"
+ },
+ {
+  "experiment": "KX_ETH_without",
+  "gap_id": "KX_ETH_without:1795604400000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908066,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "KX_ETH_without",
+  "gap_id": "KX_ETH_without:1795605300000",
+  "reason": "slot start missed by > 5 min (scheduler not running)",
+  "recorded_ms": 1795605908068,
+  "slot_ms": 1795605300000,
+  "slot_utc": "2026-11-25T11:15:00.000Z"
+ },
+ {
+  "experiment": "KX_ETH_with",
+  "gap_id": "KX_ETH_with:1795602600000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908073,
+  "slot_ms": 1795602600000,
+  "slot_utc": "2026-11-25T10:30:00.000Z"
+ },
+ {
+  "experiment": "KX_ETH_with",
+  "gap_id": "KX_ETH_with:1795603500000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908081,
+  "slot_ms": 1795603500000,
+  "slot_utc": "2026-11-25T10:45:00.000Z"
+ },
+ {
+  "experiment": "KX_ETH_with",
+  "gap_id": "KX_ETH_with:1795604400000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795605908088,
+  "slot_ms": 1795604400000,
+  "slot_utc": "2026-11-25T11:00:00.000Z"
+ },
+ {
+  "experiment": "KX_ETH_with",
+  "gap_id": "KX_ETH_with:1795605300000",
+  "reason": "slot start missed by > 5 min (scheduler not running)",
+  "recorded_ms": 1795605908090,
+  "slot_ms": 1795605300000,
+  "slot_utc": "2026-11-25T11:15:00.000Z"
  }
 ]
