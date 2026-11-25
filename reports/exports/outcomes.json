@@ -1257,5 +1257,231 @@
   "trade_id": 271606929,
   "verified_ms": 1795595099924,
   "verified_utc": "2026-11-25T08:24:59.924Z"
+ },
+ {
+  "abs_pred_error_pct": 0.3382779398267588,
+  "actual_class3": "UP",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.32084335968833866,
+  "argmax_class3_correct": false,
+  "brier": 0.23390171504198495,
+  "brier3": 1.4069641360784202,
+  "correct": false,
+  "dir_gross_pct": -0.32084335968833866,
+  "dir_net_pct": -0.5524680613020055,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795595417279,
+  "expiry_utc": "2026-11-25T08:30:17.279Z",
+  "forecast_id": "G5-000006",
+  "in_pi50": false,
+  "in_pi80": false,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.31981724728726846,
+  "p1": 8.755,
+  "p1_trade_ms": 1795595416007,
+  "p1_trade_utc": "2026-11-25T08:30:16.007Z",
+  "path_max_pct": 0.3781368167755206,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.1260456055918513,
+  "pred_error_abs": 0.029616233631832856,
+  "pred_error_pct": -0.3382779398267588,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "LINKUSDT",
+  "timing_gap_ms": 1272,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.6281342984035932,
+    "hit": true,
+    "p": 0.20745075963471318
+   },
+   "+0.5%": {
+    "brier": 0.0026335915803313904,
+    "hit": false,
+    "p": 0.05131853057455358
+   },
+   "-0.25%": {
+    "brier": 0.07615331469817438,
+    "hit": false,
+    "p": 0.27595890037861504
+   },
+   "-0.5%": {
+    "brier": 0.0042412313165635625,
+    "hit": false,
+    "p": 0.06512473659496491
+   }
+  },
+  "trade_id": 302883295,
+  "verified_ms": 1795598703849,
+  "verified_utc": "2026-11-25T09:25:03.849Z"
+ },
+ {
+  "abs_pred_error_pct": 0.09894317117069562,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.07383706620722741,
+  "argmax_class3_correct": true,
+  "brier": 0.2446287553951121,
+  "brier3": 0.06042969611152314,
+  "correct": false,
+  "dir_gross_pct": -0.07383706620722741,
+  "dir_net_pct": -0.31863124180136115,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795595712256,
+  "expiry_utc": "2026-11-25T08:35:12.256Z",
+  "forecast_id": "G5-000007",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.07378258730937892,
+  "p1": 40.66,
+  "p1_trade_ms": 1795595710112,
+  "p1_trade_utc": "2026-11-25T08:35:10.112Z",
+  "path_max_pct": 0.3445729756337723,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.09844942160964765,
+  "pred_error_abs": 0.04023029339800388,
+  "pred_error_pct": -0.09894317117069562,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "LTCUSDT",
+  "timing_gap_ms": 2144,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.6973062930044108,
+    "hit": true,
+    "p": 0.1649513229730791
+   },
+   "+0.5%": {
+    "brier": 0.0015383812453196614,
+    "hit": false,
+    "p": 0.039222203473538574
+   },
+   "-0.25%": {
+    "brier": 0.06399741220335955,
+    "hit": false,
+    "p": 0.2529770981795774
+   },
+   "-0.5%": {
+    "brier": 0.003397452128818164,
+    "hit": false,
+    "p": 0.05828766703873268
+   }
+  },
+  "trade_id": 338732459,
+  "verified_ms": 1795598703849,
+  "verified_utc": "2026-11-25T09:25:03.849Z"
+ },
+ {
+  "abs_pred_error_pct": 0.08788625222995172,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.0738188976378007,
+  "argmax_class3_correct": true,
+  "brier": 0.2655937445427191,
+  "brier3": 0.2256882988369559,
+  "correct": false,
+  "dir_gross_pct": -0.0738188976378007,
+  "dir_net_pct": -0.3187615579060375,
+  "exchange": "binance",
+  "experiment": "G2_10min",
+  "expiry_ms": 1795596013894,
+  "expiry_utc": "2026-11-25T08:40:13.894Z",
+  "forecast_id": "G10-000006",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.07376444553724992,
+  "p1": 40.67,
+  "p1_trade_ms": 1795596013548,
+  "p1_trade_utc": "2026-11-25T08:40:13.548Z",
+  "path_max_pct": 0.3198818897637956,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.12303149606298636,
+  "pred_error_abs": 0.03574333878191993,
+  "pred_error_pct": -0.08788625222995172,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "LTCUSDT",
+  "timing_gap_ms": 346,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.41086022561723895,
+    "hit": true,
+    "p": 0.3590162048715749
+   },
+   "+0.5%": {
+    "brier": 0.017142668876632874,
+    "hit": false,
+    "p": 0.1309300151861019
+   },
+   "+1%": {
+    "brier": 0.001516702737715475,
+    "hit": false,
+    "p": 0.038944867925253965
+   },
+   "-0.25%": {
+    "brier": 0.15052433916727895,
+    "hit": false,
+    "p": 0.38797466304809
+   },
+   "-0.5%": {
+    "brier": 0.01785355384100305,
+    "hit": false,
+    "p": 0.13361719141264364
+   },
+   "-1%": {
+    "brier": 0.0013078218078011175,
+    "hit": false,
+    "p": 0.03616381904336318
+   }
+  },
+  "trade_id": 338732671,
+  "verified_ms": 1795598703849,
+  "verified_utc": "2026-11-25T09:25:03.849Z"
+ },
+ {
+  "abs_pred_error_pct": 0.038716904821933795,
+  "actual_direction": "UP",
+  "actual_return_pct": 0.024594195769811478,
+  "brier": 0.2655937453763497,
+  "correct": false,
+  "dir_gross_pct": -0.024594195769811478,
+  "dir_net_pct": -0.26954291371854205,
+  "exchange": "binance",
+  "experiment": "A_10min",
+  "expiry_ms": 1795596024386,
+  "expiry_utc": "2026-11-25T08:40:24.386Z",
+  "forecast_id": "A-000011",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.024588148512427743,
+  "p1": 40.67,
+  "p1_trade_ms": 1795596023105,
+  "p1_trade_utc": "2026-11-25T08:40:23.105Z",
+  "pred_error_abs": 0.015746165191082184,
+  "pred_error_pct": -0.038716904821933795,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "LTCUSDT",
+  "timing_gap_ms": 1281,
+  "trade_id": 338732674,
+  "verified_ms": 1795598703849,
+  "verified_utc": "2026-11-25T09:25:03.849Z"
  }
 ]
