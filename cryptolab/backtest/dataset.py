@@ -40,17 +40,20 @@ def _one_symbol(args) -> pd.DataFrame | None:
     g = to_grid(df)
     ref = {k: pd.read_pickle(p) for k, p in ref_paths.items()}
     f = symbol_features(g, ref)
-    f = add_targets(f, horizons)
+    f = add_targets(f, horizons, g["high"], g["low"])
     f["missing"] = g["missing"]
     t = f.index.values
     mon = _month_of(t)
     in_uni = np.isin(mon, list(months))
     out = []
+    tcols = [c for c in f.columns if c.startswith(("y_", "ymax_", "ymin_"))]
     for h in horizons:
         on_grid = (t % (h * 60_000)) == 0
-        sel = f[in_uni & on_grid].copy()
+        keep = [c for c in f.columns if c not in tcols] + [f"y_{h}", f"ymax_{h}", f"ymin_{h}"]
+        sel = f.loc[in_uni & on_grid, keep].copy()
         if sel.empty:
             continue
+        sel = sel.rename(columns={f"y_{h}": "y", f"ymax_{h}": "ymax", f"ymin_{h}": "ymin"})
         sel["horizon"] = h
         out.append(sel)
     if not out:
@@ -65,12 +68,12 @@ def _one_symbol(args) -> pd.DataFrame | None:
     res = res[res["split"] != ""]
     # float32 for compactness except prices/targets
     for c in res.columns:
-        if res[c].dtype == "float64" and not (c == "close" or c.startswith("y_")):
+        if res[c].dtype == "float64" and c not in ("close", "y", "ymax", "ymin"):
             res[c] = res[c].astype("float32")
     return res
 
 
-def build_panels(cfg, horizons=(10, 60), workers: int = 4) -> dict[int, Path]:
+def build_panels(cfg, horizons=(5, 10, 60, 240, 1440), workers: int = 4) -> dict[int, Path]:
     raw = cfg.path("raw_dir") / "binance_1m"
     research = cfg.path("research_dir")
     cache = cfg.path("data_dir") / "cache"
@@ -104,14 +107,12 @@ def build_panels(cfg, horizons=(10, 60), workers: int = 4) -> dict[int, Path]:
                 frames.append(res)
             if (i + 1) % 10 == 0:
                 log.info("features %d/%d symbols", i + 1, len(jobs))
-    panel = pd.concat(frames, ignore_index=True)
     out = {}
     for h in horizons:
-        p = panel[panel["horizon"] == h].copy()
+        p = pd.concat([fr[fr["horizon"] == h] for fr in frames], ignore_index=True)
         p = p.sort_values(["t", "symbol"]).reset_index(drop=True)
         p = cross_sectional(p)
         p["sig_h"] = (p["sig1m"].astype("float64") * np.sqrt(h))
-        p["y"] = p[f"y_{h}"]
         p["y_std"] = p["y"] / p["sig_h"]
         # Require a complete feature history and a defined target
         need = ["r_1440", "vol_1440", "sig_h", "beta_btc", "y"]

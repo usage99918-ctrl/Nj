@@ -90,6 +90,9 @@ def apply_forecast(rows: pd.DataFrame, z: np.ndarray, cal: Calibration, costs: d
         "lo50": mu + cal.q25 * sig, "hi50": mu + cal.q75 * sig, "lo80": mu + cal.q10 * sig, "hi80": mu + cal.q90 * sig,
         "btc_trend": rows["btc_trend"].values, "btc_vol_ratio": rows["btc_vol_ratio"].values,
     })
+    for c in ("ymax", "ymin"):
+        if c in rows:
+            out[c] = rows[c].values.astype("float64")
     out["flat"] = out["y"] == 0
     out["correct"] = (out["dir"] * out["y"] > 0)
     hs = np.where(out["rank"] <= 10, costs["backtest_half_spread_top10"], costs["backtest_half_spread_other"])
@@ -143,7 +146,7 @@ class WalkForward:
         self.sig_all = panel["sig_h"].values.astype("float64")
         self.rank_all = panel["universe_rank"].values
         self.month_all = panel["month"].values
-        self.rule_z = {s.name: s.predict(panel, h) for s in strategies if s.model is None}
+        self.rule_z = {s.name: s.predict(panel, h).astype("float32") for s in strategies if s.model is None}
         self.pool: dict[str, list] = {s.name: [] for s in strategies}
         self.selected: dict[str, list] = {s.name: [] for s in strategies}
         self.ics: dict[str, list] = {s.name: [] for s in strategies}
@@ -165,7 +168,7 @@ class WalkForward:
             for s in self.strategies:
                 if s.model is not None:
                     s.fit(train, h)
-                    z_m = s.predict(mrows, h)
+                    z_m = s.predict(mrows, h).astype("float32")
                 else:
                     z_m = self.rule_z[s.name][month_mask]
                 # Calibration pool = this strategy's own past out-of-sample predictions. For the

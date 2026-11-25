@@ -79,7 +79,9 @@ class ARPooled:
     """Pooled AR(3) on standardized lagged horizon returns (no intercept: no drift bet)."""
 
     def __init__(self, h):
-        if h == 10:
+        if h == 5:
+            self.spec = [("r_5", None, 5), ("r_10", "r_5", 5), ("r_30", "r_10", 20)]
+        elif h == 10:
             self.spec = [("r_10", None, 10), ("r_30", "r_10", 20), ("r_60", "r_30", 30)]
         else:
             self.spec = [("r_60", None, 60), ("r_240", "r_60", 180), ("r_1440", "r_240", 1200)]

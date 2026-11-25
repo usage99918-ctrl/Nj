@@ -101,9 +101,9 @@ def multiple_testing(sel: dict, slots: pd.DataFrame, split: str, summaries: dict
     }
 
 
-def select(summaries: dict) -> tuple[str, list]:
+def select(summaries: dict, min_n: int = 300) -> tuple[str, list]:
     elig = [(n, m) for n, m in summaries.items()
-            if n not in EXCLUDED_FROM_SELECTION and m.get("coverage", 0) >= 0.90 and m.get("n_forecasts", 0) >= 300]
+            if n not in EXCLUDED_FROM_SELECTION and m.get("coverage", 0) >= 0.90 and m.get("n_forecasts", 0) >= min_n]
     elig.sort(key=lambda kv: (kv[1].get("balanced_accuracy", 0), kv[1].get("ic_mean", -1)), reverse=True)
     return elig[0][0], [n for n, _ in elig[:10]]
 

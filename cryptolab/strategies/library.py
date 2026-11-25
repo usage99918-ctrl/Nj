@@ -79,7 +79,7 @@ def rules(h: int) -> list[Strategy]:
         lambda p: (np.sign(p["r_10"]) + np.sign(p["r_60"]) + np.sign(p["r_240"]) + np.sign(p["r_1440"])) / 2)
 
     # 2. Mean reversion ------------------------------------------------------------
-    for L in (1, 5, 10, 30, 60, 240):
+    for L in (1, 5, 10, 30, 60, 240, 1440):  # rev_1440 added in library v1.1 (24h horizon baseline)
         add(f"rev_{L}", "mean_reversion", f"Past {L}-min return reverses (liquidity provision).",
             lambda p, L=L: -p[f"r_{L}"] / _sd(p, L), baseline=(L == h))
     for L in (30, 60, 240, 1440):
@@ -137,8 +137,10 @@ def rules(h: int) -> list[Strategy]:
         lambda p: -p["r_10"] / _sd(p, 10) * p["vol_ratio"].clip(0, 5))
 
     # 7. Statistical time-series -----------------------------------------------------
-    add("ar1_adaptive", "time_series", f"Per-coin AR(1) of {h}-min returns estimated over the past 7 days.",
-        lambda p: p[f"ac_{h}"] * p[f"r_{h}"] / _sd(p, h) * 5)
+    hac = 10 if h <= 10 else 60          # AR coefficient available for 10- and 60-min returns
+    hr = h if h in (5, 10, 30, 60, 240, 1440) else hac
+    add("ar1_adaptive", "time_series", f"Per-coin AR(1) of {hac}-min returns (7-day window) applied to the last {hr}-min move.",
+        lambda p: p[f"ac_{hac}"] * p[f"r_{hr}"] / _sd(p, hr) * 5)
 
     # 12. Regime-gated rules ---------------------------------------------------------
     add("regime_gated_mom", "regime", "Momentum only works when BTC's 24h trend is up.",

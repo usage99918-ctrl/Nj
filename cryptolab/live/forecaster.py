@@ -38,6 +38,10 @@ class LiveModel:
         self.cal = d["calibration"]
         self.h = int(d["horizon"])
         self.version = d["version"]
+        self.layers = None
+        if d.get("prob_layers"):
+            from cryptolab.backtest.g2 import ProbLayers
+            self.layers = ProbLayers.from_dict(d["prob_layers"])
 
 
 def extend_grid(g: pd.DataFrame, t_end: int) -> pd.DataFrame:
@@ -123,17 +127,40 @@ class Forecaster:
             return {"backtest_test_accuracy": m.get("accuracy"), "backtest_n": m.get("n_forecasts")}
         return {}
 
-    def run(self, exp_key: str, slot_ms: int) -> dict:
+    def snapshot(self, label: str = "G2_shared") -> dict:
+        """One market scan + feature panel shared by several experiments in the same tick.
+        Recorded once in the ledger; each forecast references it by scan_id."""
+        t0 = time.time()
+        self.bn.server_time()
+        scan = self.scanner.scan()
+        server_now = self.bn.clock.now()
+        panel, diag = build_live_panel(self.cache, scan.binance_universe, server_now)
+        scan_id = f"SNAP:{label}:{diag['t_common_ms']}"
+        rec = {"scan_id": scan_id, "experiment": label, "slot_ms": diag["t_common_ms"], **scan.summary(),
+               "markets_analyzed": int(len(panel)), "analysis_skipped": diag["skipped"],
+               "features_t_ms": diag["t_common_ms"]}
+        try:
+            self.store.record("scan", rec)
+        except Exception as e:  # duplicate snapshot id (same minute) is harmless
+            log.debug("snapshot record: %s", e)
+        return {"scan": scan, "panel": panel, "diag": diag, "server_now": server_now, "t0": t0,
+                "scan_id": scan_id, "shared": True}
+
+    def run(self, exp_key: str, slot_ms: int, snap: dict | None = None) -> dict:
         exp = self.cfg["experiments"][exp_key]
         name, h = exp["name"], int(exp["horizon_min"])
         model = self.model(exp_key)
         assert model.h == h
-        t0 = time.time()
-        self.bn.server_time()
-        scan = self.scanner.scan()
-        scan_id = f"{name}:{slot_ms}"
-        server_now = self.bn.clock.now()
-        panel, diag = build_live_panel(self.cache, scan.binance_universe, server_now)
+        if snap is None:  # A/B: independent scan per experiment (original design)
+            t0 = time.time()
+            self.bn.server_time()
+            scan = self.scanner.scan()
+            scan_id = f"{name}:{slot_ms}"
+            server_now = self.bn.clock.now()
+            panel, diag = build_live_panel(self.cache, scan.binance_universe, server_now)
+        else:
+            t0, scan, scan_id, server_now, diag = snap["t0"], snap["scan"], snap["scan_id"], snap["server_now"], snap["diag"]
+            panel = snap["panel"].copy()
         if panel.empty:
             raise RuntimeError(f"no analyzable markets (universe {len(scan.binance_universe)}): {diag['skipped']}")
         panel["sig_h"] = panel["sig1m"].astype("float64") * math.sqrt(h)
@@ -144,7 +171,8 @@ class Forecaster:
                     "markets_analyzed": int(len(panel)), "analysis_skipped": diag["skipped"],
                     "features_t_ms": diag["t_common_ms"]}
         if len(idx) == 0:
-            self.store.record("scan", scan_rec)
+            if snap is None:
+                self.store.record("scan", scan_rec)
             raise ModelAbstained("model produced no non-zero signal for any coin")
         i = int(idx[0])
         row = panel.iloc[i].to_dict()
@@ -255,7 +283,17 @@ class Forecaster:
             "rules": {"flat": FLAT_RULE, "verification": "Last Binance aggTrade at or before expiry_ms (same pair)."},
             "cycle_seconds": round(time.time() - t0, 2), "created_local_ms": now_ms(), "code_commit": git_commit(),
         }
-        self.store.record("scan", scan_rec)
+        if model.layers is not None:  # G2 probability layers (pre-registered definitions)
+            L = model.layers
+            pu3, pd3, ps3 = (float(v[0]) for v in L.three_class([mu], [sig]))
+            rec["three_class"] = {"p_up": pu3, "p_down": pd3, "p_sideways": ps3, "sideways_tau_pct": L.tau * 100,
+                                  "definition": f"SIDEWAYS = |log return| <= {L.tau * 100:.3f}% over {h} min"}
+            rec["touch"] = {}
+            for x in L.targets:
+                rec["touch"][f"+{x * 100:g}%"] = {"price": p0 * (1 + x), "p": float(L.touch([mu], [sig], x, "up")[0])}
+                rec["touch"][f"-{x * 100:g}%"] = {"price": p0 * (1 - x), "p": float(L.touch([mu], [sig], x, "dn")[0])}
+        if snap is None:
+            self.store.record("scan", scan_rec)
         self.store.record("forecast", rec)
         log.info("FROZEN %s %s %s p0=%.8g pred=%.8g P(dir)=%.3f expiry=%s", rec["forecast_id"], sym, rec["direction"],
                  p0, pred, p_dir, rec["expiry_utc"])

@@ -33,6 +33,10 @@ TABLES = {
                                               "expiry_ms", "model_version"]),
     "gap": ("gaps", "gap_id", ["experiment", "slot_ms"]),
     "outcome": ("outcomes", "forecast_id", ["experiment", "status", "verified_ms"]),
+    "event": ("events", "event_id", ["kind", "ts_ms"]),            # starts, crashes, outages, checkpoints
+    "signal": ("signals", "signal_id", ["strategy", "symbol", "signal_ms"]),   # event-driven strategy signals
+    "trade": ("paper_trades", "trade_id", ["portfolio", "symbol", "entry_ms"]),  # closed paper trades
+    "kalshi": ("kalshi_snapshots", "snap_id", ["asset", "ts_ms"]),             # read-only market snapshots
 }
 
 DDL = """
@@ -57,9 +61,20 @@ CREATE TABLE IF NOT EXISTS outcomes (
   forecast_id TEXT PRIMARY KEY REFERENCES forecasts(forecast_id), experiment TEXT, status TEXT, verified_ms INTEGER,
   payload TEXT NOT NULL, hash TEXT NOT NULL, seq INTEGER);
 CREATE INDEX IF NOT EXISTS ix_fc_exp ON forecasts(experiment, expiry_ms);
+CREATE TABLE IF NOT EXISTS events (
+  event_id TEXT PRIMARY KEY, kind TEXT, ts_ms INTEGER, payload TEXT NOT NULL, hash TEXT NOT NULL, seq INTEGER);
+CREATE TABLE IF NOT EXISTS signals (
+  signal_id TEXT PRIMARY KEY, strategy TEXT, symbol TEXT, signal_ms INTEGER, payload TEXT NOT NULL, hash TEXT NOT NULL,
+  seq INTEGER);
+CREATE TABLE IF NOT EXISTS paper_trades (
+  trade_id TEXT PRIMARY KEY, portfolio TEXT, symbol TEXT, entry_ms INTEGER, payload TEXT NOT NULL, hash TEXT NOT NULL,
+  seq INTEGER);
+CREATE TABLE IF NOT EXISTS kalshi_snapshots (
+  snap_id TEXT PRIMARY KEY, asset TEXT, ts_ms INTEGER, payload TEXT NOT NULL, hash TEXT NOT NULL, seq INTEGER);
 """
 
-_TRIGGER_TABLES = ["model_versions", "preregistrations", "scans", "forecasts", "gaps", "outcomes"]
+_TRIGGER_TABLES = ["model_versions", "preregistrations", "scans", "forecasts", "gaps", "outcomes", "events",
+                   "signals", "paper_trades", "kalshi_snapshots"]
 
 
 def _triggers() -> str:

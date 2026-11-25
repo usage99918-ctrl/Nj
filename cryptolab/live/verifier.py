@@ -47,6 +47,60 @@ def score(fc: dict, p1: float) -> dict:
     }
 
 
+def path_extremes(bn, symbol: str, start_ms: int, end_ms: int) -> tuple[float, float, str]:
+    """Highest and lowest traded price in (start_ms, end_ms]: whole 1-minute candles inside the
+    window plus individual aggTrades for the partial first/last minute (exact at the edges)."""
+    first_full = -(-start_ms // MIN) * MIN            # first minute boundary >= start
+    last_full = (end_ms // MIN) * MIN                 # last minute boundary <= end
+    hi, lo = -math.inf, math.inf
+    if last_full > first_full:
+        cur = first_full
+        while cur < last_full:
+            k = bn.klines(symbol, "1m", cur, last_full - 1, 1000)
+            k = k[(k["open_time"] >= first_full) & (k["open_time"] + MIN <= last_full)]
+            if k.empty:
+                break
+            hi, lo = max(hi, float(k["high"].max())), min(lo, float(k["low"].min()))
+            cur = int(k["open_time"].iloc[-1]) + MIN
+    for a, b in ((start_ms + 1, min(first_full, end_ms)), (max(last_full, start_ms + 1), end_ms)):
+        if b <= a:
+            continue
+        c = a
+        for _ in range(100):
+            tr = [t for t in bn.agg_trades(symbol, start_ms=c, end_ms=b, limit=1000) if a <= t["ts_ms"] <= b]
+            if not tr:
+                break
+            hi = max(hi, max(t["price"] for t in tr))
+            lo = min(lo, min(t["price"] for t in tr))
+            if len(tr) < 1000 or tr[-1]["ts_ms"] <= c:
+                break
+            c = tr[-1]["ts_ms"]
+    method = "1m candles inside window + aggTrades for partial edge minutes"
+    return hi, lo, method
+
+
+def score_g2(fc: dict, p1: float, hi: float, lo: float) -> dict:
+    """3-class and touch scoring for generation-2 forecasts."""
+    out = {}
+    r = math.log(p1 / fc["p0"])
+    tc = fc.get("three_class")
+    if tc:
+        tau = tc["sideways_tau_pct"] / 100
+        actual = "UP" if r > tau else ("DOWN" if r < -tau else "SIDEWAYS")
+        probs = {"UP": tc["p_up"], "DOWN": tc["p_down"], "SIDEWAYS": tc["p_sideways"]}
+        out["actual_class3"] = actual
+        out["brier3"] = sum((probs[k] - (1.0 if k == actual else 0.0)) ** 2 for k in probs)
+        out["argmax_class3_correct"] = max(probs, key=probs.get) == actual
+    if fc.get("touch") and math.isfinite(hi) and math.isfinite(lo):
+        out["path_max_pct"] = (hi / fc["p0"] - 1) * 100
+        out["path_min_pct"] = (lo / fc["p0"] - 1) * 100
+        out["touch_results"] = {}
+        for key, t in fc["touch"].items():
+            hit = (hi >= t["price"]) if key.startswith("+") else (lo <= t["price"])
+            out["touch_results"][key] = {"hit": bool(hit), "p": t["p"], "brier": (t["p"] - (1.0 if hit else 0.0)) ** 2}
+    return out
+
+
 class Verifier:
     def __init__(self, cfg, store, bn) -> None:
         self.cfg, self.store, self.bn = cfg, store, bn
@@ -103,6 +157,10 @@ class Verifier:
                "exchange": fc["exchange"], "symbol": sym, "expiry_ms": exp_ms, "expiry_utc": fc["expiry_utc"],
                "p1_trade_ms": p1_ms, "p1_trade_utc": to_iso(p1_ms), "timing_gap_ms": exp_ms - p1_ms,
                "trade_id": trade["id"] if trade else None, **score(fc, p1)}
+        if fc.get("three_class") or fc.get("touch"):
+            hi, lo, pm = path_extremes(self.bn, sym, fc["origin_ms"], exp_ms) if fc.get("touch") else (math.nan, math.nan, None)
+            rec.update(score_g2(fc, p1, hi, lo))
+            rec["path_method"] = pm
         self.store.record("outcome", rec)
         log.info("VERIFIED %s %s pred=%s actual=%s correct=%s err=%.3f%%", fc["forecast_id"], sym, fc["direction"],
                  rec["actual_direction"], rec["correct"], rec["abs_pred_error_pct"])

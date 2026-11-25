@@ -158,10 +158,16 @@ def reference_series(df1m: pd.DataFrame) -> pd.DataFrame:
     return r
 
 
-def add_targets(f: pd.DataFrame, horizons=(10, 60)) -> pd.DataFrame:
+def add_targets(f: pd.DataFrame, horizons=(10, 60), highs: pd.Series | None = None,
+                lows: pd.Series | None = None) -> pd.DataFrame:
+    """y_h = log(close[t+h]/close[t]); with highs/lows also the path extremes over (t, t+h]:
+    ymax_h = log(max high / close[t]), ymin_h = log(min low / close[t])  (targets only, never features)."""
     lc = np.log(f["close"])
     for h in horizons:
         f[f"y_{h}"] = lc.shift(-h) - lc
+        if highs is not None and lows is not None:
+            f[f"ymax_{h}"] = np.log(highs.rolling(h, min_periods=h).max().shift(-h)) - lc
+            f[f"ymin_{h}"] = np.log(lows.rolling(h, min_periods=h).min().shift(-h)) - lc
     return f
 
 
@@ -199,13 +205,13 @@ MODEL_FEATURES = (
      "xs_rank_r_10", "xs_rank_r_60", "xs_rank_r_240", "xs_rank_rel_vol_60", "xs_rank_vol_60", "xs_rank_tbr_60",
      "xs_rank_resid_r_60", "xs_rel_r_60", "xs_rel_r_10"]
 )
-FORBIDDEN = {"y", "y_std", "y_10", "y_60", "close", "t", "symbol", "split", "month"}
+FORBIDDEN = {"y", "y_std", "y_10", "y_60", "close", "t", "symbol", "split", "month", "ymax", "ymin"}
 
 
 def model_feature_columns(panel: pd.DataFrame) -> list[str]:
     """Allowlisted feature columns present in `panel`; raises if a target could leak in."""
     cols = [c for c in MODEL_FEATURES if c in panel.columns]
-    leak = [c for c in cols if c in FORBIDDEN or c.startswith("y_")]
+    leak = [c for c in cols if c in FORBIDDEN or c.startswith(("y_", "ymax", "ymin"))]
     if leak:
         raise RuntimeError(f"target leakage: {leak}")
     return cols

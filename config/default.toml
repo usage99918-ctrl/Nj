@@ -80,6 +80,46 @@ horizon_min = 60
 cadence_min = 60
 max_start_delay_min = 20
 
+# ---- Generation-2 experiments (added 2026-11-25). Separate from A/B so comparisons stay fair.
+# Sideways (pre-registered): |log return| <= tau_h, tau_h = max(0.25%, 0.25% * sqrt(h/60)).
+# Touch targets: probability that the price reaches +x% (or -x%) at ANY point within the window.
+[experiments.G5]
+name = "G2_5min"
+horizon_min = 5
+cadence_min = 5
+max_start_delay_min = 2
+touch_targets_pct = [0.25, 0.5]
+
+[experiments.G10]
+name = "G2_10min"
+horizon_min = 10
+cadence_min = 10
+max_start_delay_min = 5
+touch_targets_pct = [0.25, 0.5, 1.0]
+fixed_strategy_from = "A_10min"
+
+[experiments.G60]
+name = "G2_60min"
+horizon_min = 60
+cadence_min = 60
+max_start_delay_min = 20
+touch_targets_pct = [0.5, 1.0, 2.0]
+fixed_strategy_from = "B_60min"
+
+[experiments.G240]
+name = "G2_240min"
+horizon_min = 240
+cadence_min = 240
+max_start_delay_min = 60
+touch_targets_pct = [1.0, 2.0, 5.0]
+
+[experiments.G1440]
+name = "G2_1440min"
+horizon_min = 1440
+cadence_min = 1440
+max_start_delay_min = 180
+touch_targets_pct = [2.0, 5.0, 10.0]
+
 [verification]
 # Exact-timestamp verification: last trade at or before the expiry instant.
 max_trade_gap_s = 60           # last trade must be within this many seconds of expiry
