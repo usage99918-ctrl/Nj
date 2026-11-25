@@ -43,7 +43,7 @@ def status_section(cfg, sup: dict, cont: dict, kill: bool, store) -> str:
 <section class="panel" aria-labelledby="st-h"><h2 id="st-h">System status and continuity</h2>
 <p>{head} {ks} <span class="muted small">heartbeat {_f(sup.get('heartbeat_age_s'), 0, ' s ago')} · supervisor pid {sup.get('supervisor_pid') or '–'} · worker pid {sup.get('worker_pid') or '–'}</span></p>
 <p class="small">Evidence from the ledger: first start {utc(ev.get('first_start_utc'))}; hourly checkpoints in {ev.get('hours_with_checkpoint', 0)} of {ev.get('hours_since_first_start', 0)} hours ({ev.get('checkpoint_coverage_pct', '–')}%);
-{ev.get('crashes_restarted', 0)} worker crashes/hangs restarted automatically; {ev.get('network_outages', 0)} network outages ({_f(ev.get('network_outage_total_s'), 0)} s total).
+{ev.get('crashes_restarted', 0)} abnormal worker exits/hangs restarted automatically ({ev.get('planned_restarts', 0)} planned restarts); {ev.get('network_outages', 0)} network outages ({_f(ev.get('network_outage_total_s'), 0)} s total).
 Continuity is only claimed for periods covered by these records.</p>
 {_table(['Experiment', 'Horizon', 'Forecasts', 'Missed slots', 'Slot coverage', 'Longest gap', 'Next slot', 'Last error'], rows, 2)}
 </section>"""

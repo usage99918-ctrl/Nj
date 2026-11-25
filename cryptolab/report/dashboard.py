@@ -231,9 +231,18 @@ def tiles_section(research, fwd, scans) -> str:
                       f"{s['markets_analyzed']} analyzed for prediction"))
     else:
         tiles.append(("Markets screened", "–", "no live scan recorded yet"))
-    nh = len(research)
-    tiles.append(("Strategies evaluated", f"{n_strat}",
-                  f"{n_strat // max(nh, 1)} configurations × {nh} horizon{'s' if nh != 1 else ''} + 6 baselines each"))
+    import glob
+    full = 0
+    for fp in glob.glob(str(Path(__file__).resolve().parents[2] / "data" / "research" / "backtest_*.json")):
+        try:
+            d = json.loads(Path(fp).read_text())
+            if not d.get("fixed_from"):
+                full += d.get("n_strategies", 0)
+        except Exception:
+            pass
+    tiles.append(("Strategy backtests", f"{full or n_strat}",
+                  "strategy × horizon walk-forward backtests (100–101 configurations at 10m, 60m, 5m, 4h, 24h) "
+                  "+ 3 friend strategies + baselines"))
     for key, label in (("A", "10-min forecasts"), ("B", "60-min forecasts")):
         f = fwd.get(key) or {}
         acc = f.get("accuracy") or {}

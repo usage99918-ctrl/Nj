@@ -109,3 +109,78 @@ than ±10 percentage points. Results are reported but not interpreted.
   because no free point-in-time history exists to backtest them.
 - The probability calibration comes from backtest forecasts. It is not yet validated on
   forward data.
+
+---
+
+# Standalone upgrade results (2026-11-25)
+
+Rules were fixed before the results (`docs/PREREGISTRATION_V2.md`). Every number below comes
+from `data/research/*.json` and the ledger. Experiments A and B were not changed.
+
+## Multi-horizon experiments (untouched test period Oct 1 – Nov 22)
+
+| Horizon | Model | Test accuracy (flat = wrong) | Non-flat accuracy | Gross / net bps per forecast | 3-class Brier: model / no-signal / climatology | Touch probabilities |
+|---|---|---|---|---|---|---|
+| 5 min | `lgbm_reg_shallow` (new) | 48.1% (n = 15,264; 18.7% flat) | 59.2% | +3.2 (t = 12.7) / −21.4 | 0.370 / 0.373 / 0.434 | beat climatology |
+| 10 min | `lgbm_reg_huber` (from A) | 51.5% (n = 7,632) | 56.8% | +3.1 (t = 5.2) / −21.5 | 0.529 / 0.532 / 0.591 | beat climatology |
+| 60 min | `rsi_rev_60` (from B) | 53.1% (n = 1,272) | 54.1% | +1.8 (n.s.) / −22.8 | 0.616 / 0.617 / 0.665 | beat climatology |
+| 4 h | `rv_rev_10` (new) | 53.8% (n = 318, p = 0.10) | – | +2.9 (n.s.) / −22.0 | 0.606 / 0.606 / 0.667 | beat climatology |
+| 24 h | `quiet_drift` (new) | 40.0% (n = 50) | – | −56 / −83 | 0.613 / 0.583 / 0.662 | ±10% targets worse than climatology |
+
+**Interpretation:**
+- **The short horizons carry a statistically strong but economically tiny signal.** It amounts
+  to about 3 bps gross per forecast, against a round-trip cost of about 25 bps.
+- **The 3-class and touch probabilities beat base rates, but almost entirely through volatility
+  forecasting.** A no-signal version with the same volatility forecast is nearly as good, and at
+  24 hours it is better. "How far will it move" is predictable; "which way" mostly is not.
+- **The 24-hour model failed its untouched test.**
+
+## Friend's three strategies (fixed definitions, after costs)
+
+| Strategy | Test signals | 4h gross / net bps | Stop/target paper trades (test) | Verdict |
+|---|---|---|---|---|
+| S1 Relative-Strength Reset (ETH/BTC) | 32 | +23.0 / 0.0 (beat random entries, p = 0.005) | +12.8 bps/trade (t = 0.6) | Mixed: **negative in training** (−52 bps/trade, 64 signals); too few signals; unproven |
+| S2 Breakout Retest | 3,666 | +12.0 / −12.0 | −19.5 bps/trade (t = −8.2) | **Fails** after costs on validation and test |
+| S3 Liquidity Recovery (proxy) | 399 | −15.4 / −39.6 | −48.9 bps/trade (t = −3.4) | **Fails** in the proxy form. The real order-book version is new live code with no track record |
+
+None of the three strategies outperformed the existing models.
+
+## Kalshi controlled test
+
+The comparison is paired: the same base model, with and without Kalshi's 15-minute market price.
+It was run on 5,181 untouched BTC and ETH windows from Oct 28 to Nov 25.
+- **Brier:** 0.24899 without, 0.24898 with. The difference is −0.00001, with a 95% confidence
+  interval of −0.00005 to +0.00002.
+- **Accuracy:** 52.48% without and 52.50% with. A McNemar test gives p = 1.0.
+- **Kalshi alone** is slightly worse, at 52.31% accuracy and a Brier of 0.24912.
+- **Decision:** Kalshi is **not adopted**, as the pre-registered rule requires. The likely reason
+  is that its mid-window price mostly restates the move since the window opened, which Binance
+  data already contains.
+- **Live:** both arms keep running in parallel to collect forward evidence.
+
+## Paper trading
+
+The **gated** portfolio may trade only strategies that passed an out-of-sample test after costs.
+None did, so **it holds cash by design**. Shadow portfolios trade every signal of S1, S2 and S3
+for measurement. The rules are:
+- position ≤ 10% of equity, capped at $2,000;
+- at most 5 positions;
+- stops and targets, assuming the stop is hit first if both fall in the same minute;
+- a 2% daily loss limit;
+- a kill switch;
+- 0.10% fees per side, measured or assumed spread, slippage, and a 2-second fill delay.
+
+## Continuous operation: what was verified, and what was not
+
+- **Crash recovery, verified live.** A worker killed with SIGKILL was restarted by the supervisor
+  10 seconds later, and the exit, the restart and a checkpoint are in the ledger. A hung worker
+  is killed and restarted, and outage start and end events are recorded; both have automated
+  tests.
+- **Restart without duplicates or back-filling, verified live.** After an unplanned stop,
+  expired forecasts were verified late from historical trades, and the missed slot became a
+  gap record rather than a fabricated forecast.
+- **Not verifiable here: 24/7 operation.** In this cloud coding session, background processes
+  stop when the session goes idle. The original daemon died minutes after a turn ended, at
+  05:30 UTC. Continuous operation therefore requires deploying to your PC or a server
+  (`docs/INSTALL.md`), where Task Scheduler, systemd or Docker restart it.
+- **Windows installer:** written, but not executed on Windows; the build machine is Linux.

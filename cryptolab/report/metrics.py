@@ -240,7 +240,9 @@ def continuity(store, cfg) -> dict:
         out["events"] = {"counts": dict(kinds), "first_start_utc": to_iso(min(starts)),
                          "hours_since_first_start": hours, "hours_with_checkpoint": hours_with_cp,
                          "checkpoint_coverage_pct": round(100 * min(hours_with_cp, hours) / hours, 1),
-                         "crashes_restarted": kinds.get("worker_exit", 0) + kinds.get("worker_hung", 0),
+                         "crashes_restarted": sum(1 for e in ev if e["kind"] == "worker_exit" and e.get("returncode") not in (0, None))
+                         + kinds.get("worker_hung", 0),
+                         "planned_restarts": sum(1 for e in ev if e["kind"] == "worker_exit" and e.get("returncode") == 0),
                          "network_outages": len(outages),
                          "network_outage_total_s": round(sum(e.get("duration_s", 0) for e in outages), 1),
                          "last_checkpoint_utc": to_iso(max(cps)) if cps else None}

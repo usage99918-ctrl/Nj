@@ -190,5 +190,79 @@
   "strategy": "lgbm_reg_huber",
   "trained_through": "2026-11-22",
   "version": "G2_10min-v1-lgbm_reg_huber"
+ },
+ {
+  "calibration": {
+   "a_dir": -0.15614400348095692,
+   "b": 0.7718588022596444,
+   "b_dir": 1.3793579458121235,
+   "n_pool": 2297700,
+   "n_sel_pool": 76896,
+   "q10": -0.9522722967634669,
+   "q25": -0.47690821589892707,
+   "q75": 0.47281894736092295,
+   "q90": 0.9734380002124741
+  },
+  "code_commit": "5acef629152b7bf8661917f7243400294017af1a",
+  "created_utc": "2026-11-25T06:30:52.840Z",
+  "experiment": "G2_5min",
+  "family": "tree_ml",
+  "horizon_min": 5,
+  "hypothesis": "LightGBM regression, 15 leaves, strong regularization.",
+  "kind": "model",
+  "model_file": "G2_5min_v1.pkl",
+  "model_sha256": "730cd884b89877f5de96387cd90784712caf394d7bd6334f4cb99f0195137595",
+  "prob_layers_summary": {
+   "n": 76896,
+   "targets": [
+    0.0025,
+    0.005
+   ],
+   "tau": 0.0025
+  },
+  "selection_prereg": "G2_5min-selection-v1",
+  "strategy": "lgbm_reg_shallow",
+  "trained_through": "2026-11-22",
+  "version": "G2_5min-v1-lgbm_reg_shallow"
+ },
+ {
+  "created_utc": "2026-11-25T06:33:39.218Z",
+  "experiment": "KX_BTC_without",
+  "horizon_min": 13,
+  "model_file": "KX_v1.pkl",
+  "model_sha256": "4904074de3be49177146af2ad9db393363a5296fc53a1bd66174ce8de2f70cea",
+  "selection_prereg": "kalshi-15m-with-vs-without-v1",
+  "strategy": "kalshi_ab_without",
+  "version": "KX_BTC_without-v1"
+ },
+ {
+  "created_utc": "2026-11-25T06:33:39.222Z",
+  "experiment": "KX_BTC_with",
+  "horizon_min": 13,
+  "model_file": "KX_v1.pkl",
+  "model_sha256": "4904074de3be49177146af2ad9db393363a5296fc53a1bd66174ce8de2f70cea",
+  "selection_prereg": "kalshi-15m-with-vs-without-v1",
+  "strategy": "kalshi_ab_with",
+  "version": "KX_BTC_with-v1"
+ },
+ {
+  "created_utc": "2026-11-25T06:33:39.223Z",
+  "experiment": "KX_ETH_without",
+  "horizon_min": 13,
+  "model_file": "KX_v1.pkl",
+  "model_sha256": "4904074de3be49177146af2ad9db393363a5296fc53a1bd66174ce8de2f70cea",
+  "selection_prereg": "kalshi-15m-with-vs-without-v1",
+  "strategy": "kalshi_ab_without",
+  "version": "KX_ETH_without-v1"
+ },
+ {
+  "created_utc": "2026-11-25T06:33:39.223Z",
+  "experiment": "KX_ETH_with",
+  "horizon_min": 13,
+  "model_file": "KX_v1.pkl",
+  "model_sha256": "4904074de3be49177146af2ad9db393363a5296fc53a1bd66174ce8de2f70cea",
+  "selection_prereg": "kalshi-15m-with-vs-without-v1",
+  "strategy": "kalshi_ab_with",
+  "version": "KX_ETH_with-v1"
  }
 ]

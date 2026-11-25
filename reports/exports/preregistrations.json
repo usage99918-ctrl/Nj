@@ -1467,5 +1467,328 @@
     }
    }
   }
+ },
+ {
+  "code_commit": "5acef629152b7bf8661917f7243400294017af1a",
+  "created_utc": "2026-11-25T06:24:53.251Z",
+  "experiment": "G2_5min",
+  "horizon_min": 5,
+  "n_strategies_tested": 101,
+  "prereg_id": "G2_5min-selection-v1",
+  "runner_ups": [
+   "lgbm_reg_shallow",
+   "lgbm_reg_huber",
+   "lgbm_reg_medium",
+   "extra_trees",
+   "ar1_adaptive",
+   "ens_stack_ridge",
+   "ridge_reversal_set",
+   "ridge_all_a1",
+   "ridge_all_a10",
+   "ridge_all_a100"
+  ],
+  "selected_strategy": "lgbm_reg_shallow",
+  "selection_rule": "Highest validation balanced accuracy among non-baseline strategies with validation coverage >= 0.90 and >= 300 forecasts (min(300, 0.9 x validation slots)); tie-break by validation mean IC.",
+  "sideways_definition": "|log return| <= 0.250%",
+  "test_hypotheses": [
+   "H1: test accuracy > 50% (binomial, alpha 0.05)",
+   "H2: test gross directional return > 0 (Newey-West, alpha 0.05)",
+   "H3: test long-only net return > 0",
+   "H4: test 3-class Brier score of the model < climatology Brier",
+   "H5: test touch-probability Brier < climatology Brier for every target"
+  ],
+  "touch_targets_pct": [
+   0.25,
+   0.5
+  ],
+  "validation_metrics_selected": {
+   "acc_ci95": [
+    0.4897159323963801,
+    0.5017557147398051
+   ],
+   "accuracy": 0.49573520531400966,
+   "balanced_accuracy": 0.6938685545349188,
+   "brier": 0.24403822448664264,
+   "brier_skill_vs_0.5": 0.023847102053429436,
+   "cover50": 0.5293251811594203,
+   "cover80": 0.8204257246376812,
+   "coverage": 1.0,
+   "family": "tree_ml",
+   "frac_pred_up": 0.4650513285024155,
+   "gross_dir_mean_bps": 8.461483219580566,
+   "gross_dir_t": 38.83522934839522,
+   "hypothesis": "LightGBM regression, 15 leaves, strong regularization.",
+   "ic_frac_pos": 0.6717995169082126,
+   "ic_mean": 0.09232065707856243,
+   "ic_t": 71.27054473983708,
+   "kind": "model",
+   "long_lowcost_maxdd_pct": 13.785930657984524,
+   "long_lowcost_mean_bps": 1.0139918636464003,
+   "long_lowcost_t": 12.271788308255093,
+   "long_lowcost_total_pct": 268.6672841917461,
+   "long_maxdd_pct": 5.811660433838791,
+   "long_mean_bps": -0.017023390267266496,
+   "long_t": -1.3865255606588562,
+   "long_total_pct": -4.510517485214931,
+   "long_trades": 12,
+   "long_win_rate": 0.3333333333333333,
+   "ls_lowcost_maxdd_pct": 341.8035382570252,
+   "ls_lowcost_mean_bps": -0.2784108524806238,
+   "ls_lowcost_t": -1.280286526298595,
+   "ls_lowcost_total_pct": -73.76773947321654,
+   "ls_maxdd_pct": 4313.127739473603,
+   "ls_mean_bps": -16.278410852480626,
+   "ls_t": -74.85710380285629,
+   "ls_total_pct": -4313.127739473603,
+   "mae_pct": 0.21491576434479365,
+   "mae_ratio_vs_no_change": 0.9990455878849314,
+   "mae_rw_pct": 0.21512107850832862,
+   "majority_baseline_same_candidates": 0.3620169082125604,
+   "max_loss_streak": 12,
+   "max_win_streak": 14,
+   "mean_p_dir": 0.5130277571770067,
+   "n_flat": 7555,
+   "n_forecasts": 26496,
+   "n_slots": 26496,
+   "p_acc_gt_50": 0.9184256140870635,
+   "p_gross_dir_gt_0": 0.0
+  },
+  "validation_reality_check_accuracy_p": 0.000999000999000999
+ },
+ {
+  "created_utc": "2026-11-25T06:30:53.455Z",
+  "experiment": "G2_5min",
+  "prereg_id": "G2_5min-test-result-v1",
+  "probability_layers_test": {
+   "argmax_accuracy": 0.7403039832285115,
+   "brier3_climatology": 0.4341834272134689,
+   "brier3_model": 0.37030108612727364,
+   "brier3_no_signal": 0.37252562695820207,
+   "n": 15264,
+   "outcome_freq": {
+    "DOWN": 0.1284722222222222,
+    "SIDEWAYS": 0.739517819706499,
+    "UP": 0.13200995807127883
+   },
+   "reliability_sideways": [
+    {
+     "freq": 0.0,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.17715337976632048,
+     "n": 4
+    },
+    {
+     "freq": 0.32806324110671936,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.35011112108384146,
+     "n": 253
+    },
+    {
+     "freq": 0.5101744186046512,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.5337435059436537,
+     "n": 2752
+    },
+    {
+     "freq": 0.6557971014492754,
+     "hi": 0.8,
+     "lo": 0.6000000000000001,
+     "mean_p": 0.6958872114277718,
+     "n": 5244
+    },
+    {
+     "freq": 0.9074311795749537,
+     "hi": 1.0,
+     "lo": 0.8,
+     "mean_p": 0.9357372228328813,
+     "n": 7011
+    }
+   ],
+   "reliability_up": [
+    {
+     "freq": 0.09736079819761828,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.08071025308421621,
+     "n": 12428
+    },
+    {
+     "freq": 0.28272437034409365,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.269476736559275,
+     "n": 2819
+    },
+    {
+     "freq": 0.47058823529411764,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.4388581399755549,
+     "n": 17
+    }
+   ],
+   "rps_climatology": 0.11577800865516719,
+   "rps_model": 0.10426165624410687,
+   "sideways_tau_pct": 0.25,
+   "touch": {
+    "+0.25%": {
+     "brier": 0.15407412005478147,
+     "brier_climatology": 0.2009730284233784,
+     "freq": 0.2578616352201258,
+     "mean_p": 0.25202455858083617
+    },
+    "+0.5%": {
+     "brier": 0.06954933049664522,
+     "brier_climatology": 0.07893005414245823,
+     "freq": 0.08588836477987422,
+     "mean_p": 0.08175966281963182
+    },
+    "-0.25%": {
+     "brier": 0.15516142050382253,
+     "brier_climatology": 0.20746305153240546,
+     "freq": 0.27247117400419285,
+     "mean_p": 0.25882838556759846
+    },
+    "-0.5%": {
+     "brier": 0.07304455098485105,
+     "brier_climatology": 0.08292783231800988,
+     "freq": 0.0909329140461216,
+     "mean_p": 0.07631632156926653
+    }
+   }
+  },
+  "selected_strategy": "lgbm_reg_shallow",
+  "test_metrics_selected": {
+   "acc_ci95": [
+    0.4734731333005628,
+    0.4893244896456957
+   ],
+   "accuracy": 0.48139412997903563,
+   "balanced_accuracy": 0.5924939056062182,
+   "brier": 0.25022108683329625,
+   "brier_skill_vs_0.5": -0.0008843473331849871,
+   "cover50": 0.4676362683438155,
+   "cover80": 0.7648715932914046,
+   "coverage": 1.0,
+   "family": "tree_ml",
+   "frac_pred_up": 0.4876179245283019,
+   "gross_dir_mean_bps": 3.24176852869214,
+   "gross_dir_t": 12.706950276593512,
+   "hypothesis": "LightGBM regression, 15 leaves, strong regularization.",
+   "ic_frac_pos": 0.6013495807127882,
+   "ic_mean": 0.05944275217968958,
+   "ic_t": 31.39945085989932,
+   "kind": "model",
+   "long_lowcost_maxdd_pct": 8.832774034429551,
+   "long_lowcost_mean_bps": 0.0829694985140177,
+   "long_lowcost_t": 1.6221709421731023,
+   "long_lowcost_total_pct": 12.664464253179636,
+   "long_maxdd_pct": 0.0,
+   "long_mean_bps": 0.0,
+   "long_t": 0.0,
+   "long_total_pct": 0.0,
+   "long_trades": 0,
+   "long_win_rate": null,
+   "ls_lowcost_maxdd_pct": 827.695725744537,
+   "ls_lowcost_mean_bps": -5.396357126444129,
+   "ls_lowcost_t": -21.13699994443607,
+   "ls_lowcost_total_pct": -823.6999517804331,
+   "ls_maxdd_pct": 3266.06942862585,
+   "ls_mean_bps": -21.396357126444126,
+   "ls_t": -83.80742578666067,
+   "ls_total_pct": -3265.939951780666,
+   "mae_pct": 0.18894016957790022,
+   "mae_ratio_vs_no_change": 1.0034196233522616,
+   "mae_rw_pct": 0.18829626726521637,
+   "majority_baseline_same_candidates": 0.4074292452830189,
+   "max_loss_streak": 15,
+   "max_win_streak": 12,
+   "mean_p_dir": 0.49494792680916083,
+   "n_flat": 2861,
+   "n_forecasts": 15264,
+   "n_slots": 15264,
+   "p_acc_gt_50": 0.9999979477772912,
+   "p_gross_dir_gt_0": 0.0
+  },
+  "verdict": {
+   "H1_accuracy_gt_50": false,
+   "H2_gross_dir_gt_0": true,
+   "H3_long_net_gt_0": false,
+   "H4_three_class_beats_climatology": true,
+   "H5_touch_beats_climatology": true
+  }
+ },
+ {
+  "base_model_train_until": "2026-09-16T23:45:00.000Z",
+  "code_commit": "5acef629152b7bf8661917f7243400294017af1a",
+  "created_utc": "2026-11-25T06:33:38.954Z",
+  "design": "Controlled test: does Kalshi's 15-minute BTC/ETH market improve our direction forecasts?\n\nDesign (fixed in code before any result was computed; see docs/PREREGISTRATION_KALSHI.md):\n  decision time t = window open + 2 min (Kalshi KXBTC15M / KXETH15M windows, UTC quarter hours)\n  target: Binance spot (BTCUSDT / ETHUSDT) last trade at window close vs at t   (UP if higher)\n  Stage 1 (shared base model): L2 logistic regression on Binance-only features, trained ONLY on\n          windows before the first Kalshi window (no overlap with any Kalshi data).\n  Stage 2 (on Kalshi windows; first 60% chronologically = train, last 40% = untouched test):\n      WITHOUT: logistic( base score, move since window open )\n      WITH:    logistic( base score, move since window open, logit(Kalshi YES mid at t) )\n  Kalshi quote usable only if two-sided, 0 < bid < ask < 1 and spread <= 0.10; windows without a\n  usable quote are excluded from BOTH arms (paired comparison).\n  Test statistics: accuracy (McNemar exact test), Brier and log loss (paired bootstrap 95% CI of\n  the difference), gross directional return per window (paired t-test). Kalshi is adopted only if\n  WITH beats WITHOUT on the pre-registered primary metric (Brier, CI excluding zero).\nKalshi YES prices are prediction-market contract prices for a BRTI-settled event, not spot\nprices; they enter only as a probability feature.",
+  "experiment": "kalshi_ab",
+  "kalshi_first_window": "2026-09-17T23:45:00.000Z",
+  "n_windows_with_usable_quote": 12953,
+  "prereg_id": "kalshi-15m-with-vs-without-v1",
+  "primary_metric": "Brier score difference (WITH - WITHOUT) < 0 with 95% CI < 0",
+  "stage2_train": [
+   "2026-09-17T23:45:00.000Z",
+   "2026-10-28T21:45:00.000Z"
+  ],
+  "test_from": "2026-10-28T21:45:00.000Z"
+ },
+ {
+  "comparison": {
+   "adopt_kalshi": false,
+   "brier_diff_ci95": [
+    -4.8931961415784864e-05,
+    1.9586163621173937e-05
+   ],
+   "brier_diff_with_minus_without": -1.4691727769136136e-05,
+   "gross_dir_diff_bps": 0.04007157007089411,
+   "gross_dir_diff_p": 0.5155569832823785,
+   "kalshi_coefficient": -0.016393097132131548,
+   "logloss_diff_ci95": [
+    -0.00010110867229705283,
+    3.892279809123639e-05
+   ],
+   "logloss_diff_with_minus_without": -3.157111075593603e-05,
+   "mcnemar_p": 1.0,
+   "mcnemar_with_better": 28,
+   "mcnemar_without_better": 27,
+   "n_test_windows": 5181
+  },
+  "created_utc": "2026-11-25T06:33:39.224Z",
+  "experiment": "kalshi_ab",
+  "prereg_id": "kalshi-15m-with-vs-without-results-v1",
+  "test_metrics": {
+   "kalshi_only": {
+    "accuracy": 0.523065045358039,
+    "brier": 0.24911563168325293,
+    "gross_dir_bps": 1.1422529590409962,
+    "log_loss": 0.6913747926297859,
+    "long_net_pct_total": 0.0,
+    "long_trades": 0,
+    "n": 5181
+   },
+   "with": {
+    "accuracy": 0.5249951746767033,
+    "brier": 0.24897694375992602,
+    "gross_dir_bps": 0.2793269307510737,
+    "log_loss": 0.6911127217316977,
+    "long_net_pct_total": 0.0,
+    "long_trades": 0,
+    "n": 5181
+   },
+   "without": {
+    "accuracy": 0.524802161744837,
+    "brier": 0.24899163548769515,
+    "gross_dir_bps": 0.23925536068017964,
+    "log_loss": 0.6911442928424536,
+    "long_net_pct_total": 0.0,
+    "long_trades": 0,
+    "n": 5181
+   }
+  }
  }
 ]
