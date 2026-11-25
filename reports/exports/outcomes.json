@@ -1031,5 +1031,231 @@
   "trade_id": 198926704,
   "verified_ms": 1795591506788,
   "verified_utc": "2026-11-25T07:25:06.788Z"
+ },
+ {
+  "abs_pred_error_pct": 0.03506808406446016,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.03239390994493885,
+  "argmax_class3_correct": true,
+  "brier": 0.22559264627223624,
+  "brier3": 0.00013000121716109112,
+  "correct": false,
+  "dir_gross_pct": -0.03239390994493885,
+  "dir_net_pct": -0.2849597342335038,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795591829405,
+  "expiry_utc": "2026-11-25T07:30:29.405Z",
+  "forecast_id": "G5-000004",
+  "in_pi50": false,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.03238341968913039,
+  "p1": 0.3088,
+  "p1_trade_ms": 1795591828709,
+  "p1_trade_utc": "2026-11-25T07:30:28.709Z",
+  "path_max_pct": 0.03239390994493885,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.032393909944927746,
+  "pred_error_abs": 0.00010829024359104711,
+  "pred_error_pct": -0.03506808406446016,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "TRXUSDT",
+  "timing_gap_ms": 696,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.00010533047963288205,
+    "hit": false,
+    "p": 0.010263063852129248
+   },
+   "+0.5%": {
+    "brier": 4.572830984274205e-06,
+    "hit": false,
+    "p": 0.0021384178694245437
+   },
+   "-0.25%": {
+    "brier": 0.00010076560350197614,
+    "hit": false,
+    "p": 0.010038207185647054
+   },
+   "-0.5%": {
+    "brier": 3.4220741454401064e-06,
+    "hit": false,
+    "p": 0.0018498849005924953
+   }
+  },
+  "trade_id": 271606494,
+  "verified_ms": 1795591841472,
+  "verified_utc": "2026-11-25T07:30:41.472Z"
+ },
+ {
+  "abs_pred_error_pct": 0.04035037555794041,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "DOWN",
+  "actual_return_pct": -0.05379236148466138,
+  "argmax_class3_correct": true,
+  "brier": 0.2663928718614137,
+  "brier3": 0.022171935227049536,
+  "correct": true,
+  "dir_gross_pct": 0.05379236148466138,
+  "dir_net_pct": -0.2066510571104395,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795592112185,
+  "expiry_utc": "2026-11-25T07:35:12.185Z",
+  "forecast_id": "G5-000005",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.053821313240032254,
+  "p1": 92.9,
+  "p1_trade_ms": 1795592110617,
+  "p1_trade_utc": "2026-11-25T07:35:10.617Z",
+  "path_max_pct": 0.11834319526626835,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.18289402904787533,
+  "pred_error_abs": 0.03748549889331798,
+  "pred_error_pct": 0.04035037555794041,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "AAVEUSDT",
+  "timing_gap_ms": 1568,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.01209911073897274,
+    "hit": false,
+    "p": 0.10999595783015274
+   },
+   "+0.5%": {
+    "brier": 0.0006202872952622615,
+    "hit": false,
+    "p": 0.024905567555513798
+   },
+   "-0.25%": {
+    "brier": 0.02119909120765641,
+    "hit": false,
+    "p": 0.1455990769464436
+   },
+   "-0.5%": {
+    "brier": 0.0009123792598577097,
+    "hit": false,
+    "p": 0.030205616362817524
+   }
+  },
+  "trade_id": 218023614,
+  "verified_ms": 1795595099924,
+  "verified_utc": "2026-11-25T08:24:59.924Z"
+ },
+ {
+  "abs_pred_error_pct": 0.19293317181614533,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "DOWN",
+  "actual_return_pct": -0.19430051813472682,
+  "argmax_class3_correct": true,
+  "brier": 0.2470238455867159,
+  "brier3": 0.0006591047824500335,
+  "correct": true,
+  "dir_gross_pct": 0.19430051813472682,
+  "dir_net_pct": -0.05842147916623228,
+  "exchange": "binance",
+  "experiment": "G2_10min",
+  "expiry_ms": 1795592413747,
+  "expiry_utc": "2026-11-25T07:40:13.747Z",
+  "forecast_id": "G10-000005",
+  "in_pi50": false,
+  "in_pi80": false,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.19467878001300232,
+  "p1": 0.3082,
+  "p1_trade_ms": 1795592413478,
+  "p1_trade_utc": "2026-11-25T07:40:13.478Z",
+  "path_max_pct": 0.032383419689119286,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.2266839378238461,
+  "pred_error_abs": 0.000594620035537341,
+  "pred_error_pct": 0.19293317181614533,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "TRXUSDT",
+  "timing_gap_ms": 269,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.0016368368385497269,
+    "hit": false,
+    "p": 0.04045784026056911
+   },
+   "+0.5%": {
+    "brier": 0.00012575256877947336,
+    "hit": false,
+    "p": 0.01121394528163364
+   },
+   "+1%": {
+    "brier": 9.249143518701029e-06,
+    "hit": false,
+    "p": 0.0030412404572313957
+   },
+   "-0.25%": {
+    "brier": 0.0013208869570238198,
+    "hit": false,
+    "p": 0.03634400854369011
+   },
+   "-0.5%": {
+    "brier": 8.266569273791889e-05,
+    "hit": false,
+    "p": 0.009092067572225741
+   },
+   "-1%": {
+    "brier": 4.960883512783901e-06,
+    "hit": false,
+    "p": 0.002227304090775191
+   }
+  },
+  "trade_id": 271606925,
+  "verified_ms": 1795595099924,
+  "verified_utc": "2026-11-25T08:24:59.924Z"
+ },
+ {
+  "abs_pred_error_pct": 0.192933171827403,
+  "actual_direction": "DOWN",
+  "actual_return_pct": -0.19430051813472682,
+  "brier": 0.24702384472211994,
+  "correct": true,
+  "dir_gross_pct": 0.19430051813472682,
+  "dir_net_pct": -0.05842147916623228,
+  "exchange": "binance",
+  "experiment": "A_10min",
+  "expiry_ms": 1795592425256,
+  "expiry_utc": "2026-11-25T07:40:25.256Z",
+  "forecast_id": "A-000010",
+  "in_pi50": false,
+  "in_pi80": false,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.19467878001300232,
+  "p1": 0.3082,
+  "p1_trade_ms": 1795592424910,
+  "p1_trade_utc": "2026-11-25T07:40:24.910Z",
+  "pred_error_abs": 0.0005946200355720355,
+  "pred_error_pct": 0.192933171827403,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "TRXUSDT",
+  "timing_gap_ms": 346,
+  "trade_id": 271606929,
+  "verified_ms": 1795595099924,
+  "verified_utc": "2026-11-25T08:24:59.924Z"
  }
 ]
