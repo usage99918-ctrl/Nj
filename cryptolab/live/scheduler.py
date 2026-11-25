@@ -321,7 +321,7 @@ def daemon_status(cfg) -> dict:
     hb, hb_ms = store.get_runtime("heartbeat")
     d, _ = store.get_runtime("daemon")
     age = (now_ms() - hb_ms) / 1000 if hb_ms else None
-    return {"pid": pid, "process_alive": pid_alive(pid), "daemon": d, "last_heartbeat_age_s": age, "heartbeat": hb,
+    return {"pid": pid, "process_alive": st["worker_alive"], "daemon": d, "last_heartbeat_age_s": age, "heartbeat": hb,
             "supervisor": {k: st[k] for k in ("supervisor_pid", "supervisor_alive", "healthy")}}
 
 

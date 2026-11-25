@@ -136,10 +136,23 @@ def run_supervisor(cfg, hang_after_s: int = 300, worker_args: list[str] | None =
     return 0
 
 
+def lock_held(path) -> bool:
+    """True if a live process holds the lock. PID files are not trusted: PIDs are reused after
+    reboots/container restores, which made a stale pid look 'alive'. The OS releases a file
+    lock when its process dies, so the lock is the reliable liveness signal."""
+    lk = FileLock(path)
+    try:
+        lk.acquire()
+    except LockError:
+        return True
+    lk.release()
+    return False
+
+
 def start_background(cfg) -> str:
-    st = status(cfg)
-    if st["supervisor_alive"]:
-        return f"already running (supervisor pid {st['supervisor_pid']})"
+    if lock_held(run_dir(cfg) / "supervisor.lock"):
+        pf = run_dir(cfg) / "supervisor.pid"
+        return f"already running (supervisor pid {pf.read_text().strip() if pf.exists() else '?'})"
     stop_file(cfg).unlink(missing_ok=True)
     p = spawn_detached(["-m", "cryptolab", "run"], cfg.path("log_dir") / "supervisor.out", cfg.root)
     return f"started supervisor pid {p.pid}; logs in {cfg.path('log_dir')}"
@@ -148,10 +161,9 @@ def start_background(cfg) -> str:
 def stop(cfg, timeout_s: int = 90) -> bool:
     stop_file(cfg).touch()
     pf = run_dir(cfg) / "supervisor.pid"
-    pid = int(pf.read_text()) if pf.exists() else None
     t0 = time.time()
     while time.time() - t0 < timeout_s:
-        if not pid_alive(pid):
+        if not lock_held(run_dir(cfg) / "supervisor.lock"):
             return True
         time.sleep(1)
     return False
@@ -162,7 +174,9 @@ def status(cfg) -> dict:
     pid = int(pf.read_text()) if pf.exists() else None
     hb = read_heartbeat(cfg)
     age = round((now_ms() - hb["ts_ms"]) / 1000, 1) if hb.get("ts_ms") else None
-    return {"supervisor_pid": pid, "supervisor_alive": pid_alive(pid), "worker_pid": hb.get("pid"),
-            "worker_alive": pid_alive(hb.get("pid")), "heartbeat_age_s": age,
+    sup_alive = lock_held(run_dir(cfg) / "supervisor.lock")
+    wrk_alive = lock_held(run_dir(cfg) / "cryptolab.lock")
+    return {"supervisor_pid": pid if sup_alive else None, "supervisor_alive": sup_alive,
+            "worker_pid": hb.get("pid") if wrk_alive else None, "worker_alive": wrk_alive, "heartbeat_age_s": age,
             "healthy": bool(age is not None and age < 120), "heartbeat": hb,
             "stop_requested": stop_file(cfg).exists()}

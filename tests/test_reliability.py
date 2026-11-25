@@ -52,3 +52,13 @@ def test_network_outage_is_recorded(tmp_path):
     ev = [e["kind"] for e in Store(tmp_path / "data/db.sqlite", tmp_path / "data/ledger").rows("events")]
     assert ev == ["network_outage_start", "network_outage_end"]
     assert "network outage" in s.store.get_runtime("last_error:A_10min")[0]
+
+
+def test_stale_pid_file_does_not_block_start(tmp_path):
+    """A pid file left behind by a dead supervisor (pid reused by another process) must not block start."""
+    import os
+    cfg = _cfg(tmp_path)
+    (sup.run_dir(cfg) / "supervisor.pid").write_text(str(os.getpid()))  # a LIVE but unrelated pid
+    st = sup.status(cfg)
+    assert st["supervisor_alive"] is False and st["worker_alive"] is False
+    assert sup.lock_held(sup.run_dir(cfg) / "supervisor.lock") is False
