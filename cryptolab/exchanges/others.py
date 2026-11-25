@@ -11,7 +11,7 @@ import logging
 from datetime import datetime
 from typing import Optional
 
-from cryptolab.exchanges.base import Ticker, fnum
+from cryptolab.exchanges.base import Ticker, fnum, ttl_cached
 from cryptolab.util.http import HttpClient
 
 log = logging.getLogger(__name__)
@@ -31,7 +31,7 @@ class Coinbase:
         self.http, self.base = http, base.rstrip("/")
 
     def products(self) -> list[dict]:
-        return self.http.get(f"{self.base}/products")
+        return ttl_cached(self, "products", 6 * 3600, lambda: self.http.get(f"{self.base}/products"))
 
     def markets(self) -> list[dict]:
         return [{"symbol": p["id"], "base": p["base_currency"], "quote": p["quote_currency"],
@@ -60,10 +60,7 @@ class Kraken:
         return {"XBT": "BTC", "XDG": "DOGE"}.get(a, a)
 
     def pairs(self) -> dict:
-        if self._pairs is None:
-            d = self.http.get(f"{self.base}/0/public/AssetPairs")
-            self._pairs = d["result"]
-        return self._pairs
+        return ttl_cached(self, "pairs", 6 * 3600, lambda: self.http.get(f"{self.base}/0/public/AssetPairs")["result"])
 
     def markets(self) -> list[dict]:
         out = []
@@ -106,6 +103,9 @@ class OKX:
         return d["data"]
 
     def markets(self, inst_type: str = "SPOT") -> list[dict]:
+        return ttl_cached(self, f"markets:{inst_type}", 6 * 3600, lambda: self._markets(inst_type))
+
+    def _markets(self, inst_type: str) -> list[dict]:
         return [{"symbol": i["instId"], "base": i.get("baseCcy") or i["instId"].split("-")[0],
                  "quote": i.get("quoteCcy") or i.get("settleCcy") or "", "status_ok": i.get("state") == "live",
                  "tick_size": fnum(i.get("tickSz"))}
@@ -169,7 +169,8 @@ class KuCoin:
         self.http, self.base = http, base.rstrip("/")
 
     def tickers(self) -> list[Ticker]:
-        syms = {s["symbol"]: s for s in self.http.get(f"{self.base}/api/v2/symbols")["data"]}
+        syms = ttl_cached(self, "symbols", 6 * 3600, lambda: {
+            s["symbol"]: s for s in self.http.get(f"{self.base}/api/v2/symbols")["data"]})
         d = self.http.get(f"{self.base}/api/v1/market/allTickers")["data"]
         ts = int(d.get("time") or 0) or None
         out = []
@@ -190,7 +191,8 @@ class Gate:
         self.http, self.base = http, base.rstrip("/")
 
     def tickers(self) -> list[Ticker]:
-        pairs = {p["id"]: p for p in self.http.get(f"{self.base}/api/v4/spot/currency_pairs")}
+        pairs = ttl_cached(self, "pairs", 6 * 3600, lambda: {
+            p["id"]: p for p in self.http.get(f"{self.base}/api/v4/spot/currency_pairs")})
         out = []
         for t in self.http.get(f"{self.base}/api/v4/spot/tickers"):
             p = pairs.get(t["currency_pair"])
@@ -211,9 +213,10 @@ class MEXC:
         self.http, self.base = http, base.rstrip("/")
 
     def tickers(self) -> list[Ticker]:
-        info = {s["symbol"]: s for s in self.http.get(f"{self.base}/api/v3/exchangeInfo")["symbols"]}
+        info = ttl_cached(self, "info", 6 * 3600, lambda: {
+            s["symbol"]: s for s in self.http.get(f"{self.base}/api/v3/exchangeInfo", timeout_s=60)["symbols"]})
         out = []
-        for t in self.http.get(f"{self.base}/api/v3/ticker/24hr"):
+        for t in self.http.get(f"{self.base}/api/v3/ticker/24hr", timeout_s=60):
             s = info.get(t["symbol"])
             if not s:
                 continue
@@ -255,7 +258,8 @@ class Bitstamp:
         self.http, self.base = http, base.rstrip("/")
 
     def tickers(self) -> list[Ticker]:
-        info = {p["url_symbol"]: p for p in self.http.get(f"{self.base}/api/v2/trading-pairs-info/")}
+        info = ttl_cached(self, "info", 6 * 3600, lambda: {
+            p["url_symbol"]: p for p in self.http.get(f"{self.base}/api/v2/trading-pairs-info/")})
         out = []
         for t in self.http.get(f"{self.base}/api/v2/ticker/"):
             pair = t.get("pair", "")

@@ -79,6 +79,11 @@ class Ledger:
     def head(self) -> tuple[int, str]:
         return self._seq, self._head
 
+    def refresh_head(self) -> None:
+        """Re-read the chain head from disk. Must be called while holding the cross-process
+        write lock (the SQLite write transaction) so concurrent writers never fork the chain."""
+        self._seq, self._head = self._load_head()
+
     def append(self, rtype: str, data: dict, ts_ms: int) -> dict:
         seq = self._seq + 1
         body = {"seq": seq, "type": rtype, "ts_ms": int(ts_ms), "data": _clean(data)}

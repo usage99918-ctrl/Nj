@@ -1,0 +1,56 @@
+# Continuous operation of both live experiments on GitHub-hosted runners (free for public repos).
+# Every run: verify expired forecasts -> forecast the current slot(s) -> rebuild dashboard ->
+# commit the append-only ledger + reports back to the same branch.
+#
+# BEFORE ENABLING: (1) run the "network-probe" workflow and confirm data-api.binance.vision
+# returns 200 from GitHub's runners; (2) stop any other cryptolab writer (local daemon) --
+# exactly ONE writer may append to data/ledger at a time.
+# NOTE: GitHub runs schedules only from the DEFAULT branch, and often starts them 5-20 min
+# late. Late runs never back-fill: missed slots are recorded as gap records.
+name: live-experiments
+on:
+  schedule:
+    - cron: "1-59/10 * * * *"   # every 10 minutes (1 minute past, to avoid the :00 rush)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: live-experiments
+  cancel-in-progress: false
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Restore market-data cache
+        uses: actions/cache@v4
+        with:
+          path: data/run
+          key: run-cache-${{ github.run_id }}
+          restore-keys: run-cache-
+      - name: Scheduler tick (verify + forecast + gaps)
+        run: python -m cryptolab run-once
+      - name: Audit ledger
+        run: python -m cryptolab audit > /dev/null
+      - name: Build dashboard and exports
+        run: python -m cryptolab dashboard > /dev/null
+      - name: Commit records
+        run: |
+          git config user.name "cryptolab-bot"
+          git config user.email "cryptolab-bot@users.noreply.github.com"
+          git add data/ledger reports
+          git diff --cached --quiet && exit 0
+          git commit -m "records: $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3 4; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 5))
+          done
+          exit 1

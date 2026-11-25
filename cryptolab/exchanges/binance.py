@@ -14,7 +14,7 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-from cryptolab.exchanges.base import Ticker, fnum
+from cryptolab.exchanges.base import Ticker, fnum, ttl_cached
 from cryptolab.util.http import HttpClient, HttpError
 from cryptolab.util.timeutil import ExchangeClock, now_ms
 
@@ -44,9 +44,10 @@ class Binance:
         return int(d["serverTime"])
 
     def exchange_info(self, refresh: bool = False) -> dict:
-        if self._info_cache is None or refresh:
-            self._info_cache = self.http.get(f"{self.base}/api/v3/exchangeInfo", params={"permissions": "SPOT"})
-        return self._info_cache
+        if refresh:
+            self.__dict__.pop("_ttl_cache", None)
+        return ttl_cached(self, "exchangeInfo", 6 * 3600, lambda: self.http.get(
+            f"{self.base}/api/v3/exchangeInfo", params={"permissions": "SPOT"}))
 
     def symbols(self, quote: Optional[str] = None, include_delisted: bool = True) -> list[dict]:
         out = []
@@ -56,11 +57,16 @@ class Binance:
             if not include_delisted and s["status"] != "TRADING":
                 continue
             tick = None
+            banded = False
             for f in s.get("filters", []):
                 if f.get("filterType") == "PRICE_FILTER":
                     tick = fnum(f.get("tickSize"))
+                if f.get("filterType") == "PERCENT_PRICE_BY_SIDE":
+                    # Tight price bands mark pegged assets and tokenized equities/ETFs (verified
+                    # 2026-11-24: 212 symbols, all stablecoins/pegs or "<ticker>B" stock tokens).
+                    banded = (fnum(f.get("askMultiplierUp")) or 9) <= 1.2 and (fnum(f.get("bidMultiplierDown")) or 0) >= 0.8
             out.append({"symbol": s["symbol"], "base": s["baseAsset"], "quote": s["quoteAsset"],
-                        "status": s["status"], "tick_size": tick})
+                        "status": s["status"], "tick_size": tick, "price_banded": banded})
         return out
 
     # ----------------------------------------------------------------- tickers
@@ -80,7 +86,8 @@ class Binance:
                 last=fnum(t.get("lastPrice")), bid=fnum(b.get("bidPrice")), ask=fnum(b.get("askPrice")),
                 quote_volume_24h=fnum(t.get("quoteVolume")), ts_ms=int(t.get("closeTime") or 0) or None,
                 tick_size=m["tick_size"], status_ok=(m["status"] == "TRADING"),
-                extra={"count_24h": t.get("count"), "price_change_pct": fnum(t.get("priceChangePercent"))}))
+                extra={"count_24h": t.get("count"), "price_change_pct": fnum(t.get("priceChangePercent")),
+                       "price_banded": m["price_banded"]}))
         return out
 
     # ------------------------------------------------------------------ klines

@@ -1,0 +1,28 @@
+[
+ {
+  "calibration": {
+   "a_dir": 0.14987109530716983,
+   "b": 0.0054141068210492044,
+   "b_dir": 0.32147458143154295,
+   "n_pool": 233205,
+   "n_sel_pool": 7799,
+   "q10": -1.2178351971761916,
+   "q25": -0.6250146176519817,
+   "q75": 0.5469851091227802,
+   "q90": 1.1568893486607656
+  },
+  "code_commit": "cd269b61f59e19bc3936985a624260e5d434fc9d",
+  "created_utc": "2026-11-24T19:53:42.426Z",
+  "experiment": "B_60min",
+  "family": "mean_reversion",
+  "horizon_min": 60,
+  "hypothesis": "RSI(60) overbought/oversold reverts.",
+  "kind": "rule",
+  "model_file": "B_60min_v1.pkl",
+  "model_sha256": "94442b6d5d30d90b76e99b608a4d6ecbc28fa29faa49f5f9649f587a35047804",
+  "selection_prereg": "B_60min-selection-v1",
+  "strategy": "rsi_rev_60",
+  "trained_through": "2026-11-22",
+  "version": "B_60min-v1-rsi_rev_60"
+ }
+]

@@ -1,0 +1,1 @@
+forecast_id,experiment,status,method,verified_utc,p1,p1_trade_utc,timing_gap_ms,actual_direction,correct,actual_return_pct,abs_pred_error_pct,no_change_error_pct,in_pi50,in_pi80,brier,long_taken,long_net_pct,dir_gross_pct,dir_net_pct

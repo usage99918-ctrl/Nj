@@ -71,13 +71,14 @@ horizon_min = 10
 cadence_min = 10
 # A slot is forecast only if the cycle starts within this many minutes of the
 # slot boundary; otherwise the slot is recorded as a gap (never back-filled).
-max_start_delay_min = 4
+# (Limits overlap between consecutive forecast windows to half a horizon.)
+max_start_delay_min = 5
 
 [experiments.B]
 name = "B_60min"
 horizon_min = 60
 cadence_min = 60
-max_start_delay_min = 15
+max_start_delay_min = 20
 
 [verification]
 # Exact-timestamp verification: last trade at or before the expiry instant.

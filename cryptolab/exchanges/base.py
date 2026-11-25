@@ -75,6 +75,18 @@ class Ticker:
         return d
 
 
+def ttl_cached(obj, key: str, ttl_s: float, fn):
+    """Per-object metadata cache (exchange listings change rarely; tickers are never cached)."""
+    import time as _t
+    cache = obj.__dict__.setdefault("_ttl_cache", {})
+    hit = cache.get(key)
+    if hit is not None and _t.time() - hit[0] < ttl_s:
+        return hit[1]
+    val = fn()
+    cache[key] = (_t.time(), val)
+    return val
+
+
 def fnum(x) -> Optional[float]:
     try:
         if x is None or x == "":

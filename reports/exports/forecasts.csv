@@ -1,0 +1,1 @@
+forecast_id,experiment,test_number,slot_utc,horizon_min,exchange,pair,symbol,origin_utc,ref_trade_utc,p0,expiry_utc,pred_price,direction,expected_move_pct,p_up,p_direction,pi50,pi80,model_version,strategy,n_examined,expected_net_long_pct,long_signal,theoretical_short_signal,opportunity_label

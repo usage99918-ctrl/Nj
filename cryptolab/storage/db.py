@@ -109,8 +109,9 @@ class Store:
         table, pk, cols = TABLES[rtype]
         ts_ms = ts_ms or now_ms()
         with self._lock:
-            self.conn.execute("BEGIN IMMEDIATE")
+            self.conn.execute("BEGIN IMMEDIATE")  # cross-process write lock (serializes ledger appends)
             try:
+                self.ledger.refresh_head()
                 self._insert(table, pk, cols, data, seq=self.ledger.head[0] + 1)
                 rec = self.ledger.append(rtype, data, ts_ms)
                 self.conn.execute("COMMIT")

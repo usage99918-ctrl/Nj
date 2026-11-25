@@ -66,3 +66,16 @@ def test_rebuild_db_from_ledger(tmp_path):
     assert s2.scalar("SELECT COUNT(*) FROM forecasts") == 5
     assert s2.next_test_number("A_10min") == 6
     assert s2.audit()["ok"]
+
+
+def test_two_writers_share_one_chain(tmp_path):
+    """Two Store instances (e.g. daemon + research process) appending alternately keep one valid chain."""
+    a = Store(tmp_path / "db.sqlite", tmp_path / "ledger")
+    b = Store(tmp_path / "db.sqlite", tmp_path / "ledger")
+    a.record("forecast", _fc(1, 600_000))
+    b.record("preregistration", {"prereg_id": "x"})
+    a.record("forecast", _fc(2, 1_200_000))
+    b.record("preregistration", {"prereg_id": "y"})
+    chain = Ledger(tmp_path / "ledger").verify_chain()
+    assert chain["ok"] and chain["records"] == 4
+    assert a.audit()["ok"] and b.audit()["ok"]

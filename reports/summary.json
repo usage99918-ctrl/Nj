@@ -1,0 +1,93 @@
+{
+ "generated_utc": "2026-11-24T20:05:00.732Z",
+ "forward": {
+  "A": {
+   "experiment": "A_10min",
+   "forecasts": 0,
+   "gaps": 0,
+   "gap_reasons": {},
+   "status_counts": {},
+   "scored": 0,
+   "first_forecast_utc": null,
+   "last_forecast_utc": null,
+   "model_versions": []
+  },
+  "B": {
+   "experiment": "B_60min",
+   "forecasts": 0,
+   "gaps": 0,
+   "gap_reasons": {},
+   "status_counts": {},
+   "scored": 0,
+   "first_forecast_utc": null,
+   "last_forecast_utc": null,
+   "model_versions": []
+  }
+ },
+ "backtest": {
+  "B": {
+   "selected": "rsi_rev_60",
+   "test_verdict": {
+    "H1_accuracy_gt_50": true,
+    "H2_gross_dir_gt_0": false,
+    "H3_long_net_gt_0": false,
+    "p_accuracy": 0.013358851627421314,
+    "p_gross_dir": 0.2852070414625597,
+    "long_t": 0.0
+   },
+   "test_selected": {
+    "n_slots": 1272,
+    "n_forecasts": 1272,
+    "coverage": 1.0,
+    "accuracy": 0.5314465408805031,
+    "acc_ci95": [
+     0.5039695713074264,
+     0.5587341373661268
+    ],
+    "p_acc_gt_50": 0.013358851627421314,
+    "balanced_accuracy": 0.539929041414011,
+    "frac_pred_up": 0.48191823899371067,
+    "majority_baseline_same_candidates": 0.529874213836478,
+    "n_flat": 23,
+    "gross_dir_mean_bps": 1.8185052285263357,
+    "gross_dir_t": 0.5674417625458559,
+    "p_gross_dir_gt_0": 0.2852070414625597,
+    "brier": 0.24843591929637399,
+    "brier_skill_vs_0.5": 0.006256322814504056,
+    "mean_p_dir": 0.538117957970647,
+    "mae_pct": 0.7770855691312063,
+    "mae_rw_pct": 0.7783651855285737,
+    "mae_ratio_vs_no_change": 0.9983560205143317,
+    "cover50": 0.5251572327044025,
+    "cover80": 0.7995283018867925,
+    "long_mean_bps": 0.0,
+    "long_t": 0.0,
+    "long_total_pct": 0.0,
+    "long_maxdd_pct": 0.0,
+    "long_lowcost_mean_bps": 0.3911586483296377,
+    "long_lowcost_t": 1.325271444932931,
+    "long_lowcost_total_pct": 4.975538006752991,
+    "long_lowcost_maxdd_pct": 0.0,
+    "ls_mean_bps": -22.78668345071895,
+    "ls_t": -7.111806745073366,
+    "ls_total_pct": -289.84661349314587,
+    "ls_maxdd_pct": 304.73284566756183,
+    "ls_lowcost_mean_bps": -6.786683450718946,
+    "ls_lowcost_t": -2.1181485776938698,
+    "ls_lowcost_total_pct": -86.32661349314665,
+    "ls_lowcost_maxdd_pct": 109.20057921792792,
+    "long_trades": 0,
+    "long_win_rate": null,
+    "max_win_streak": 9,
+    "max_loss_streak": 10,
+    "ic_mean": 0.03218780564180129,
+    "ic_t": 5.350386983614184,
+    "ic_frac_pos": 0.5715408805031447,
+    "family": "mean_reversion",
+    "kind": "rule",
+    "hypothesis": "RSI(60) overbought/oversold reverts."
+   }
+  }
+ },
+ "audit_ok": true
+}
