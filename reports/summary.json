@@ -1,30 +1,101 @@
 {
- "generated_utc": "2026-11-24T20:05:00.732Z",
+ "generated_utc": "2026-11-25T05:15:00.278Z",
  "forward": {
   "A": {
    "experiment": "A_10min",
-   "forecasts": 0,
+   "forecasts": 1,
    "gaps": 0,
    "gap_reasons": {},
-   "status_counts": {},
+   "status_counts": {
+    "PENDING": 1
+   },
    "scored": 0,
-   "first_forecast_utc": null,
-   "last_forecast_utc": null,
-   "model_versions": []
+   "first_forecast_utc": "2026-11-25T05:13:02.956Z",
+   "last_forecast_utc": "2026-11-25T05:13:02.956Z",
+   "model_versions": [
+    "A_10min-v1-lgbm_reg_huber"
+   ]
   },
   "B": {
    "experiment": "B_60min",
-   "forecasts": 0,
+   "forecasts": 1,
    "gaps": 0,
    "gap_reasons": {},
-   "status_counts": {},
+   "status_counts": {
+    "PENDING": 1
+   },
    "scored": 0,
-   "first_forecast_utc": null,
-   "last_forecast_utc": null,
-   "model_versions": []
+   "first_forecast_utc": "2026-11-25T05:13:12.854Z",
+   "last_forecast_utc": "2026-11-25T05:13:12.854Z",
+   "model_versions": [
+    "B_60min-v1-rsi_rev_60"
+   ]
   }
  },
  "backtest": {
+  "A": {
+   "selected": "lgbm_reg_huber",
+   "test_verdict": {
+    "H1_accuracy_gt_50": true,
+    "H2_gross_dir_gt_0": true,
+    "H3_long_net_gt_0": false,
+    "p_accuracy": 0.0038235973103051372,
+    "p_gross_dir": 1.1233972219137911e-07,
+    "long_t": 0.0
+   },
+   "test_selected": {
+    "n_slots": 7632,
+    "n_forecasts": 7632,
+    "coverage": 1.0,
+    "accuracy": 0.5153301886792453,
+    "acc_ci95": [
+     0.504112788794709,
+     0.5265321632954443
+    ],
+    "p_acc_gt_50": 0.0038235973103051372,
+    "balanced_accuracy": 0.5635799796332379,
+    "frac_pred_up": 0.36766247379454925,
+    "majority_baseline_same_candidates": 0.46855345911949686,
+    "n_flat": 708,
+    "gross_dir_mean_bps": 3.089676796788722,
+    "gross_dir_t": 5.177665633100907,
+    "p_gross_dir_gt_0": 1.1233972219137911e-07,
+    "brier": 0.24753654679207895,
+    "brier_skill_vs_0.5": 0.009853812831684183,
+    "mean_p_dir": 0.518745482166425,
+    "mae_pct": 0.32856761961596687,
+    "mae_rw_pct": 0.32959913534184176,
+    "mae_ratio_vs_no_change": 0.9968703931070539,
+    "cover50": 0.46920859538784065,
+    "cover80": 0.7835429769392034,
+    "long_mean_bps": 0.0,
+    "long_t": 0.0,
+    "long_total_pct": 0.0,
+    "long_maxdd_pct": 0.0,
+    "long_lowcost_mean_bps": 0.2566835142531663,
+    "long_lowcost_t": 1.5489033139896309,
+    "long_lowcost_total_pct": 19.590085807801618,
+    "long_lowcost_maxdd_pct": 4.459578457713084,
+    "ls_mean_bps": -21.49717680209318,
+    "ls_t": -35.97988418314102,
+    "ls_total_pct": -1640.664533535823,
+    "ls_maxdd_pct": 1640.6876706227727,
+    "ls_lowcost_mean_bps": -5.497176802093178,
+    "ls_lowcost_t": -9.20063999540179,
+    "ls_lowcost_total_pct": -419.54453353577554,
+    "ls_lowcost_maxdd_pct": 425.2276849734659,
+    "long_trades": 0,
+    "long_win_rate": null,
+    "max_win_streak": 14,
+    "max_loss_streak": 11,
+    "ic_mean": 0.048984170491422716,
+    "ic_t": 18.859326390938087,
+    "ic_frac_pos": 0.5832023060796646,
+    "family": "tree_ml",
+    "kind": "model",
+    "hypothesis": "LightGBM with Huber loss (robust to fat tails)."
+   }
+  },
   "B": {
    "selected": "rsi_rev_60",
    "test_verdict": {

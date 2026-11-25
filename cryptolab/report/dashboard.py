@@ -209,7 +209,8 @@ def verdict_section(research: dict, fwd: dict, cfg) -> str:
         h = cfg["experiments"][key]["horizon_min"]
         acc = s.get("accuracy")
         if not acc or not acc.get("n"):
-            items.append(f"<li><b>{h}-minute forward test:</b> {s.get('forecasts', 0)} forecasts frozen, none scored yet.</li>")
+            nf = s.get("forecasts", 0)
+            items.append(f"<li><b>{h}-minute forward test:</b> {nf} forecast{'s' if nf != 1 else ''} frozen, none scored yet.</li>")
         else:
             items.append(f"<li><b>{h}-minute forward test:</b> {acc['k']}/{acc['n']} directions correct "
                          f"({pct(acc['rate'])}, 95% CI {ci(acc['ci95'])}). {E(s.get('sample_size_note', ''))}</li>")
@@ -561,7 +562,7 @@ th{text-align:left;font-weight:600;color:var(--ink-2);border-bottom:1px solid va
 td{border-bottom:1px solid var(--grid);padding:5px 8px;white-space:nowrap} td.num,th.num{text-align:right}
 tr.sel td{background:var(--sel)} tr.sep td{color:var(--muted);text-align:center;font-size:.8rem}
 .kv{display:grid;grid-template-columns:minmax(120px,auto) 1fr;gap:4px 14px;margin:6px 0}
-.kv dt{color:var(--ink-2)} .kv dd{margin:0;min-width:0;overflow-wrap:anywhere} .kv.compact{font-size:.86rem}
+.kv dt{color:var(--ink-2)} .kv dd{margin:0;min-width:0;overflow-wrap:anywhere} .kv.compact{font-size:.86rem} .kv dd .muted,.kv dd .small{font-family:var(--f-body)}
 .pill{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--border);border-radius:999px;padding:1px 8px;font-size:.78rem;white-space:nowrap}
 .pill-good{border-color:var(--good);color:var(--good-ink)} .pill-crit{border-color:var(--crit);color:var(--crit)}
 .pill-warn{border-color:var(--warn)} .pill-neutral{color:var(--ink-2)}

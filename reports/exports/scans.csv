@@ -1,1 +1,3 @@
 scan_id,experiment,markets_discovered,markets_quality_passed,unique_assets_passed,markets_analyzed
+A_10min:1795583400000,A_10min,11785,132,43,22
+B_60min:1795582800000,B_60min,11785,129,40,22

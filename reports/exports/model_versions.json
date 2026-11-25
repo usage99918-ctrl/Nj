@@ -24,5 +24,31 @@
   "strategy": "rsi_rev_60",
   "trained_through": "2026-11-22",
   "version": "B_60min-v1-rsi_rev_60"
+ },
+ {
+  "calibration": {
+   "a_dir": -0.034813018005562336,
+   "b": 0.40613131403788066,
+   "b_dir": 2.4868722529737917,
+   "n_pool": 1148850,
+   "n_sel_pool": 38448,
+   "q10": -1.0749645875278702,
+   "q25": -0.4953587552229358,
+   "q75": 0.48454608235751456,
+   "q90": 1.0947289826198725
+  },
+  "code_commit": "cd269b61f59e19bc3936985a624260e5d434fc9d",
+  "created_utc": "2026-11-24T20:13:06.278Z",
+  "experiment": "A_10min",
+  "family": "tree_ml",
+  "horizon_min": 10,
+  "hypothesis": "LightGBM with Huber loss (robust to fat tails).",
+  "kind": "model",
+  "model_file": "A_10min_v1.pkl",
+  "model_sha256": "b7d2188c2ee95a80b73376239937e6318085463b2dad9d9223c19048b5d31863",
+  "selection_prereg": "A_10min-selection-v1",
+  "strategy": "lgbm_reg_huber",
+  "trained_through": "2026-11-22",
+  "version": "A_10min-v1-lgbm_reg_huber"
  }
 ]

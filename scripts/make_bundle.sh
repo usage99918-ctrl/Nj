@@ -4,12 +4,11 @@
 # Restore:  unzip cryptolab-bundle.zip && cd Nj && git log && python -m cryptolab audit
 set -euo pipefail
 cd "$(dirname "$0")/.."
-out="${1:-cryptolab-bundle.zip}"
+root="$PWD"
+name="$(basename "$root")"
+out="$(realpath -m "${1:-$root/cryptolab-bundle.zip}")"
 rm -f "$out"
-name="$(basename "$PWD")"
-cd ..
-zip -qr "$name/$out" "$name" \
+(cd .. && zip -qr "$out" "$name" \
   -x "$name/data/raw/*" "$name/data/cache/*" "$name/data/run/*" "$name/logs/*" \
-     "$name/data/*.sqlite*" "$name/*__pycache__*" "$name/.pytest_cache/*" "$name/$out" "$name/*.zip"
-cd "$name"
+     "$name/data/*.sqlite*" "*__pycache__*" "$name/.pytest_cache/*" "$name/*.zip")
 ls -la "$out"
