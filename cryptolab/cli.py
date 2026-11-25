@@ -13,6 +13,7 @@
   python -m cryptolab audit            verify ledger hash chain and DB consistency
   python -m cryptolab rebuild-db       rebuild the SQLite DB from the ledger
   python -m cryptolab status           experiment + worker status summary
+  python -m cryptolab doctor           self-check: every live model loads + predicts on this Python (records nothing)
 """
 from __future__ import annotations
 
@@ -59,6 +60,11 @@ def main(argv=None) -> int:
     sub.add_parser("audit")
     sub.add_parser("rebuild-db")
     sub.add_parser("status")
+    lc = sub.add_parser("ledger-compare", help="prove the ledger only grew since a backup")
+    lc.add_argument("--against", required=True, help="the backed-up data/ledger folder")
+    dr = sub.add_parser("doctor")
+    dr.add_argument("--offline", action="store_true", help="skip the live-data prediction checks")
+    dr.add_argument("--json", action="store_true", help="print the full report as JSON")
     a = ap.parse_args(argv)
     warnings.filterwarnings("ignore")
     cfg = load_config(a.config)
@@ -150,6 +156,16 @@ def main(argv=None) -> int:
         from cryptolab.storage.db import open_store
         s = open_store(cfg)
         _print({"rebuilt": True, "audit_ok": s.audit()["ok"]})
+    elif a.cmd == "ledger-compare":
+        from cryptolab.storage.ledger import compare_with_backup
+        res = compare_with_backup(cfg.path("ledger_dir"), a.against)
+        _print(res)
+        return 0 if res["ok"] else 4
+    elif a.cmd == "doctor":
+        from cryptolab.live.doctor import print_report, run_doctor
+        rep = run_doctor(cfg, offline=a.offline)
+        _print(rep) if a.json else print_report(rep)
+        return 0 if rep["ok"] else 3
     elif a.cmd == "status":
         from cryptolab.live.scheduler import daemon_status
         from cryptolab.report.metrics import experiment_summary

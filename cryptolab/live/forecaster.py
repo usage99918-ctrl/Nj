@@ -38,6 +38,10 @@ class LiveModel:
         self.cal = d["calibration"]
         self.h = int(d["horizon"])
         self.version = d["version"]
+        # Never execute bytecode stored in the pickle (Python-version specific): rule strategies
+        # are rebuilt from the library by name, after checking they match the frozen definition.
+        from cryptolab.strategies.portable import make_portable
+        self.portability = make_portable(self.strategy, self.h)
         self.layers = None
         if d.get("prob_layers"):
             from cryptolab.backtest.g2 import ProbLayers
@@ -208,12 +212,8 @@ class Forecaster:
         if self.others.get("kraken") is not None:
             try:
                 kraken_t = self.others["kraken"].tickers()
-            except Exception:
-                now_l = time.time()
-        if now_l - getattr(self, "_fng_t", 0) > 3600:
-            self._fng, self._fng_t = fear_greed(self.bn.http), now_l
-        sentiment = self._fng
-        kraken_t = None
+            except Exception:  # context only; a Kraken failure never blocks a forecast
+                kraken_t = None
         # ---- reference price: last trade at or before the freeze instant
         ref = self.bn.latest_trade(sym)
         origin_ms = int(self.bn.clock.now())

@@ -128,3 +128,37 @@ class Ledger:
             if len(errors) > 20:
                 break
         return {"records": n, "ok": not errors, "errors": errors, "head": prev}
+
+
+def compare_with_backup(current_dir: Path, backup_dir: Path) -> dict:
+    """Prove the live ledger only GREW since a backup was taken: every backed-up shard must be a
+    byte-exact prefix of the current shard (nothing edited, deleted or reordered). New lines and
+    new shards are counted as appended records. Used by the Windows update script."""
+    current_dir, backup_dir = Path(current_dir), Path(backup_dir)
+    problems, unchanged, grown, appended = [], 0, 0, 0
+    backed = sorted(backup_dir.glob("*.jsonl"))
+    if not backed:
+        problems.append(f"no ledger shards found in backup {backup_dir}")
+    for b in backed:
+        c = current_dir / b.name
+        if not c.exists():
+            problems.append(f"{b.name}: present in backup but MISSING now")
+            continue
+        old, new = b.read_bytes(), c.read_bytes()
+        if new == old:
+            unchanged += 1
+        elif new.startswith(old):
+            grown += 1
+            appended += sum(1 for ln in new[len(old):].splitlines() if ln.strip())
+        else:
+            problems.append(f"{b.name}: existing content CHANGED (not append-only)")
+    names = {b.name for b in backed}
+    new_shards = [c for c in sorted(current_dir.glob("*.jsonl")) if c.name not in names]
+    for c in new_shards:
+        appended += sum(1 for ln in c.read_bytes().splitlines() if ln.strip())
+    chain = Ledger(current_dir).verify_chain()
+    if not chain["ok"]:
+        problems.append(f"current hash chain broken: {chain['errors'][:3]}")
+    return {"ok": not problems, "backup_shards": len(backed), "unchanged_shards": unchanged, "grown_shards": grown,
+            "new_shards": len(new_shards), "appended_records": appended, "current_records": chain["records"],
+            "problems": problems}

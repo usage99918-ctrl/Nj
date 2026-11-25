@@ -178,5 +178,5 @@ def status(cfg) -> dict:
     wrk_alive = lock_held(run_dir(cfg) / "cryptolab.lock")
     return {"supervisor_pid": pid if sup_alive else None, "supervisor_alive": sup_alive,
             "worker_pid": hb.get("pid") if wrk_alive else None, "worker_alive": wrk_alive, "heartbeat_age_s": age,
-            "healthy": bool(age is not None and age < 120), "heartbeat": hb,
+            "healthy": bool(age is not None and age < 120 and wrk_alive), "heartbeat": hb,
             "stop_requested": stop_file(cfg).exists()}

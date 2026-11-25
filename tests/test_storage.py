@@ -79,3 +79,21 @@ def test_two_writers_share_one_chain(tmp_path):
     chain = Ledger(tmp_path / "ledger").verify_chain()
     assert chain["ok"] and chain["records"] == 4
     assert a.audit()["ok"] and b.audit()["ok"]
+
+
+def test_ledger_compare_accepts_appends_and_catches_edits(tmp_path):
+    import shutil
+    from cryptolab.storage.ledger import compare_with_backup
+    s = Store(tmp_path / "db.sqlite", tmp_path / "ledger")
+    s.record("forecast", _fc(1, 0))
+    shutil.copytree(tmp_path / "ledger", tmp_path / "backup")
+    s.record("forecast", _fc(2, 600_000))                       # growth after the backup is fine
+    r = compare_with_backup(tmp_path / "ledger", tmp_path / "backup")
+    assert r["ok"] and r["appended_records"] == 1 and r["current_records"] == 2
+    shard = sorted((tmp_path / "ledger").glob("*.jsonl"))[0]
+    shard.write_text(shard.read_text().replace('"p0":100.0', '"p0":101.0'))   # an edited old record
+    r = compare_with_backup(tmp_path / "ledger", tmp_path / "backup")
+    assert not r["ok"] and any("CHANGED" in p for p in r["problems"])
+    shard.unlink()                                               # a deleted shard
+    r = compare_with_backup(tmp_path / "ledger", tmp_path / "backup")
+    assert not r["ok"] and any("MISSING" in p for p in r["problems"])

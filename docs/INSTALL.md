@@ -82,6 +82,12 @@ Free hosting options exist: for example, the always-free compute tiers of the la
 providers. They require you to sign up, and some ask for a card for identity checks. **Nothing
 is set up or paid for without your decision.**
 
+## Updating an existing installation
+
+Never reinstall over a running bot. Use the safe update script, which backs up and verifies
+before changing anything and copies code only. See **[UPDATE_WINDOWS.md](UPDATE_WINDOWS.md)**
+for the step-by-step guide. Self-check at any time: `python -m cryptolab doctor`.
+
 ## Moving your existing records
 
 Copy these from the old machine: `data/ledger/`, `data/research/`, `reports/`, and `config/`,
