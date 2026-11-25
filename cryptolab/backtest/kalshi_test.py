@@ -71,7 +71,7 @@ def asset_frame(raw_1m: pd.DataFrame, btc_ref: pd.DataFrame, eth_ref: pd.DataFra
     lc = np.log(f["close"])
     t = f.index.values
     dec = (t - DECISION_OFFSET) % WINDOW == 0
-    out = f.loc[dec, BASE_FEATURES + ["close", "sig1m"]].copy()
+    out = f.loc[dec, list(dict.fromkeys(BASE_FEATURES + ["close", "sig1m"]))].copy()
     tt = out.index.values
     close = f["close"]
     out["open_close"] = close.reindex(tt - DECISION_OFFSET).values         # price at window open
