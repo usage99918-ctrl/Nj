@@ -11,7 +11,7 @@ have only just started, and their samples are far too small to say anything yet.
 
 ## Data actually used
 
-- 707 Binance USDT spot pairs considered, **including delisted ones**. 544 had data in the
+- 684 eligible Binance USDT spot pairs considered, **including delisted ones**. 544 had data in the
   period. The monthly top-30 point-in-time universe used 83 distinct coins over time,
   including TON, which was delisted mid-period.
 - 1-minute klines from 2025-12-01 to 2026-11-22: about 740 MB, 1.40 M coin-decisions at 10 min
