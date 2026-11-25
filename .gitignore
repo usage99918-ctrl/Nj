@@ -12,3 +12,4 @@ data/run/
 logs/
 data/research/*.parquet
 config/local.toml
+*.zip
