@@ -1,20 +1,21 @@
 {
- "generated_utc": "2026-11-25T12:26:14.788Z",
+ "generated_utc": "2026-11-25T13:26:57.146Z",
  "forward": {
   "A": {
    "experiment": "A_10min",
-   "forecasts": 15,
+   "forecasts": 16,
    "gaps": 29,
    "gap_reasons": {
     "no forecast in slot window": 24,
     "slot start missed by > 5 min": 5
    },
    "status_counts": {
-    "VERIFIED": 15
+    "VERIFIED": 15,
+    "PENDING": 1
    },
    "scored": 15,
    "first_forecast_utc": "2026-11-25T05:13:02.956Z",
-   "last_forecast_utc": "2026-11-25T11:30:26.268Z",
+   "last_forecast_utc": "2026-11-25T12:30:28.773Z",
    "model_versions": [
     "A_10min-v1-lgbm_reg_huber"
    ],
@@ -371,7 +372,7 @@
   },
   "G5": {
    "experiment": "G2_5min",
-   "forecasts": 14,
+   "forecasts": 15,
    "gaps": 58,
    "gap_reasons": {
     "no forecast in slot window": 57,
@@ -379,11 +380,11 @@
    },
    "status_counts": {
     "VERIFIED": 13,
-    "PENDING": 1
+    "PENDING": 2
    },
    "scored": 13,
    "first_forecast_utc": "2026-11-25T06:31:07.418Z",
-   "last_forecast_utc": "2026-11-25T12:25:25.312Z",
+   "last_forecast_utc": "2026-11-25T12:30:17.079Z",
    "model_versions": [
     "G2_5min-v1-lgbm_reg_shallow"
    ],
@@ -616,18 +617,19 @@
   },
   "G10": {
    "experiment": "G2_10min",
-   "forecasts": 10,
+   "forecasts": 11,
    "gaps": 28,
    "gap_reasons": {
     "no forecast in slot window": 23,
     "slot start missed by > 5 min": 5
    },
    "status_counts": {
-    "VERIFIED": 10
+    "VERIFIED": 10,
+    "PENDING": 1
    },
    "scored": 10,
    "first_forecast_utc": "2026-11-25T06:10:14.681Z",
-   "last_forecast_utc": "2026-11-25T11:30:15.268Z",
+   "last_forecast_utc": "2026-11-25T12:30:18.677Z",
    "model_versions": [
     "G2_10min-v1-lgbm_reg_huber"
    ],
