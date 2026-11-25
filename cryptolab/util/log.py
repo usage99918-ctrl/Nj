@@ -17,9 +17,11 @@ def setup_logging(log_dir: Path | None = None, level: int = logging.INFO) -> Non
     fmt.converter = _t.gmtime
     root = logging.getLogger()
     root.setLevel(level)
-    sh = logging.StreamHandler()
-    sh.setFormatter(fmt)
-    root.addHandler(sh)
+    import sys as _sys
+    if _sys.stderr is not None:  # pythonw.exe (Windows background) has no console
+        sh = logging.StreamHandler()
+        sh.setFormatter(fmt)
+        root.addHandler(sh)
     if log_dir is not None:
         log_dir.mkdir(parents=True, exist_ok=True)
         fh = logging.handlers.RotatingFileHandler(log_dir / "cryptolab.log", maxBytes=5_000_000, backupCount=5)

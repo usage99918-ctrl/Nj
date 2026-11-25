@@ -163,3 +163,31 @@ def test_stats_helpers():
     assert st.reality_check(D, n_boot=300, seed=2)["p_value"] > 0.05
     a, b = st.fit_logistic_1d(rng.normal(size=2000), rng.integers(0, 2, 2000))
     assert abs(a) < 0.2 and abs(b) < 0.2
+
+
+def test_simulated_exit_is_conservative_and_correct():
+    from cryptolab.strategies.friend import simulate_exit
+    idx = 1_000 * 60_000 + np.arange(1, 6) * 60_000
+    g = pd.DataFrame({"low": [99.5, 98.9, 99, 99, 99], "high": [100.5, 101.5, 100, 100, 100],
+                      "close": [100, 100, 100, 100, 100.2]}, index=idx)
+    # stop (99) and target (101) both hit in the 2nd minute -> stop assumed first
+    r = simulate_exit(g, 1_000 * 60_000, 1, 100.0, 99.0, 101.0, 10)
+    assert r["reason"].startswith("stop") and r["exit_px"] == 99.0
+    r = simulate_exit(g, 1_000 * 60_000, 1, 100.0, 98.0, 100.4, 10)
+    assert r["reason"] == "target" and r["exit_t"] == idx[0]
+    r = simulate_exit(g, 1_000 * 60_000, 1, 100.0, 90.0, 110.0, 10)
+    assert r["reason"] == "time" and r["exit_px"] == 100.2
+
+
+def test_friend_detectors_use_no_future_data():
+    from cryptolab.strategies.friend import s2_signals, s3_signals
+    from cryptolab.features import to_grid
+    k = _synthetic_klines(12_000, seed=7)
+    full = to_grid(k)
+    cut = full.index[9_000]
+    a2 = s2_signals(full)
+    b2 = s2_signals(to_grid(k.iloc[:9_000]))
+    assert list(a2[a2["t"] <= cut]["t"])[:len(b2)] == list(b2["t"])[:len(a2[a2["t"] <= cut])]
+    a3, b3 = s3_signals(full), s3_signals(to_grid(k.iloc[:9_000]))
+    if len(b3):
+        assert set(b3["t"]) <= set(a3["t"])

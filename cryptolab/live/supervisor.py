@@ -68,7 +68,7 @@ def record_event(cfg, kind: str, **data) -> None:
         log.error("could not record event %s: %s", kind, e)
 
 
-def run_supervisor(cfg, hang_after_s: int = 300) -> int:
+def run_supervisor(cfg, hang_after_s: int = 300, worker_args: list[str] | None = None) -> int:
     lock = FileLock(run_dir(cfg) / "supervisor.lock")
     try:
         lock.acquire()
@@ -82,9 +82,12 @@ def run_supervisor(cfg, hang_after_s: int = 300) -> int:
     def _stop(*_):
         stopping["flag"] = True
 
-    for sig in ("SIGTERM", "SIGINT", "SIGBREAK"):
-        if hasattr(signal, sig):
-            signal.signal(getattr(signal, sig), _stop)
+    import threading
+    if threading.current_thread() is threading.main_thread():
+        for sig in ("SIGTERM", "SIGINT", "SIGBREAK"):
+            if hasattr(signal, sig):
+                signal.signal(getattr(signal, sig), _stop)
+    worker_args = worker_args or ["-m", "cryptolab", "worker"]
     record_event(cfg, "supervisor_start", python=sys.version.split()[0])
     backoff, child, started = 5, None, 0.0
     try:
@@ -104,7 +107,7 @@ def run_supervisor(cfg, hang_after_s: int = 300) -> int:
                         break
                 log_path = cfg.path("log_dir") / "worker.out"
                 log_path.parent.mkdir(parents=True, exist_ok=True)
-                child = subprocess.Popen([sys.executable, "-m", "cryptolab", "worker"], cwd=str(cfg.root),
+                child = subprocess.Popen([sys.executable] + worker_args, cwd=str(cfg.root),
                                          stdout=open(log_path, "a"), stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL)
                 started = time.time()
                 record_event(cfg, "worker_start", worker_pid=child.pid)
@@ -118,7 +121,7 @@ def run_supervisor(cfg, hang_after_s: int = 300) -> int:
                         child.wait(30)
                     except subprocess.TimeoutExpired:
                         child.kill()
-            time.sleep(2)
+            time.sleep(1)
     finally:
         if child is not None and child.poll() is None:
             stop_file(cfg).touch()          # worker sees the stop file and exits cleanly

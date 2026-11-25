@@ -162,3 +162,45 @@ def equity_series(store, name: str) -> dict:
         dir_cum.append(round(dc, 4))
         acc_cum.append(round(k / n * 100, 2))
     return {"test_number": xs, "long_net_cum_pct": long_cum, "dir_net_cum_pct": dir_cum, "accuracy_cum_pct": acc_cum}
+
+
+def continuity(store, cfg) -> dict:
+    """Evidence of (dis)continuous operation computed from immutable records only."""
+    from cryptolab.util.timeutil import HOUR, MIN, now_ms, to_iso
+    now = now_ms()
+    out = {"experiments": {}, "events": {}}
+    for key, exp in cfg["experiments"].items():
+        name, cad = exp["name"], int(exp["cadence_min"]) * MIN
+        first = store.scalar("SELECT MIN(s) FROM (SELECT MIN(slot_ms) s FROM forecasts WHERE experiment=? "
+                             "UNION ALL SELECT MIN(slot_ms) s FROM gaps WHERE experiment=?)", (name, name))
+        if first is None:
+            out["experiments"][name] = {"started": False}
+            continue
+        n_slots = int((now - first) // cad) + 1
+        n_fc = store.scalar("SELECT COUNT(*) FROM forecasts WHERE experiment=?", (name,))
+        gaps = sorted(r[0] for r in store.conn.execute("SELECT slot_ms FROM gaps WHERE experiment=?", (name,)))
+        longest, run, prev = 0, 0, None
+        for g in gaps:
+            run = run + 1 if prev is not None and g - prev == cad else 1
+            longest, prev = max(longest, run), g
+        out["experiments"][name] = {"started": True, "first_slot_utc": to_iso(first), "slots_elapsed": n_slots,
+                                    "forecasts": n_fc, "gaps": len(gaps),
+                                    "coverage_pct": round(100 * n_fc / n_slots, 1) if n_slots else None,
+                                    "longest_gap_run_slots": longest,
+                                    "longest_gap_run_minutes": longest * cad // MIN}
+    ev = store.rows("events")
+    kinds = Counter(e["kind"] for e in ev)
+    outages = [e for e in ev if e["kind"] == "network_outage_end"]
+    cps = [e["ts_ms"] for e in ev if e["kind"] == "checkpoint"]
+    starts = [e["ts_ms"] for e in ev if e["kind"] in ("worker_running", "worker_start", "supervisor_start")]
+    if starts:
+        hours = max(1, int((now - min(starts)) // HOUR))
+        hours_with_cp = len({c // HOUR for c in cps})
+        out["events"] = {"counts": dict(kinds), "first_start_utc": to_iso(min(starts)),
+                         "hours_since_first_start": hours, "hours_with_checkpoint": hours_with_cp,
+                         "checkpoint_coverage_pct": round(100 * min(hours_with_cp, hours) / hours, 1),
+                         "crashes_restarted": kinds.get("worker_exit", 0) + kinds.get("worker_hung", 0),
+                         "network_outages": len(outages),
+                         "network_outage_total_s": round(sum(e.get("duration_s", 0) for e in outages), 1),
+                         "last_checkpoint_utc": to_iso(max(cps)) if cps else None}
+    return out

@@ -4,8 +4,10 @@
   python -m cryptolab build-panels     compute research features/targets
   python -m cryptolab research         walk-forward backtest, pre-registration, test, live model
   python -m cryptolab scan             one multi-exchange market scan (prints counts)
+  python -m cryptolab run              supervisor in the foreground (use under Task Scheduler/systemd/Docker)
+  python -m cryptolab start | stop     start the supervisor in the background / stop everything gracefully
   python -m cryptolab run-once         one scheduler tick (verify + forecast due slots + gaps)
-  python -m cryptolab daemon start|stop|status|run
+  python -m cryptolab daemon start|stop|status|run   (legacy aliases)
   python -m cryptolab verify           verify expired forecasts now
   python -m cryptolab dashboard        build reports/dashboard.html + CSV/JSON exports
   python -m cryptolab audit            verify ledger hash chain and DB consistency
@@ -39,6 +41,14 @@ def main(argv=None) -> int:
     r.add_argument("--horizons", default="60,10")
     sub.add_parser("scan")
     sub.add_parser("run-once")
+    sub.add_parser("run")
+    sub.add_parser("start")
+    sub.add_parser("stop")
+    sub.add_parser("worker")
+    sub.add_parser("g2-research")
+    sub.add_parser("health")
+    ks = sub.add_parser("kill-switch")
+    ks.add_argument("state", choices=["on", "off", "status"])
     d = sub.add_parser("daemon")
     d.add_argument("action", choices=["start", "stop", "status", "run"])
     sub.add_parser("verify")
@@ -74,24 +84,45 @@ def main(argv=None) -> int:
     elif a.cmd == "run-once":
         from cryptolab.live.scheduler import run_once
         _print(run_once(cfg))
+    elif a.cmd == "run":
+        from cryptolab.live.supervisor import run_supervisor
+        return run_supervisor(cfg)
+    elif a.cmd == "start":
+        from cryptolab.live.supervisor import start_background
+        print(start_background(cfg))
+    elif a.cmd == "stop":
+        from cryptolab.live.supervisor import stop
+        print("stopped" if stop(cfg) else "stop requested; still shutting down")
+    elif a.cmd == "worker":
+        from cryptolab.live.scheduler import run_worker
+        run_worker(cfg)
+    elif a.cmd == "health":
+        from cryptolab.live.supervisor import status as sup_status
+        st = sup_status(cfg)
+        print(json.dumps({k: st[k] for k in ("healthy", "heartbeat_age_s", "supervisor_alive", "worker_alive")}))
+        return 0 if st["healthy"] else 1
+    elif a.cmd == "kill-switch":
+        from cryptolab.live.paper import kill_switch_file
+        f = kill_switch_file(cfg)
+        if a.state == "on":
+            f.write_text(f"engaged {__import__('datetime').datetime.utcnow().isoformat()}Z")
+        elif a.state == "off":
+            f.unlink(missing_ok=True)
+        print(f"paper-trading kill switch: {'ON (no new entries; open positions are closed)' if f.exists() else 'off'}")
+    elif a.cmd == "g2-research":
+        from cryptolab.backtest.g2 import run_g2
+        from cryptolab.storage.db import open_store
+        _print(run_g2(cfg, open_store(cfg)))
     elif a.cmd == "verify":
         from cryptolab.live.scheduler import LiveSystem
         _print({"verified": len(LiveSystem(cfg).verifier.verify_due())})
     elif a.cmd == "daemon":
         from cryptolab.live import scheduler as sch
         if a.action == "run":
-            sch.run_daemon(cfg)
+            sch.run_worker(cfg)
         elif a.action == "start":
-            st = sch.daemon_status(cfg)
-            if st["process_alive"]:
-                print(f"already running (pid {st['pid']})")
-                return 0
-            log_dir = cfg.path("log_dir")
-            log_dir.mkdir(parents=True, exist_ok=True)
-            out = open(log_dir / "daemon.out", "a")
-            p = subprocess.Popen([sys.executable, "-m", "cryptolab", "daemon", "run"], stdout=out, stderr=out,
-                                 stdin=subprocess.DEVNULL, start_new_session=True, cwd=str(cfg.root))
-            print(f"daemon started (pid {p.pid}); logs: {log_dir / 'daemon.out'}")
+            from cryptolab.live.supervisor import start_background
+            print(start_background(cfg))
         elif a.action == "stop":
             print("stopped" if sch.stop_daemon(cfg) else "not running (or did not stop in time)")
         else:
@@ -118,8 +149,10 @@ def main(argv=None) -> int:
         from cryptolab.report.metrics import experiment_summary
         from cryptolab.storage.db import open_store
         store = open_store(cfg)
+        from cryptolab.report.metrics import continuity
         _print({"daemon": daemon_status(cfg),
-                "experiments": {k: experiment_summary(store, cfg["experiments"][k]["name"]) for k in ("A", "B")}})
+                "experiments": {k: experiment_summary(store, v["name"]) for k, v in cfg["experiments"].items()},
+                "continuity": continuity(store, cfg)})
     return 0
 
 

@@ -61,7 +61,7 @@ class _FakeForecaster:
     def __init__(self, store, fail=False):
         self.store, self.fail, self.calls = store, fail, 0
 
-    def run(self, key, slot):
+    def run(self, key, slot, snap=None):
         self.calls += 1
         if self.fail:
             raise RuntimeError("exchange down")

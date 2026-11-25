@@ -169,12 +169,14 @@ class Scanner:
 
 class KlineCache:
     """Rolling local cache of completed 1-minute Binance klines (incremental refresh)."""
-    KEEP_BARS = 10_300   # 7 days + buffer (per-coin AR features use a 7-day window)
+    KEEP_BARS = 11_500   # 7 days + buffer (7-day AR features; S2 needs 7 days of 5-min bars + 4h)
 
-    def __init__(self, bn: Binance, directory: Path) -> None:
+    def __init__(self, bn: Binance, directory: Path, keep_bars: int | None = None) -> None:
         self.bn = bn
         self.dir = Path(directory)
         self.dir.mkdir(parents=True, exist_ok=True)
+        if keep_bars:
+            self.KEEP_BARS = keep_bars
 
     def get(self, symbol: str, server_now: int) -> pd.DataFrame:
         path = self.dir / f"{symbol}.parquet"

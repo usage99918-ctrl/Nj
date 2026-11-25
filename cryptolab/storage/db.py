@@ -37,6 +37,7 @@ TABLES = {
     "signal": ("signals", "signal_id", ["strategy", "symbol", "signal_ms"]),   # event-driven strategy signals
     "trade": ("paper_trades", "trade_id", ["portfolio", "symbol", "entry_ms"]),  # closed paper trades
     "kalshi": ("kalshi_snapshots", "snap_id", ["asset", "ts_ms"]),             # read-only market snapshots
+    "signal_outcome": ("signal_outcomes", "signal_id", ["strategy", "verified_ms"]),
 }
 
 DDL = """
@@ -69,12 +70,14 @@ CREATE TABLE IF NOT EXISTS signals (
 CREATE TABLE IF NOT EXISTS paper_trades (
   trade_id TEXT PRIMARY KEY, portfolio TEXT, symbol TEXT, entry_ms INTEGER, payload TEXT NOT NULL, hash TEXT NOT NULL,
   seq INTEGER);
+CREATE TABLE IF NOT EXISTS signal_outcomes (
+  signal_id TEXT PRIMARY KEY, strategy TEXT, verified_ms INTEGER, payload TEXT NOT NULL, hash TEXT NOT NULL, seq INTEGER);
 CREATE TABLE IF NOT EXISTS kalshi_snapshots (
   snap_id TEXT PRIMARY KEY, asset TEXT, ts_ms INTEGER, payload TEXT NOT NULL, hash TEXT NOT NULL, seq INTEGER);
 """
 
 _TRIGGER_TABLES = ["model_versions", "preregistrations", "scans", "forecasts", "gaps", "outcomes", "events",
-                   "signals", "paper_trades", "kalshi_snapshots"]
+                   "signals", "paper_trades", "kalshi_snapshots", "signal_outcomes"]
 
 
 def _triggers() -> str:

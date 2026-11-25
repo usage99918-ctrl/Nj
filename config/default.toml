@@ -120,6 +120,69 @@ cadence_min = 1440
 max_start_delay_min = 180
 touch_targets_pct = [2.0, 5.0, 10.0]
 
+# ---- Kalshi controlled test (read-only market data; no Kalshi account, no Kalshi trades).
+# Two independent arms per asset, decided at each 15-minute Kalshi window open + 2 minutes,
+# verified on Binance at the window close. WITH = WITHOUT + Kalshi YES price as a feature.
+[experiments.KXB0]
+name = "KX_BTC_without"
+type = "kalshi"
+asset = "BTC"
+arm = "without"
+horizon_min = 13
+cadence_min = 15
+offset_min = 2
+max_start_delay_min = 5
+model_file = "KX_v1.pkl"
+
+[experiments.KXB1]
+name = "KX_BTC_with"
+type = "kalshi"
+asset = "BTC"
+arm = "with"
+horizon_min = 13
+cadence_min = 15
+offset_min = 2
+max_start_delay_min = 5
+model_file = "KX_v1.pkl"
+
+[experiments.KXE0]
+name = "KX_ETH_without"
+type = "kalshi"
+asset = "ETH"
+arm = "without"
+horizon_min = 13
+cadence_min = 15
+offset_min = 2
+max_start_delay_min = 5
+model_file = "KX_v1.pkl"
+
+[experiments.KXE1]
+name = "KX_ETH_with"
+type = "kalshi"
+asset = "ETH"
+arm = "with"
+horizon_min = 13
+cadence_min = 15
+offset_min = 2
+max_start_delay_min = 5
+model_file = "KX_v1.pkl"
+
+# ---- Paper trading (simulated only; no exchange account, no real orders).
+[paper]
+starting_equity_usd = 10000.0
+max_position_pct = 0.10          # of current equity per position
+max_position_usd = 2000.0
+max_open_positions = 5
+daily_loss_limit_pct = 2.0       # no new entries for the rest of the UTC day after -2% realized
+execution_delay_s = 2            # fill = first trade at least this long after the signal
+default_stop_pct = 1.5
+default_take_pct = 3.0
+# Strategies allowed to trade in the GATED portfolio. Empty = stay in cash. A strategy is only
+# added after it passes its pre-registered out-of-sample test net of costs (none has so far).
+approved_strategies = []
+# Every strategy also trades in its own SHADOW portfolio purely to measure it.
+shadow_strategies = ["S1_rs_reset_ethbtc", "S2_breakout_retest", "S3_liquidity_recovery_book"]
+
 [verification]
 # Exact-timestamp verification: last trade at or before the expiry instant.
 max_trade_gap_s = 60           # last trade must be within this many seconds of expiry
