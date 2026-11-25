@@ -1483,5 +1483,231 @@
   "trade_id": 338732674,
   "verified_ms": 1795598703849,
   "verified_utc": "2026-11-25T09:25:03.849Z"
+ },
+ {
+  "abs_pred_error_pct": 0.6794882657105816,
+  "actual_class3": "UP",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.6462731581214909,
+  "argmax_class3_correct": false,
+  "brier": 0.22625686612475482,
+  "brier3": 0.6730079559872031,
+  "correct": false,
+  "dir_gross_pct": -0.6462731581214909,
+  "dir_net_pct": -0.990115939648971,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795599020963,
+  "expiry_utc": "2026-11-25T09:30:20.963Z",
+  "forecast_id": "G5-000008",
+  "in_pi50": false,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.6421232876712368,
+  "p1": 0.2336,
+  "p1_trade_ms": 1795599017304,
+  "p1_trade_utc": "2026-11-25T09:30:17.304Z",
+  "path_max_pct": 0.6893580353295903,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.25850926324859635,
+  "pred_error_abs": 0.0015872845886999165,
+  "pred_error_pct": -0.6794882657105816,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "MMTUSDT",
+  "timing_gap_ms": 3659,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.044548498155278775,
+    "hit": true,
+    "p": 0.788934848553157
+   },
+   "+0.5%": {
+    "brier": 0.3182989727768946,
+    "hit": true,
+    "p": 0.43582008829018504
+   },
+   "-0.25%": {
+    "brier": 0.021302269599020512,
+    "hit": true,
+    "p": 0.8540470294957293
+   },
+   "-0.5%": {
+    "brier": 0.2670729648382037,
+    "hit": false,
+    "p": 0.5167910262748413
+   }
+  },
+  "trade_id": 22148027,
+  "verified_ms": 1795602296726,
+  "verified_utc": "2026-11-25T10:24:56.726Z"
+ },
+ {
+  "abs_pred_error_pct": 0.22420769425329778,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.17145306472352573,
+  "argmax_class3_correct": false,
+  "brier": 0.23211353021077316,
+  "brier3": 0.688576349340002,
+  "correct": false,
+  "dir_gross_pct": -0.17145306472352573,
+  "dir_net_pct": -0.5031261281090758,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795599313770,
+  "expiry_utc": "2026-11-25T09:35:13.770Z",
+  "forecast_id": "G5-000009",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.1711596063328935,
+  "p1": 0.2337,
+  "p1_trade_ms": 1795599310831,
+  "p1_trade_utc": "2026-11-25T09:35:10.831Z",
+  "path_max_pct": 0.6000857265323623,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.47149592798971796,
+  "pred_error_abs": 0.0005239733814699499,
+  "pred_error_pct": -0.22420769425329778,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "MMTUSDT",
+  "timing_gap_ms": 2939,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.0483953404969339,
+    "hit": true,
+    "p": 0.7800105900345794
+   },
+   "+0.5%": {
+    "brier": 0.3330592420225218,
+    "hit": true,
+    "p": 0.42288714966436436
+   },
+   "-0.25%": {
+    "brier": 0.01966885923096771,
+    "hit": true,
+    "p": 0.8597542897947759
+   },
+   "-0.5%": {
+    "brier": 0.27921073043371736,
+    "hit": false,
+    "p": 0.5284039462700079
+   }
+  },
+  "trade_id": 22148240,
+  "verified_ms": 1795602296726,
+  "verified_utc": "2026-11-25T10:24:56.726Z"
+ },
+ {
+  "abs_pred_error_pct": 0.012763446028762893,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "FLAT",
+  "actual_return_pct": 0.0,
+  "argmax_class3_correct": true,
+  "brier": 0.2656218048128229,
+  "brier3": 0.17961155327258388,
+  "correct": false,
+  "dir_gross_pct": 0.0,
+  "dir_net_pct": -0.23854427445525475,
+  "exchange": "binance",
+  "experiment": "G2_10min",
+  "expiry_ms": 1795599615332,
+  "expiry_utc": "2026-11-25T09:40:15.332Z",
+  "forecast_id": "G10-000007",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.0,
+  "p1": 0.05392,
+  "p1_trade_ms": 1795599613579,
+  "p1_trade_utc": "2026-11-25T09:40:13.579Z",
+  "path_max_pct": 0.3338278931750649,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.05563798219585525,
+  "pred_error_abs": 6.8820500987096245e-06,
+  "pred_error_pct": 0.012763446028762893,
+  "short_is_theoretical": false,
+  "status": "VERIFIED",
+  "symbol": "DOGEUSDT",
+  "timing_gap_ms": 1753,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.45600937394253444,
+    "hit": true,
+    "p": 0.3247153385848791
+   },
+   "+0.5%": {
+    "brier": 0.013116477747817675,
+    "hit": false,
+    "p": 0.11452719217643326
+   },
+   "+1%": {
+    "brier": 0.0011303098049983092,
+    "hit": false,
+    "p": 0.033620080383578936
+   },
+   "-0.25%": {
+    "brier": 0.10067924693559996,
+    "hit": false,
+    "p": 0.31729993213929303
+   },
+   "-0.5%": {
+    "brier": 0.010319768073147094,
+    "hit": false,
+    "p": 0.10158625927332443
+   },
+   "-1%": {
+    "brier": 0.0007167750364323666,
+    "hit": false,
+    "p": 0.02677265463924649
+   }
+  },
+  "trade_id": 724325092,
+  "verified_ms": 1795602296726,
+  "verified_utc": "2026-11-25T10:24:56.726Z"
+ },
+ {
+  "abs_pred_error_pct": 0.06841885131416703,
+  "actual_direction": "DOWN",
+  "actual_return_pct": -0.05561735261402356,
+  "brier": 0.265621805646358,
+  "correct": false,
+  "dir_gross_pct": -0.05561735261402356,
+  "dir_net_pct": -0.29415475181690826,
+  "exchange": "binance",
+  "experiment": "A_10min",
+  "expiry_ms": 1795599625541,
+  "expiry_utc": "2026-11-25T09:40:25.541Z",
+  "forecast_id": "A-000012",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.05564830272677401,
+  "p1": 0.05391,
+  "p1_trade_ms": 1795599623159,
+  "p1_trade_utc": "2026-11-25T09:40:23.159Z",
+  "pred_error_abs": 3.6884602743467165e-05,
+  "pred_error_pct": 0.06841885131416703,
+  "short_is_theoretical": false,
+  "status": "VERIFIED",
+  "symbol": "DOGEUSDT",
+  "timing_gap_ms": 2382,
+  "trade_id": 724325095,
+  "verified_ms": 1795602296726,
+  "verified_utc": "2026-11-25T10:24:56.726Z"
  }
 ]
