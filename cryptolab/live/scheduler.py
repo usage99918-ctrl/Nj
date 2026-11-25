@@ -187,9 +187,16 @@ class LiveSystem:
                      monitors=[m.name for m in self.monitors], http_failures=dict(self.http.stats.failures))
 
     # -------------------------------------------------------------------- tick
+    def _beat(self) -> None:
+        try:
+            self.heartbeat()
+        except Exception as e:
+            log.debug("heartbeat: %s", e)
+
     def tick(self) -> dict:
         out = {"verified": 0, "forecasts": [], "online": True}
         self.ticks += 1
+        self._beat()  # heartbeats between stages so a long tick is never mistaken for a hang
         if not self.check_connectivity():
             out["online"] = False
             return out
@@ -214,11 +221,14 @@ class LiveSystem:
                     rec = self.run_slot(k, due[k], snap)
                     if rec:
                         out["forecasts"].append(rec["forecast_id"])
+                    self._beat()
         for k in [k for k in due if not k.startswith("G") and due[k] is not None]:
             rec = self.run_slot(k, due[k])
             if rec:
                 out["forecasts"].append(rec["forecast_id"])
+            self._beat()
         for m in self.monitors:
+            self._beat()
             try:
                 m.tick(self.bn.clock.now())
             except Exception as e:
