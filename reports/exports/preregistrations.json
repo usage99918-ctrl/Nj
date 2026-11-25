@@ -312,5 +312,1160 @@
    "p_accuracy": 0.0038235973103051372,
    "p_gross_dir": 1.1233972219137911e-07
   }
+ },
+ {
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:02:35.449Z",
+  "experiment": "G2_1440min",
+  "horizon_min": 1440,
+  "n_strategies_tested": 100,
+  "prereg_id": "G2_1440min-selection-v1",
+  "runner_ups": [
+   "quiet_drift",
+   "volreg_switch",
+   "ridge_reversal_set",
+   "ens_stack_ridge",
+   "rv_rev_10",
+   "ar1_adaptive",
+   "lgbm_clf_medium",
+   "ofi_fade_10",
+   "rev_1440",
+   "breadth_regime"
+  ],
+  "selected_strategy": "quiet_drift",
+  "selection_rule": "Highest validation balanced accuracy among non-baseline strategies with validation coverage >= 0.90 and >= 82 forecasts (min(300, 0.9 x validation slots)); tie-break by validation mean IC.",
+  "sideways_definition": "|log return| <= 1.225%",
+  "test_hypotheses": [
+   "H1: test accuracy > 50% (binomial, alpha 0.05)",
+   "H2: test gross directional return > 0 (Newey-West, alpha 0.05)",
+   "H3: test long-only net return > 0",
+   "H4: test 3-class Brier score of the model < climatology Brier",
+   "H5: test touch-probability Brier < climatology Brier for every target"
+  ],
+  "touch_targets_pct": [
+   2.0,
+   5.0,
+   10.0
+  ],
+  "validation_metrics_selected": {
+   "acc_ci95": [
+    0.5237577479753555,
+    0.7187518680581151
+   ],
+   "accuracy": 0.6263736263736264,
+   "balanced_accuracy": 0.6190476190476191,
+   "brier": 0.2427594545230576,
+   "brier_skill_vs_0.5": 0.028962181907769557,
+   "cover50": 0.5054945054945055,
+   "cover80": 0.7582417582417582,
+   "coverage": 0.9891304347826086,
+   "family": "rel_volume",
+   "frac_pred_up": 0.6043956043956044,
+   "gross_dir_mean_bps": 119.39455646429285,
+   "gross_dir_t": 2.336857069354789,
+   "hypothesis": "Low-volume 60-min drifts persist (no informed opposition).",
+   "ic_frac_pos": 0.5384615384615384,
+   "ic_mean": 0.008837761769572268,
+   "ic_t": 0.4375305606599159,
+   "kind": "rule",
+   "long_lowcost_maxdd_pct": 9.455523734807759,
+   "long_lowcost_mean_bps": 121.40606479025611,
+   "long_lowcost_t": 2.7472166085447633,
+   "long_lowcost_total_pct": 110.47951895913302,
+   "long_maxdd_pct": 10.025922598719038,
+   "long_mean_bps": 114.25583490588429,
+   "long_t": 2.6289001646892562,
+   "long_total_pct": 103.9728097643548,
+   "long_trades": 48,
+   "long_win_rate": 0.6041666666666666,
+   "ls_lowcost_maxdd_pct": 24.32782548091027,
+   "ls_lowcost_mean_bps": 109.04510591484228,
+   "ls_lowcost_t": 2.1324148898711694,
+   "ls_lowcost_total_pct": 99.23104638250643,
+   "ls_maxdd_pct": 25.7133819732694,
+   "ls_mean_bps": 93.0451059148423,
+   "ls_t": 1.8195293371295058,
+   "ls_total_pct": 84.67104638250662,
+   "mae_pct": 3.4480107070712656,
+   "mae_ratio_vs_no_change": 0.9716103469867629,
+   "mae_rw_pct": 3.5487587362202526,
+   "majority_baseline_same_candidates": 0.5384615384615384,
+   "max_loss_streak": 3,
+   "max_win_streak": 7,
+   "mean_p_dir": 0.5356363224829014,
+   "n_flat": 0,
+   "n_forecasts": 91,
+   "n_slots": 92,
+   "p_acc_gt_50": 0.010292104519187127,
+   "p_gross_dir_gt_0": 0.00972330861930426
+  },
+  "validation_reality_check_accuracy_p": 0.2647352647352647
+ },
+ {
+  "created_utc": "2026-11-25T06:02:54.846Z",
+  "experiment": "G2_1440min",
+  "prereg_id": "G2_1440min-test-result-v1",
+  "probability_layers_test": {
+   "argmax_accuracy": 0.46,
+   "brier3_climatology": 0.6616740366577594,
+   "brier3_model": 0.6132420254223812,
+   "brier3_no_signal": 0.5825823597709393,
+   "n": 50,
+   "outcome_freq": {
+    "DOWN": 0.38,
+    "SIDEWAYS": 0.5,
+    "UP": 0.12
+   },
+   "reliability_sideways": [
+    {
+     "freq": 0.25,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.14415014233209014,
+     "n": 12
+    },
+    {
+     "freq": 0.42857142857142855,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.3072797825702654,
+     "n": 21
+    },
+    {
+     "freq": 0.6923076923076923,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.4533177217392223,
+     "n": 13
+    },
+    {
+     "freq": 1.0,
+     "hi": 0.8,
+     "lo": 0.6000000000000001,
+     "mean_p": 0.6577562313410854,
+     "n": 2
+    },
+    {
+     "freq": 1.0,
+     "hi": 1.0,
+     "lo": 0.8,
+     "mean_p": 0.8544551898684284,
+     "n": 2
+    }
+   ],
+   "reliability_up": [
+    {
+     "freq": 0.16666666666666666,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.12426847579263146,
+     "n": 6
+    },
+    {
+     "freq": 0.06451612903225806,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.2951947672302499,
+     "n": 31
+    },
+    {
+     "freq": 0.23076923076923078,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.4636855158641079,
+     "n": 13
+    }
+   ],
+   "rps_climatology": 0.19067864961329445,
+   "rps_model": 0.1907171774351954,
+   "sideways_tau_pct": 1.224744871391589,
+   "touch": {
+    "+10.0%": {
+     "brier": 0.026386031586579053,
+     "brier_climatology": 0.024859379051901498,
+     "freq": 0.02,
+     "mean_p": 0.09666855120156985
+    },
+    "+2.0%": {
+     "brier": 0.2094700735040379,
+     "brier_climatology": 0.2558576910653311,
+     "freq": 0.48,
+     "mean_p": 0.5419446349952974
+    },
+    "+5.0%": {
+     "brier": 0.08313804299434623,
+     "brier_climatology": 0.1332182329819422,
+     "freq": 0.14,
+     "mean_p": 0.23740850564608681
+    },
+    "-10.0%": {
+     "brier": 0.04874464263569923,
+     "brier_climatology": 0.038424622393710944,
+     "freq": 0.04,
+     "mean_p": 0.07414343645971722
+    },
+    "-2.0%": {
+     "brier": 0.20575677549578258,
+     "brier_climatology": 0.2297463362795258,
+     "freq": 0.68,
+     "mean_p": 0.5241899517658629
+    },
+    "-5.0%": {
+     "brier": 0.19561516897395928,
+     "brier_climatology": 0.2040331265531073,
+     "freq": 0.28,
+     "mean_p": 0.20493359298875094
+    }
+   }
+  },
+  "selected_strategy": "quiet_drift",
+  "test_metrics_selected": {
+   "acc_ci95": [
+    0.2760818978624575,
+    0.5381881089724063
+   ],
+   "accuracy": 0.4,
+   "balanced_accuracy": 0.4025764895330113,
+   "brier": 0.26469098739746416,
+   "brier_skill_vs_0.5": -0.058763949589856646,
+   "cover50": 0.6,
+   "cover80": 0.78,
+   "coverage": 0.9433962264150944,
+   "family": "rel_volume",
+   "frac_pred_up": 0.54,
+   "gross_dir_mean_bps": -56.33576860702518,
+   "gross_dir_t": -1.0164567001672962,
+   "hypothesis": "Low-volume 60-min drifts persist (no informed opposition).",
+   "ic_frac_pos": 0.46,
+   "ic_mean": 0.002826800196237431,
+   "ic_t": 0.10966638914679684,
+   "kind": "rule",
+   "long_lowcost_maxdd_pct": 52.75236213891989,
+   "long_lowcost_mean_bps": -90.12748930942993,
+   "long_lowcost_t": -2.2687893033351267,
+   "long_lowcost_total_pct": -45.063744654714974,
+   "long_maxdd_pct": 52.41802069877177,
+   "long_mean_bps": -90.41880642913368,
+   "long_t": -2.301403380970349,
+   "long_total_pct": -45.20940321456685,
+   "long_trades": 24,
+   "long_win_rate": 0.2916666666666667,
+   "ls_lowcost_maxdd_pct": 49.48478667571122,
+   "ls_lowcost_mean_bps": -67.06376860702518,
+   "ls_lowcost_t": -1.2128113349430358,
+   "ls_lowcost_total_pct": -33.53188430351259,
+   "ls_maxdd_pct": 56.36478667571123,
+   "ls_mean_bps": -83.06376860702518,
+   "ls_t": -1.5021625265349716,
+   "ls_total_pct": -41.5318843035126,
+   "mae_pct": 2.947073955153346,
+   "mae_ratio_vs_no_change": 1.0525839626905253,
+   "mae_rw_pct": 2.799846909713774,
+   "majority_baseline_same_candidates": 0.54,
+   "max_loss_streak": 6,
+   "max_win_streak": 3,
+   "mean_p_dir": 0.5592995469634665,
+   "n_flat": 0,
+   "n_forecasts": 50,
+   "n_slots": 53,
+   "p_acc_gt_50": 0.9405397737202819,
+   "p_gross_dir_gt_0": 0.8452940215888659
+  },
+  "verdict": {
+   "H1_accuracy_gt_50": false,
+   "H2_gross_dir_gt_0": false,
+   "H3_long_net_gt_0": false,
+   "H4_three_class_beats_climatology": true,
+   "H5_touch_beats_climatology": false
+  }
+ },
+ {
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:04:23.698Z",
+  "experiment": "G2_240min",
+  "horizon_min": 240,
+  "n_strategies_tested": 101,
+  "prereg_id": "G2_240min-selection-v1",
+  "runner_ups": [
+   "rv_rev_10",
+   "ar1_adaptive",
+   "rev_10",
+   "dispersion_rev",
+   "lgbm_clf_shallow",
+   "rev_240",
+   "btc_lead_10",
+   "resid_rev_10",
+   "hv_reversal",
+   "lgbm_clf_medium"
+  ],
+  "selected_strategy": "rv_rev_10",
+  "selection_rule": "Highest validation balanced accuracy among non-baseline strategies with validation coverage >= 0.90 and >= 300 forecasts (min(300, 0.9 x validation slots)); tie-break by validation mean IC.",
+  "sideways_definition": "|log return| <= 0.500%",
+  "test_hypotheses": [
+   "H1: test accuracy > 50% (binomial, alpha 0.05)",
+   "H2: test gross directional return > 0 (Newey-West, alpha 0.05)",
+   "H3: test long-only net return > 0",
+   "H4: test 3-class Brier score of the model < climatology Brier",
+   "H5: test touch-probability Brier < climatology Brier for every target"
+  ],
+  "touch_targets_pct": [
+   1.0,
+   2.0,
+   5.0
+  ],
+  "validation_metrics_selected": {
+   "acc_ci95": [
+    0.5253711491861931,
+    0.6077603040911433
+   ],
+   "accuracy": 0.5670289855072463,
+   "balanced_accuracy": 0.5743771043771044,
+   "brier": 0.25021182696980054,
+   "brier_skill_vs_0.5": -0.0008473078792021749,
+   "cover50": 0.5126811594202898,
+   "cover80": 0.7952898550724637,
+   "coverage": 1.0,
+   "family": "rel_volume",
+   "frac_pred_up": 0.4945652173913043,
+   "gross_dir_mean_bps": 14.65332052527644,
+   "gross_dir_t": 1.233910525582524,
+   "hypothesis": "10-min moves on high relative volume overshoot and revert.",
+   "ic_frac_pos": 0.5344202898550725,
+   "ic_mean": 0.019163584140447273,
+   "ic_t": 2.2188528800415717,
+   "kind": "rule",
+   "long_lowcost_maxdd_pct": 0.0,
+   "long_lowcost_mean_bps": 0.0,
+   "long_lowcost_t": 0.0,
+   "long_lowcost_total_pct": 0.0,
+   "long_maxdd_pct": 0.0,
+   "long_mean_bps": 0.0,
+   "long_t": 0.0,
+   "long_total_pct": 0.0,
+   "long_trades": 0,
+   "long_win_rate": null,
+   "ls_lowcost_maxdd_pct": 48.96994694394655,
+   "ls_lowcost_mean_bps": 5.76346545281267,
+   "ls_lowcost_t": 0.48519860156894046,
+   "ls_lowcost_total_pct": 31.814329299525994,
+   "ls_maxdd_pct": 100.55691256720955,
+   "ls_mean_bps": -10.236534547187325,
+   "ls_t": -0.8617649030556045,
+   "ls_total_pct": -56.50567070047393,
+   "mae_pct": 1.596651428339321,
+   "mae_ratio_vs_no_change": 0.9997051326995179,
+   "mae_rw_pct": 1.5971223675003654,
+   "majority_baseline_same_candidates": 0.49818840579710144,
+   "max_loss_streak": 8,
+   "max_win_streak": 10,
+   "mean_p_dir": 0.4983671670947338,
+   "n_flat": 7,
+   "n_forecasts": 552,
+   "n_slots": 552,
+   "p_acc_gt_50": 0.0009317346855421246,
+   "p_gross_dir_gt_0": 0.10861812346719912
+  },
+  "validation_reality_check_accuracy_p": 0.06493506493506493
+ },
+ {
+  "created_utc": "2026-11-25T06:04:56.079Z",
+  "experiment": "G2_240min",
+  "prereg_id": "G2_240min-test-result-v1",
+  "probability_layers_test": {
+   "argmax_accuracy": 0.44025157232704404,
+   "brier3_climatology": 0.6669293882121166,
+   "brier3_model": 0.6058725696034177,
+   "brier3_no_signal": 0.6058910521752549,
+   "n": 318,
+   "outcome_freq": {
+    "DOWN": 0.3522012578616352,
+    "SIDEWAYS": 0.31761006289308175,
+    "UP": 0.330188679245283
+   },
+   "reliability_sideways": [
+    {
+     "freq": 0.16129032258064516,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.14755480528281212,
+     "n": 93
+    },
+    {
+     "freq": 0.2564102564102564,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.2825050686471168,
+     "n": 156
+    },
+    {
+     "freq": 0.5714285714285714,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.46628393443913985,
+     "n": 35
+    },
+    {
+     "freq": 0.6190476190476191,
+     "hi": 0.8,
+     "lo": 0.6000000000000001,
+     "mean_p": 0.714387284024664,
+     "n": 21
+    },
+    {
+     "freq": 1.0,
+     "hi": 1.0,
+     "lo": 0.8,
+     "mean_p": 0.8490746938023904,
+     "n": 13
+    }
+   ],
+   "reliability_up": [
+    {
+     "freq": 0.11764705882352941,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.12031671835968837,
+     "n": 34
+    },
+    {
+     "freq": 0.326271186440678,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.3364336727303742,
+     "n": 236
+    },
+    {
+     "freq": 0.5,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.42255310465958645,
+     "n": 48
+    }
+   ],
+   "rps_climatology": 0.22485851796875553,
+   "rps_model": 0.21471795069320687,
+   "sideways_tau_pct": 0.5,
+   "touch": {
+    "+1.0%": {
+     "brier": 0.19377976459547763,
+     "brier_climatology": 0.2529490193891982,
+     "freq": 0.4559748427672956,
+     "mean_p": 0.49809703662728877
+    },
+    "+2.0%": {
+     "brier": 0.14749721167466076,
+     "brier_climatology": 0.18656557607844818,
+     "freq": 0.24528301886792453,
+     "mean_p": 0.2610620217623808
+    },
+    "+5.0%": {
+     "brier": 0.03272068115740636,
+     "brier_climatology": 0.034117316370567724,
+     "freq": 0.03459119496855346,
+     "mean_p": 0.07517514685829421
+    },
+    "-1.0%": {
+     "brier": 0.2132032439607537,
+     "brier_climatology": 0.2488109363561917,
+     "freq": 0.5345911949685535,
+     "mean_p": 0.5074210488350734
+    },
+    "-2.0%": {
+     "brier": 0.18338519552892354,
+     "brier_climatology": 0.20157270601534613,
+     "freq": 0.279874213836478,
+     "mean_p": 0.24671154108746796
+    },
+    "-5.0%": {
+     "brier": 0.04940620302840153,
+     "brier_climatology": 0.05072077839708207,
+     "freq": 0.05345911949685535,
+     "mean_p": 0.05819496938278918
+    }
+   }
+  },
+  "selected_strategy": "rv_rev_10",
+  "test_metrics_selected": {
+   "acc_ci95": [
+    0.48281265589034794,
+    0.5917581888978957
+   ],
+   "accuracy": 0.5377358490566038,
+   "balanced_accuracy": 0.5465092486495335,
+   "brier": 0.24875605314306998,
+   "brier_skill_vs_0.5": 0.004975787427720091,
+   "cover50": 0.5031446540880503,
+   "cover80": 0.8113207547169812,
+   "coverage": 1.0,
+   "family": "rel_volume",
+   "frac_pred_up": 0.5,
+   "gross_dir_mean_bps": 2.9420448860966126,
+   "gross_dir_t": 0.2187635034288365,
+   "hypothesis": "10-min moves on high relative volume overshoot and revert.",
+   "ic_frac_pos": 0.5377358490566038,
+   "ic_mean": 0.014315252037907508,
+   "ic_t": 1.2303608147876506,
+   "kind": "rule",
+   "long_lowcost_maxdd_pct": 2.2947143087389077,
+   "long_lowcost_mean_bps": -0.2774283328138385,
+   "long_lowcost_t": -0.31125894729070397,
+   "long_lowcost_total_pct": -0.8822220983480064,
+   "long_maxdd_pct": 0.0,
+   "long_mean_bps": 0.0,
+   "long_t": 0.0,
+   "long_total_pct": 0.0,
+   "long_trades": 0,
+   "long_win_rate": null,
+   "ls_lowcost_maxdd_pct": 46.88340690993673,
+   "ls_lowcost_mean_bps": -5.961099767991439,
+   "ls_lowcost_t": -0.44341779505533646,
+   "ls_lowcost_total_pct": -18.95629726221281,
+   "ls_maxdd_pct": 89.36522935283766,
+   "ls_mean_bps": -21.961099767991442,
+   "ls_t": -1.6335815227253232,
+   "ls_total_pct": -69.83629726221281,
+   "mae_pct": 1.5025752198726179,
+   "mae_ratio_vs_no_change": 0.9996204915432041,
+   "mae_rw_pct": 1.503145676368596,
+   "majority_baseline_same_candidates": 0.5157232704402516,
+   "max_loss_streak": 7,
+   "max_win_streak": 7,
+   "mean_p_dir": 0.519045464641335,
+   "n_flat": 5,
+   "n_forecasts": 318,
+   "n_slots": 318,
+   "p_acc_gt_50": 0.09852544341167743,
+   "p_gross_dir_gt_0": 0.41341713913815314
+  },
+  "verdict": {
+   "H1_accuracy_gt_50": false,
+   "H2_gross_dir_gt_0": false,
+   "H3_long_net_gt_0": false,
+   "H4_three_class_beats_climatology": true,
+   "H5_touch_beats_climatology": true
+  }
+ },
+ {
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:04:58.134Z",
+  "experiment": "G2_60min",
+  "horizon_min": 60,
+  "n_strategies_tested": 0,
+  "prereg_id": "G2_60min-selection-v1",
+  "runner_ups": [
+   "rsi_rev_60"
+  ],
+  "selected_strategy": "rsi_rev_60",
+  "selection_rule": "Fixed: inherits the pre-registered v1 selection of B_60min (rsi_rev_60); G2 adds probability layers only.",
+  "sideways_definition": "|log return| <= 0.250%",
+  "test_hypotheses": [
+   "H1: test accuracy > 50% (binomial, alpha 0.05)",
+   "H2: test gross directional return > 0 (Newey-West, alpha 0.05)",
+   "H3: test long-only net return > 0",
+   "H4: test 3-class Brier score of the model < climatology Brier",
+   "H5: test touch-probability Brier < climatology Brier for every target"
+  ],
+  "touch_targets_pct": [
+   0.5,
+   1.0,
+   2.0
+  ],
+  "validation_metrics_selected": {
+   "acc_ci95": [
+    0.5467173345043571,
+    0.588012024053688
+   ],
+   "accuracy": 0.5674818840579711,
+   "balanced_accuracy": 0.5804172986246531,
+   "brier": 0.24611079456815826,
+   "brier_skill_vs_0.5": 0.015556821727366943,
+   "cover50": 0.4891304347826087,
+   "cover80": 0.792572463768116,
+   "coverage": 1.0,
+   "family": "mean_reversion",
+   "frac_pred_up": 0.44972826086956524,
+   "gross_dir_mean_bps": 12.786958346247244,
+   "gross_dir_t": 4.352161114222872,
+   "hypothesis": "RSI(60) overbought/oversold reverts.",
+   "ic_frac_pos": 0.5742753623188406,
+   "ic_mean": 0.04343430868317254,
+   "ic_t": 9.528236201494934,
+   "kind": "rule",
+   "long_lowcost_maxdd_pct": 0.0,
+   "long_lowcost_mean_bps": 0.28368150132817954,
+   "long_lowcost_t": 1.0018186974188963,
+   "long_lowcost_total_pct": 6.263687549326204,
+   "long_maxdd_pct": 0.0,
+   "long_mean_bps": 0.0,
+   "long_t": 0.0,
+   "long_total_pct": 0.0,
+   "long_trades": 0,
+   "long_win_rate": null,
+   "ls_lowcost_maxdd_pct": 55.77841605980447,
+   "ls_lowcost_mean_bps": 4.192302549145797,
+   "ls_lowcost_t": 1.4266290378808764,
+   "ls_lowcost_total_pct": 92.56604028513935,
+   "ls_maxdd_pct": 278.9759892992218,
+   "ls_mean_bps": -11.807697450854208,
+   "ls_t": -4.018126997378306,
+   "ls_total_pct": -260.71395971486305,
+   "mae_pct": 0.8453116474551058,
+   "mae_ratio_vs_no_change": 0.9974068222147814,
+   "mae_rw_pct": 0.8475093899779608,
+   "majority_baseline_same_candidates": 0.49320652173913043,
+   "max_loss_streak": 9,
+   "max_win_streak": 15,
+   "mean_p_dir": 0.5289511280829045,
+   "n_flat": 51,
+   "n_forecasts": 2208,
+   "n_slots": 2208,
+   "p_acc_gt_50": 1.226343676725244e-10,
+   "p_gross_dir_gt_0": 6.740106962443981e-06
+  },
+  "validation_reality_check_accuracy_p": null
+ },
+ {
+  "created_utc": "2026-11-25T06:04:59.346Z",
+  "experiment": "G2_60min",
+  "prereg_id": "G2_60min-test-result-v1",
+  "probability_layers_test": {
+   "argmax_accuracy": 0.46226415094339623,
+   "brier3_climatology": 0.6646441146495483,
+   "brier3_model": 0.6164278709662308,
+   "brier3_no_signal": 0.6171312888936412,
+   "n": 1272,
+   "outcome_freq": {
+    "DOWN": 0.3781446540880503,
+    "SIDEWAYS": 0.3050314465408805,
+    "UP": 0.3168238993710692
+   },
+   "reliability_sideways": [
+    {
+     "freq": 0.17391304347826086,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.14869721837576405,
+     "n": 460
+    },
+    {
+     "freq": 0.27102803738317754,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.2765746865306643,
+     "n": 535
+    },
+    {
+     "freq": 0.4513888888888889,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.46740562748394154,
+     "n": 144
+    },
+    {
+     "freq": 0.6704545454545454,
+     "hi": 0.8,
+     "lo": 0.6000000000000001,
+     "mean_p": 0.7022027139292117,
+     "n": 88
+    },
+    {
+     "freq": 0.8666666666666667,
+     "hi": 1.0,
+     "lo": 0.8,
+     "mean_p": 0.8558984816581242,
+     "n": 45
+    }
+   ],
+   "reliability_up": [
+    {
+     "freq": 0.09722222222222222,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.12432810923635326,
+     "n": 144
+    },
+    {
+     "freq": 0.31907090464547677,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.3424831256855547,
+     "n": 818
+    },
+    {
+     "freq": 0.4129032258064516,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.42379806218464733,
+     "n": 310
+    }
+   ],
+   "rps_climatology": 0.22629030425538946,
+   "rps_model": 0.21797089899379937,
+   "sideways_tau_pct": 0.25,
+   "touch": {
+    "+0.5%": {
+     "brier": 0.2041212703300362,
+     "brier_climatology": 0.25134531295228235,
+     "freq": 0.4937106918238994,
+     "mean_p": 0.5199487800438813
+    },
+    "+1.0%": {
+     "brier": 0.15607361524896216,
+     "brier_climatology": 0.19572863489093642,
+     "freq": 0.2665094339622642,
+     "mean_p": 0.272154553744813
+    },
+    "+2.0%": {
+     "brier": 0.06763498309858748,
+     "brier_climatology": 0.07668795345569793,
+     "freq": 0.08333333333333333,
+     "mean_p": 0.1058665785688609
+    },
+    "-0.5%": {
+     "brier": 0.20117680958329384,
+     "brier_climatology": 0.24830268693731505,
+     "freq": 0.5471698113207547,
+     "mean_p": 0.5219778199293589
+    },
+    "-1.0%": {
+     "brier": 0.17058442105014415,
+     "brier_climatology": 0.20100709778233375,
+     "freq": 0.2783018867924528,
+     "mean_p": 0.2727211069390299
+    },
+    "-2.0%": {
+     "brier": 0.07718284842962803,
+     "brier_climatology": 0.08549798506469622,
+     "freq": 0.09433962264150944,
+     "mean_p": 0.10534890406306723
+    }
+   }
+  },
+  "selected_strategy": "rsi_rev_60",
+  "test_metrics_selected": {
+   "acc_ci95": [
+    0.5039695713074264,
+    0.5587341373661268
+   ],
+   "accuracy": 0.5314465408805031,
+   "balanced_accuracy": 0.539929041414011,
+   "brier": 0.24843591929689032,
+   "brier_skill_vs_0.5": 0.006256322812438708,
+   "cover50": 0.5251572327044025,
+   "cover80": 0.7995283018867925,
+   "coverage": 1.0,
+   "family": "mean_reversion",
+   "frac_pred_up": 0.48191823899371067,
+   "gross_dir_mean_bps": 1.8185052285263357,
+   "gross_dir_t": 0.5674417625458559,
+   "hypothesis": "RSI(60) overbought/oversold reverts.",
+   "ic_frac_pos": 0.5715408805031447,
+   "ic_mean": 0.03218780564180129,
+   "ic_t": 5.350386983614184,
+   "kind": "rule",
+   "long_lowcost_maxdd_pct": 0.0,
+   "long_lowcost_mean_bps": 0.3911586483296377,
+   "long_lowcost_t": 1.325271444932931,
+   "long_lowcost_total_pct": 4.975538006752991,
+   "long_maxdd_pct": 0.0,
+   "long_mean_bps": 0.0,
+   "long_t": 0.0,
+   "long_total_pct": 0.0,
+   "long_trades": 0,
+   "long_win_rate": null,
+   "ls_lowcost_maxdd_pct": 109.20057921792792,
+   "ls_lowcost_mean_bps": -6.786683450718946,
+   "ls_lowcost_t": -2.1181485776938698,
+   "ls_lowcost_total_pct": -86.32661349314665,
+   "ls_maxdd_pct": 304.73284566756183,
+   "ls_mean_bps": -22.78668345071895,
+   "ls_t": -7.111806745073366,
+   "ls_total_pct": -289.84661349314587,
+   "mae_pct": 0.7770855691290037,
+   "mae_ratio_vs_no_change": 0.998356020511502,
+   "mae_rw_pct": 0.7783651855285737,
+   "majority_baseline_same_candidates": 0.529874213836478,
+   "max_loss_streak": 10,
+   "max_win_streak": 9,
+   "mean_p_dir": 0.5381179579734696,
+   "n_flat": 23,
+   "n_forecasts": 1272,
+   "n_slots": 1272,
+   "p_acc_gt_50": 0.013358851627421314,
+   "p_gross_dir_gt_0": 0.2852070414625597
+  },
+  "verdict": {
+   "H1_accuracy_gt_50": true,
+   "H2_gross_dir_gt_0": false,
+   "H3_long_net_gt_0": false,
+   "H4_three_class_beats_climatology": true,
+   "H5_touch_beats_climatology": true
+  }
+ },
+ {
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:05:50.679Z",
+  "experiment": "G2_10min",
+  "horizon_min": 10,
+  "n_strategies_tested": 0,
+  "prereg_id": "G2_10min-selection-v1",
+  "runner_ups": [
+   "lgbm_reg_huber"
+  ],
+  "selected_strategy": "lgbm_reg_huber",
+  "selection_rule": "Fixed: inherits the pre-registered v1 selection of A_10min (lgbm_reg_huber); G2 adds probability layers only.",
+  "sideways_definition": "|log return| <= 0.250%",
+  "test_hypotheses": [
+   "H1: test accuracy > 50% (binomial, alpha 0.05)",
+   "H2: test gross directional return > 0 (Newey-West, alpha 0.05)",
+   "H3: test long-only net return > 0",
+   "H4: test 3-class Brier score of the model < climatology Brier",
+   "H5: test touch-probability Brier < climatology Brier for every target"
+  ],
+  "touch_targets_pct": [
+   0.25,
+   0.5,
+   1.0
+  ],
+  "validation_metrics_selected": {
+   "acc_ci95": [
+    0.5142850307628815,
+    0.5312935399921448
+   ],
+   "accuracy": 0.5227958937198067,
+   "balanced_accuracy": 0.6285148149413671,
+   "brier": 0.24461434919923086,
+   "brier_skill_vs_0.5": 0.02154260320307655,
+   "cover50": 0.5391757246376812,
+   "cover80": 0.8192179951690821,
+   "coverage": 1.0,
+   "family": "tree_ml",
+   "frac_pred_up": 0.4430102657004831,
+   "gross_dir_mean_bps": 7.492063228312632,
+   "gross_dir_t": 15.970639930212757,
+   "hypothesis": "LightGBM with Huber loss (robust to fat tails).",
+   "ic_frac_pos": 0.6420591787439613,
+   "ic_mean": 0.0758785565169253,
+   "ic_t": 40.618794279073995,
+   "kind": "model",
+   "long_lowcost_maxdd_pct": 9.614749435787257,
+   "long_lowcost_mean_bps": 0.017870801207775552,
+   "long_lowcost_t": 0.15299337748507574,
+   "long_lowcost_total_pct": 2.3675237440061054,
+   "long_maxdd_pct": 1.4574538359917462,
+   "long_mean_bps": -0.011001312167812093,
+   "long_t": -1.0089895723815812,
+   "long_total_pct": -1.4574538359917462,
+   "long_trades": 2,
+   "long_win_rate": 0.0,
+   "ls_lowcost_maxdd_pct": 223.63264090279938,
+   "ls_lowcost_mean_bps": -1.1764125164538732,
+   "ls_lowcost_t": -2.510536125361534,
+   "ls_lowcost_total_pct": -155.8511301798004,
+   "ls_maxdd_pct": 2275.531130179933,
+   "ls_mean_bps": -17.176412516453876,
+   "ls_t": -36.65551286096017,
+   "ls_total_pct": -2275.531130179933,
+   "mae_pct": 0.33726130070360555,
+   "mae_ratio_vs_no_change": 0.9947410290316081,
+   "mae_rw_pct": 0.33904432496559767,
+   "majority_baseline_same_candidates": 0.4199124396135266,
+   "max_loss_streak": 10,
+   "max_win_streak": 12,
+   "mean_p_dir": 0.5247452635099726,
+   "n_flat": 2240,
+   "n_forecasts": 13248,
+   "n_slots": 13248,
+   "p_acc_gt_50": 8.037674362634346e-08,
+   "p_gross_dir_gt_0": 0.0
+  },
+  "validation_reality_check_accuracy_p": null
+ },
+ {
+  "created_utc": "2026-11-25T06:06:15.532Z",
+  "experiment": "G2_10min",
+  "prereg_id": "G2_10min-test-result-v1",
+  "probability_layers_test": {
+   "argmax_accuracy": 0.5782232704402516,
+   "brier3_climatology": 0.591390404457733,
+   "brier3_model": 0.5292099584931443,
+   "brier3_no_signal": 0.5316461929416818,
+   "n": 7632,
+   "outcome_freq": {
+    "DOWN": 0.22811844863731656,
+    "SIDEWAYS": 0.5648584905660378,
+    "UP": 0.2070230607966457
+   },
+   "reliability_sideways": [
+    {
+     "freq": 0.03125,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.16794691825659164,
+     "n": 32
+    },
+    {
+     "freq": 0.3392461197339246,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.32913787171957465,
+     "n": 1353
+    },
+    {
+     "freq": 0.4800389483933788,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.5003407366768509,
+     "n": 3081
+    },
+    {
+     "freq": 0.6375802997858673,
+     "hi": 0.8,
+     "lo": 0.6000000000000001,
+     "mean_p": 0.6909420248132285,
+     "n": 1868
+    },
+    {
+     "freq": 0.9098613251155624,
+     "hi": 1.0,
+     "lo": 0.8,
+     "mean_p": 0.9220058628516657,
+     "n": 1298
+    }
+   ],
+   "reliability_up": [
+    {
+     "freq": 0.11996280223186609,
+     "hi": 0.2,
+     "lo": 0.0,
+     "mean_p": 0.10928963313635393,
+     "n": 3226
+    },
+    {
+     "freq": 0.2682926829268293,
+     "hi": 0.4,
+     "lo": 0.2,
+     "mean_p": 0.273784896391402,
+     "n": 4346
+    },
+    {
+     "freq": 0.45,
+     "hi": 0.6000000000000001,
+     "lo": 0.4,
+     "mean_p": 0.4237815315125811,
+     "n": 60
+    }
+   ],
+   "rps_climatology": 0.17104184307015913,
+   "rps_model": 0.1599889371774337,
+   "sideways_tau_pct": 0.25,
+   "touch": {
+    "+0.25%": {
+     "brier": 0.20852922536520446,
+     "brier_climatology": 0.24756548807418885,
+     "freq": 0.4291142557651992,
+     "mean_p": 0.41531625456600135
+    },
+    "+0.5%": {
+     "brier": 0.1413259543144866,
+     "brier_climatology": 0.1608480512987476,
+     "freq": 0.20047169811320756,
+     "mean_p": 0.1886810030773565
+    },
+    "+1.0%": {
+     "brier": 0.051475856287519724,
+     "brier_climatology": 0.05610587890420003,
+     "freq": 0.05961740041928721,
+     "mean_p": 0.06544386618685057
+    },
+    "-0.25%": {
+     "brier": 0.2039024484745271,
+     "brier_climatology": 0.25033205032411776,
+     "freq": 0.46567085953878407,
+     "mean_p": 0.4314692213530955
+    },
+    "-0.5%": {
+     "brier": 0.15003800394555608,
+     "brier_climatology": 0.1738954991652007,
+     "freq": 0.22392557651991615,
+     "mean_p": 0.18970493562007956
+    },
+    "-1.0%": {
+     "brier": 0.04936428815344028,
+     "brier_climatology": 0.054235286278469005,
+     "freq": 0.057520964360587006,
+     "mean_p": 0.061229950719500985
+    }
+   }
+  },
+  "selected_strategy": "lgbm_reg_huber",
+  "test_metrics_selected": {
+   "acc_ci95": [
+    0.504112788794709,
+    0.5265321632954443
+   ],
+   "accuracy": 0.5153301886792453,
+   "balanced_accuracy": 0.5635799796332379,
+   "brier": 0.24753654678853984,
+   "brier_skill_vs_0.5": 0.009853812845840637,
+   "cover50": 0.46920859538784065,
+   "cover80": 0.7835429769392034,
+   "coverage": 1.0,
+   "family": "tree_ml",
+   "frac_pred_up": 0.36766247379454925,
+   "gross_dir_mean_bps": 3.089676796788722,
+   "gross_dir_t": 5.177665633100907,
+   "hypothesis": "LightGBM with Huber loss (robust to fat tails).",
+   "ic_frac_pos": 0.5832023060796646,
+   "ic_mean": 0.048984170491422716,
+   "ic_t": 18.859326390938087,
+   "kind": "model",
+   "long_lowcost_maxdd_pct": 4.459578457713084,
+   "long_lowcost_mean_bps": 0.2566835142531663,
+   "long_lowcost_t": 1.5489033139896309,
+   "long_lowcost_total_pct": 19.590085807801618,
+   "long_maxdd_pct": 0.0,
+   "long_mean_bps": 0.0,
+   "long_t": 0.0,
+   "long_total_pct": 0.0,
+   "long_trades": 0,
+   "long_win_rate": null,
+   "ls_lowcost_maxdd_pct": 425.2276849734659,
+   "ls_lowcost_mean_bps": -5.497176802093178,
+   "ls_lowcost_t": -9.20063999540179,
+   "ls_lowcost_total_pct": -419.54453353577554,
+   "ls_maxdd_pct": 1640.6876706227727,
+   "ls_mean_bps": -21.49717680209318,
+   "ls_t": -35.97988418314102,
+   "ls_total_pct": -1640.664533535823,
+   "mae_pct": 0.32856761962204994,
+   "mae_ratio_vs_no_change": 0.99687039312551,
+   "mae_rw_pct": 0.32959913534184176,
+   "majority_baseline_same_candidates": 0.46855345911949686,
+   "max_loss_streak": 11,
+   "max_win_streak": 14,
+   "mean_p_dir": 0.51874548211877,
+   "n_flat": 708,
+   "n_forecasts": 7632,
+   "n_slots": 7632,
+   "p_acc_gt_50": 0.0038235973103051372,
+   "p_gross_dir_gt_0": 1.1233972219137911e-07
+  },
+  "verdict": {
+   "H1_accuracy_gt_50": true,
+   "H2_gross_dir_gt_0": true,
+   "H3_long_net_gt_0": false,
+   "H4_three_class_beats_climatology": true,
+   "H5_touch_beats_climatology": true
+  }
+ },
+ {
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:09:30.503Z",
+  "definitions": {
+   "S1": {
+    "check_every": 5,
+    "cooldown": 240,
+    "div_window": 1440,
+    "rev_frac": 0.25,
+    "rev_window": 60,
+    "z_min": 2.0,
+    "z_window": 43200
+   },
+   "S2": {
+    "bar": 5,
+    "compress": 0.6,
+    "fail_tol": 0.003,
+    "hold_tol": 0.001,
+    "max_hold_min": 240,
+    "range_bars": 48,
+    "retest_bars": 24,
+    "rr": 2.0,
+    "stop": 0.005,
+    "touch_tol": 0.0015,
+    "vol_long": 2016,
+    "vol_mult": 1.2,
+    "vol_short": 48
+   },
+   "S3": {
+    "cooldown": 240,
+    "depth_mult": 1.0,
+    "drop_min": 0.025,
+    "drop_sigma": 3.0,
+    "drop_window": 30,
+    "max_hold_min": 240,
+    "recover_window": 60,
+    "retrace": 0.3,
+    "spread_mult": 1.2,
+    "stop_below_low": 0.003,
+    "taker_min": 0.55
+   }
+  },
+  "experiment": "friend_strategies",
+  "horizons_min": [
+   60,
+   240,
+   1440
+  ],
+  "notes": "Thresholds fixed before any result was computed; no tuning. S3 historical version uses a Corwin-Schultz spread ESTIMATE (no historical order books) and is labelled a proxy.",
+  "prereg_id": "friend-strategies-definitions-v1"
+ },
+ {
+  "created_utc": "2026-11-25T06:10:09.762Z",
+  "experiment": "friend_strategies",
+  "prereg_id": "friend-strategies-results-v1",
+  "summary": {
+   "S1_rs_reset_ethbtc": {
+    "test": {
+     "h240": 0.003298428501775398,
+     "signals": 32,
+     "trades_net_bps": 12.798671237784351
+    },
+    "train": {
+     "h240": -29.476522209347646,
+     "signals": 64,
+     "trades_net_bps": -52.25163742509055
+    },
+    "validation": {
+     "h240": -17.562018859727843,
+     "signals": 20,
+     "trades_net_bps": 21.6440311324663
+    }
+   },
+   "S2_breakout_retest": {
+    "test": {
+     "h240": -12.025945673001532,
+     "signals": 3666,
+     "trades_net_bps": -19.491157185452177
+    },
+    "train": {
+     "h240": -27.321240252792105,
+     "signals": 11285,
+     "trades_net_bps": -25.30980137961593
+    },
+    "validation": {
+     "h240": -28.855229322961236,
+     "signals": 5469,
+     "trades_net_bps": -26.108567435302177
+    }
+   },
+   "S3_liquidity_recovery_proxy": {
+    "test": {
+     "h240": -39.637830166352124,
+     "signals": 399,
+     "trades_net_bps": -48.901192131349084
+    },
+    "train": {
+     "h240": -28.34231709228209,
+     "signals": 991,
+     "trades_net_bps": -33.42292621591088
+    },
+    "validation": {
+     "h240": -8.711091345249464,
+     "signals": 467,
+     "trades_net_bps": -27.43248704353243
+    }
+   }
+  }
  }
 ]

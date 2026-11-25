@@ -1,0 +1,1 @@
+anthropic>=1.0  # optional: AI summaries only (paid API; off by default)

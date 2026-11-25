@@ -1,1 +1,10 @@
-[]
+[
+ {
+  "experiment": "A_10min",
+  "gap_id": "A_10min:1795585200000",
+  "reason": "no forecast in slot window (scheduler not running)",
+  "recorded_ms": 1795585888985,
+  "slot_ms": 1795585200000,
+  "slot_utc": "2026-11-25T05:40:00.000Z"
+ }
+]

@@ -47,6 +47,9 @@ def main(argv=None) -> int:
     sub.add_parser("worker")
     sub.add_parser("g2-research")
     sub.add_parser("health")
+    sv = sub.add_parser("serve")
+    sv.add_argument("--host", default="127.0.0.1")
+    sv.add_argument("--port", type=int, default=8787)
     ks = sub.add_parser("kill-switch")
     ks.add_argument("state", choices=["on", "off", "status"])
     d = sub.add_parser("daemon")
@@ -101,6 +104,9 @@ def main(argv=None) -> int:
         st = sup_status(cfg)
         print(json.dumps({k: st[k] for k in ("healthy", "heartbeat_age_s", "supervisor_alive", "worker_alive")}))
         return 0 if st["healthy"] else 1
+    elif a.cmd == "serve":
+        from cryptolab.report.server import serve
+        serve(cfg, a.host, a.port)
     elif a.cmd == "kill-switch":
         from cryptolab.live.paper import kill_switch_file
         f = kill_switch_file(cfg)

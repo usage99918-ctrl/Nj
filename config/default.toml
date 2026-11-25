@@ -183,6 +183,14 @@ approved_strategies = []
 # Every strategy also trades in its own SHADOW portfolio purely to measure it.
 shadow_strategies = ["S1_rs_reset_ethbtc", "S2_breakout_retest", "S3_liquidity_recovery_book"]
 
+# ---- Optional AI explanations (OFF by default; paid service -- requires your explicit opt-in,
+# Anthropic API credentials and `pip install -r requirements-llm.txt`). Text in, text out, no tools.
+[llm]
+enabled = false
+model = "claude-opus-5-5"
+effort = "low"
+interval_min = 60
+
 [verification]
 # Exact-timestamp verification: last trade at or before the expiry instant.
 max_trade_gap_s = 60           # last trade must be within this many seconds of expiry

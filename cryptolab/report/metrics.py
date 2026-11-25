@@ -132,8 +132,49 @@ def experiment_summary(store, name: str, seed: int = 7) -> dict:
     res["by_asset"] = sorted(({"symbol": k, "n": len(v), "accuracy": float(np.mean(v))} for k, v in by_sym.items()),
                              key=lambda d: -d["n"])
     res["by_market_condition"] = [{"regime": k, "n": len(v), "accuracy": float(np.mean(v))} for k, v in by_reg.items()]
+    # ---- generation-2 probability layers (only for forecasts that carry them)
+    g2 = [(f, o) for f, o in scored if o.get("brier3") is not None]
+    if g2:
+        b3 = np.array([o["brier3"] for _, o in g2])
+        cls = Counter(o["actual_class3"] for _, o in g2)
+        res["three_class"] = {"n": len(g2), "brier3": float(b3.mean()), "outcomes": dict(cls),
+                              "argmax_accuracy": float(np.mean([o["argmax_class3_correct"] for _, o in g2])),
+                              "uniform_brier3": 2 / 3}
+    tb: dict[str, list] = {}
+    for f, o in scored:
+        for k, v in (o.get("touch_results") or {}).items():
+            tb.setdefault(k, []).append((v["p"], 1.0 if v["hit"] else 0.0))
+    if tb:
+        res["touch"] = {k: {"n": len(v), "mean_p": float(np.mean([a for a, _ in v])),
+                            "hit_rate": float(np.mean([b for _, b in v])),
+                            "brier": float(np.mean([(a - b) ** 2 for a, b in v]))} for k, v in sorted(tb.items())}
     res["sample_size_note"] = _sample_note(len(scored))
     return res
+
+
+def kalshi_pairs(store) -> dict:
+    """Paired live comparison of the Kalshi arms (only windows where BOTH arms forecast)."""
+    out = {}
+    for asset in ("BTC", "ETH"):
+        a = {f["slot_ms"]: f for f in store.rows("forecasts", "experiment=?", (f"KX_{asset}_without",))}
+        b = {f["slot_ms"]: f for f in store.rows("forecasts", "experiment=?", (f"KX_{asset}_with",))}
+        outs = {o["forecast_id"]: o for o in store.rows("outcomes") if o["experiment"].startswith(f"KX_{asset}")}
+        rows = []
+        for slot in sorted(set(a) & set(b)):
+            oa, ob = outs.get(a[slot]["forecast_id"]), outs.get(b[slot]["forecast_id"])
+            if not oa or not ob or "p1" not in oa or "p1" not in ob:
+                continue
+            up = 1.0 if oa["actual_direction"] == "UP" else 0.0
+            rows.append(((a[slot]["p_up"] - up) ** 2, (b[slot]["p_up"] - up) ** 2, oa["correct"], ob["correct"]))
+        if rows:
+            ba, bb = np.array([r[0] for r in rows]), np.array([r[1] for r in rows])
+            out[asset] = {"paired_windows": len(rows), "brier_without": float(ba.mean()), "brier_with": float(bb.mean()),
+                          "accuracy_without": float(np.mean([r[2] for r in rows])),
+                          "accuracy_with": float(np.mean([r[3] for r in rows])),
+                          "note": _sample_note(len(rows))}
+        else:
+            out[asset] = {"paired_windows": 0}
+    return out
 
 
 def _sample_note(n: int) -> str:

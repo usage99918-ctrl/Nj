@@ -50,5 +50,145 @@
   "strategy": "lgbm_reg_huber",
   "trained_through": "2026-11-22",
   "version": "A_10min-v1-lgbm_reg_huber"
+ },
+ {
+  "calibration": {
+   "a_dir": 0.16712653029592883,
+   "b": 0.11512783527633963,
+   "b_dir": -0.19139395224998967,
+   "n_pool": 9688,
+   "n_sel_pool": 314,
+   "q10": -1.3837668205911542,
+   "q25": -0.7351155720907521,
+   "q75": 0.45560788231404065,
+   "q90": 1.0960311496877946
+  },
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:02:54.804Z",
+  "experiment": "G2_1440min",
+  "family": "rel_volume",
+  "horizon_min": 1440,
+  "hypothesis": "Low-volume 60-min drifts persist (no informed opposition).",
+  "kind": "rule",
+  "model_file": "G2_1440min_v1.pkl",
+  "model_sha256": "99006c204695e619a25cde5e3285d3bd5e1e5a3c459285852d0c77a21503d178",
+  "prob_layers_summary": {
+   "n": 258,
+   "targets": [
+    0.02,
+    0.05,
+    0.1
+   ],
+   "tau": 0.01224744871391589
+  },
+  "selection_prereg": "G2_1440min-selection-v1",
+  "strategy": "quiet_drift",
+  "trained_through": "2026-11-22",
+  "version": "G2_1440min-v1-quiet_drift"
+ },
+ {
+  "calibration": {
+   "a_dir": 0.07358137162566027,
+   "b": 0.007054816088082585,
+   "b_dir": 0.5201468063354815,
+   "n_pool": 58278,
+   "n_sel_pool": 1949,
+   "q10": -1.1225633138950033,
+   "q25": -0.5734745394263449,
+   "q75": 0.49779423410537654,
+   "q90": 1.083061437851768
+  },
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:04:56.032Z",
+  "experiment": "G2_240min",
+  "family": "rel_volume",
+  "horizon_min": 240,
+  "hypothesis": "10-min moves on high relative volume overshoot and revert.",
+  "kind": "rule",
+  "model_file": "G2_240min_v1.pkl",
+  "model_sha256": "608f1c9f43438a7909a2b93ed84242e04d0c1363cb35ff3856198a483a425df8",
+  "prob_layers_summary": {
+   "n": 1602,
+   "targets": [
+    0.01,
+    0.02,
+    0.05
+   ],
+   "tau": 0.005
+  },
+  "selection_prereg": "G2_240min-selection-v1",
+  "strategy": "rv_rev_10",
+  "trained_through": "2026-11-22",
+  "version": "G2_240min-v1-rv_rev_10"
+ },
+ {
+  "calibration": {
+   "a_dir": 0.14987109563299406,
+   "b": 0.005414106532494527,
+   "b_dir": 0.3214745523498371,
+   "n_pool": 233205,
+   "n_sel_pool": 7799,
+   "q10": -1.2178351974685337,
+   "q25": -0.625014617856301,
+   "q75": 0.5469851091634043,
+   "q90": 1.156889349044043
+  },
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:04:59.267Z",
+  "experiment": "G2_60min",
+  "family": "mean_reversion",
+  "horizon_min": 60,
+  "hypothesis": "RSI(60) overbought/oversold reverts.",
+  "kind": "rule",
+  "model_file": "G2_60min_v1.pkl",
+  "model_sha256": "1646bbf143f18b1164e6af014e732dc54d1660f368f77f97338652eaec285ae0",
+  "prob_layers_summary": {
+   "n": 6408,
+   "targets": [
+    0.005,
+    0.01,
+    0.02
+   ],
+   "tau": 0.0025
+  },
+  "selection_prereg": "G2_60min-selection-v1",
+  "strategy": "rsi_rev_60",
+  "trained_through": "2026-11-22",
+  "version": "G2_60min-v1-rsi_rev_60"
+ },
+ {
+  "calibration": {
+   "a_dir": -0.0348130217124879,
+   "b": 0.4061313166598147,
+   "b_dir": 2.4868722490276833,
+   "n_pool": 1148850,
+   "n_sel_pool": 38448,
+   "q10": -1.0749645868839108,
+   "q25": -0.49535875318528616,
+   "q75": 0.48454608461100557,
+   "q90": 1.0947289816691486
+  },
+  "code_commit": "bf9b7fedddd1a7818451f5b73b38478089c1667a",
+  "created_utc": "2026-11-25T06:06:15.286Z",
+  "experiment": "G2_10min",
+  "family": "tree_ml",
+  "horizon_min": 10,
+  "hypothesis": "LightGBM with Huber loss (robust to fat tails).",
+  "kind": "model",
+  "model_file": "G2_10min_v1.pkl",
+  "model_sha256": "df255540cb939638cb9c810fc41072d7c774fc429ddf31b9376bbad0c7114be4",
+  "prob_layers_summary": {
+   "n": 38448,
+   "targets": [
+    0.0025,
+    0.005,
+    0.01
+   ],
+   "tau": 0.0025
+  },
+  "selection_prereg": "G2_10min-selection-v1",
+  "strategy": "lgbm_reg_huber",
+  "trained_through": "2026-11-22",
+  "version": "G2_10min-v1-lgbm_reg_huber"
  }
 ]

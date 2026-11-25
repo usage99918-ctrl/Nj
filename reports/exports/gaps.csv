@@ -1,1 +1,2 @@
 gap_id,experiment,slot_utc,reason
+A_10min:1795585200000,A_10min,2026-11-25T05:40:00.000Z,no forecast in slot window (scheduler not running)
