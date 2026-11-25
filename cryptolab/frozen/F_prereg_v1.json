@@ -1,0 +1,29 @@
+{
+  "prereg_id": "F-v1-prereg",
+  "experiment": "F (F72_doubling)",
+  "written_before": "any examination of the 2026-05-01..2026-11-21 test decisions (authoritative time = the git commit that adds this file)",
+  "question": "Within 72 hours, will a coin (a) touch 2x its start price at any time, (b) be >= 2x exactly at 72 h, and (c) can $20 CAD become >= $40 CAD net after costs? The model is allowed to say that no coin will double.",
+  "research_data": {
+    "source": "daily candles of every USDT spot market on Binance (including delisted pairs), MEXC and Gate (current pairs only: survivorship bias noted), 2025-01-01..2026-11-23",
+    "decision": "00:00 UTC of day d; entry = open of day d; features use days <= d-1 only",
+    "eligibility": "previous-day quote volume >= $100,000 (a $20 order must be executable)",
+    "missing_days": "any missing day in the 72 h window -> dropped, never a hit or a miss",
+    "duplicates": "the same coin can trade on several venues; event counts are reported per market and per unique coin"
+  },
+  "events": {
+    "touch_2x": "max(high of days d, d+1, d+2) >= 2.0 x entry",
+    "finish_2x": "close of day d+2 (= price at 72 h) >= 2.0 x entry",
+    "net_20_to_40_cad": "same as touch/finish with M = 2.0303 (FX 0.5%/side, taker fee 0.10%/side, half-spread 0.10%, slippage 0.05%); live M recomputed per candidate from the live book, live CAD rate and venue fee"
+  },
+  "split": {"training": "decisions 2025-02-01..2025-12-31", "validation_for_C": "2026-01-01..2026-04-30",
+            "untouched_test": "2026-05-01..2026-11-21", "live_model": "refit on everything after the test, same C"},
+  "model": "L2 logistic regression (RareEventLogit) pooled over thresholds {1.1,1.25,1.5,1.75,2.0,2.5,3.0}; separate models for touch and finish; inputs: ln standardized distance ln(ln M/(sigma_daily30*sqrt 3)), ln ln M, ln sigma30, ln sigma7/sigma30, z returns 1/7/30 d, ln volume, ln volume trend, ln listing age, distance from 30-d high, distance from all-time high (within data), previous-day range, venue indicators; case-control sampling; C in {0.01,0.1,1} by validation log loss",
+  "price_forecast": "most likely 72 h price = entry x exp(median z x sigma30 x sqrt 3); 50/80/95% intervals from empirical quantiles of ln(P72/P0)/(sigma30 sqrt 3) in training",
+  "overlap": "daily decisions with a 3-day horizon overlap; PRIMARY metrics use non-overlapping decisions (every 3rd day); all-days results are secondary",
+  "baselines": ["climatology per venue", "random market", "momentum (largest 7-d return)", "mean reversion (largest 30-d drop)", "highest volatility", "newest listing", "largest volume surge", "always-NO (reported only)"],
+  "metrics": ["Brier skill vs climatology", "log loss", "observed vs expected events (Poisson CI)", "calibration bins (Wilson CI)", "PR-AUC", "top-1 and top-10 hit rates per decision day vs baselines", "P(any market doubles) per day: observed vs model", "interval coverage"],
+  "qualification_rule_live": "QUALIFIES only if calibrated P(touch the net $40 target within 72 h) >= 0.50 AND venue supports trade-level verification AND the live book fills the $20 CAD entry with slippage <= 1.0% and spread <= 1.0% AND 24 h volume >= $100,000 AND data fresh. Otherwise: NO QUALIFYING OPPORTUNITY FOUND. Top-10 candidates are recorded with probabilities either way.",
+  "live_schedule": "one forecast per day at 00:10 UTC (start window 2 h), expiry exactly 72 h after the frozen origin time",
+  "live_verification": "TOUCHED only if a seller-initiated trade printed at >= target inside (origin, expiry] (minutes located from 1-min candle highs, then confirmed by trades); NOT TOUCHED if every candle high is below target; value at 72 h = last seller-initiated trade at or before expiry; missing data -> UNVERIFIABLE (never a win)",
+  "not_claimed": "No claim that any coin will double. No real trades."
+}
