@@ -43,7 +43,7 @@ th{text-align:left;font-weight:600;color:var(--ink-2);border-bottom:1px solid va
 td{border-bottom:1px solid var(--grid);padding:5px 8px;white-space:nowrap} td.num,th.num{text-align:right}
 tr.sel td{background:var(--sel)} tr.sep td{color:var(--muted);text-align:center;font-size:.8rem}
 .kv{display:grid;grid-template-columns:minmax(120px,auto) 1fr;gap:4px 14px;margin:6px 0}
-.kv dt{color:var(--ink-2)} .kv dd{margin:0;min-width:0;overflow-wrap:anywhere} .kv.compact{font-size:.86rem}
+.kv dt{color:var(--ink-2)} .kv dd{margin:0;min-width:0;overflow-wrap:anywhere} .kv.compact{font-size:.86rem} .kv dd .muted,.kv dd .small{font-family:var(--f-body)}
 .pill{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--border);border-radius:999px;padding:1px 8px;font-size:.78rem;white-space:nowrap}
 .pill-good{border-color:var(--good);color:var(--good-ink)} .pill-crit{border-color:var(--crit);color:var(--crit)}
 .pill-warn{border-color:var(--warn)} .pill-neutral{color:var(--ink-2)}
@@ -73,10 +73,10 @@ footer{color:var(--muted);font-size:.8rem}
 
 <div class="wrap">
 <header><div><h1>Claude Crypto Research Lab</h1>
-<div class="sub small">Independent forecasting experiments on public crypto market data · paper trading only · generated 2026-11-25 05:15:00 UTC</div></div>
+<div class="sub small">Independent forecasting experiments on public crypto market data · paper trading only · generated 2026-11-25 05:24:22 UTC</div></div>
 <div><span class="pill pill-info"><span aria-hidden="true">i</span> no real trading</span> <span class="pill pill-good"><span aria-hidden="true">✓</span> ledger intact</span></div></header>
-<section class="panel verdict" aria-labelledby="verdict-h"><h2 id="verdict-h">Bottom line</h2><ul><li><b>10-minute backtest</b> (pre-registered model <code>lgbm_reg_huber</code>, chosen from 100 strategies on validation data): some statistically significant directional signal on the untouched test period, but it did <b>not</b> survive realistic trading costs. Test accuracy 51.5% (95% CI 50.4–52.7%, n=7632, p = 0.004); validation reality-check p <0.001.</li><li><b>60-minute backtest</b> (pre-registered model <code>rsi_rev_60</code>, chosen from 100 strategies on validation data): some statistically significant directional signal on the untouched test period, but it did <b>not</b> survive realistic trading costs. Test accuracy 53.1% (95% CI 50.4–55.9%, n=1272, p = 0.013); validation reality-check p <0.001.</li><li><b>10-minute forward test:</b> 1 forecasts frozen, none scored yet.</li><li><b>60-minute forward test:</b> 1 forecasts frozen, none scored yet.</li></ul><p class="muted small">Backtests are never counted as forward predictions. A predictive advantage is only claimed when the pre-registered test hypotheses pass; small forward samples are reported but not interpreted as skill.</p></section>
-<section class="tiles"><div class="tile"><div class="tile-label">Markets screened (last scan)</div><div class="tile-value">11,785</div><div class="tile-sub">8 exchanges · 132 passed quality checks · 22 analyzed for prediction</div></div><div class="tile"><div class="tile-label">Strategies evaluated</div><div class="tile-value">200</div><div class="tile-sub">100 configurations × 2 horizons + 6 baselines each</div></div><div class="tile"><div class="tile-label">10-min forecasts</div><div class="tile-value">1</div><div class="tile-sub">0 correct / 0 scored · 1 pending · 0 gaps</div></div><div class="tile"><div class="tile-label">60-min forecasts</div><div class="tile-value">1</div><div class="tile-sub">0 correct / 0 scored · 1 pending · 0 gaps</div></div></section>
+<section class="panel verdict" aria-labelledby="verdict-h"><h2 id="verdict-h">Bottom line</h2><ul><li><b>10-minute backtest</b> (pre-registered model <code>lgbm_reg_huber</code>, chosen from 100 strategies on validation data): some statistically significant directional signal on the untouched test period, but it did <b>not</b> survive realistic trading costs. Test accuracy 51.5% (95% CI 50.4–52.7%, n=7632, p = 0.004); validation reality-check p <0.001.</li><li><b>60-minute backtest</b> (pre-registered model <code>rsi_rev_60</code>, chosen from 100 strategies on validation data): some statistically significant directional signal on the untouched test period, but it did <b>not</b> survive realistic trading costs. Test accuracy 53.1% (95% CI 50.4–55.9%, n=1272, p = 0.013); validation reality-check p <0.001.</li><li><b>10-minute forward test:</b> 1/1 directions correct (100.0%, 95% CI 20.7–100.0%). n=1: far too small for any conclusion; results are anecdotal.</li><li><b>60-minute forward test:</b> 1 forecast frozen, none scored yet.</li></ul><p class="muted small">Backtests are never counted as forward predictions. A predictive advantage is only claimed when the pre-registered test hypotheses pass; small forward samples are reported but not interpreted as skill.</p></section>
+<section class="tiles"><div class="tile"><div class="tile-label">Markets screened (last scan)</div><div class="tile-value">11,785</div><div class="tile-sub">8 exchanges · 128 passed quality checks · 22 analyzed for prediction</div></div><div class="tile"><div class="tile-label">Strategies evaluated</div><div class="tile-value">200</div><div class="tile-sub">100 configurations × 2 horizons + 6 baselines each</div></div><div class="tile"><div class="tile-label">10-min forecasts</div><div class="tile-value">2</div><div class="tile-sub">1 correct / 1 scored · 1 pending · 0 gaps</div></div><div class="tile"><div class="tile-label">60-min forecasts</div><div class="tile-value">1</div><div class="tile-sub">0 correct / 0 scored · 1 pending · 0 gaps</div></div></section>
 <div class="grid2">
 <section class="panel exp" aria-labelledby="exp-A">
   <h2 id="exp-A">Experiment A · 10-minute forecasts</h2>
@@ -86,33 +86,44 @@ footer{color:var(--muted);font-size:.8rem}
   
 <div class="fcard">
   <div class="fhead"><span class="sym">MMT/USDT</span><span class="dir dir-down">▼ DOWN</span>
-  <span class="muted">test #1 · binance</span></div>
-  <div class="status-row"><span class="pill pill-neutral"><span aria-hidden="true">•</span> pending — expires 2026-11-25 05:23:02 UTC</span></div>
+  <span class="muted">test #2 · binance</span></div>
+  <div class="status-row"><span class="pill pill-neutral"><span aria-hidden="true">•</span> pending — expires 2026-11-25 05:30:13 UTC</span></div>
   <dl class="kv">
-    <dt>Frozen at</dt><dd class="mono">2026-11-25 05:13:02 UTC</dd>
-    <dt>Expires</dt><dd class="mono">2026-11-25 05:23:02 UTC</dd>
-    <dt>Reference trade</dt><dd class="mono">0.2322 @ 2026-11-25 05:13:02 UTC</dd>
-    <dt>Predicted price</dt><dd class="mono">0.232054 (-0.063%)</dd>
-    <dt>P(direction correct)</dt><dd class="mono">52.5% <span class="muted small">(backtest-calibrated, forward-unvalidated)</span></dd>
-    <dt>50% range</dt><dd class="mono">0.230718 – 0.233368</dd>
-    <dt>80% range</dt><dd class="mono">0.229165 – 0.235033</dd>
-    <dt>Round-trip cost</dt><dd class="mono">0.347% <span class="muted small">(fee 0.10%/side, half-spread 4.31 bp, slippage 3.02 bp)</span></dd>
-    <dt>Expected net (long)</dt><dd class="mono">-0.410%</dd>
+    <dt>Frozen at</dt><dd class="mono">2026-11-25 05:20:13 UTC</dd>
+    <dt>Expires</dt><dd class="mono">2026-11-25 05:30:13 UTC</dd>
+    <dt>Reference trade</dt><dd class="mono">0.2352 @ 2026-11-25 05:20:12 UTC</dd>
+    <dt>Predicted price</dt><dd class="mono">0.235056 (-0.061%)</dd>
+    <dt>P(direction correct)</dt><dd class="mono">52.3% <span class="muted small">(backtest-calibrated, forward-unvalidated)</span></dd>
+    <dt>50% range</dt><dd class="mono">0.233653 – 0.236436</dd>
+    <dt>80% range</dt><dd class="mono">0.232023 – 0.238186</dd>
+    <dt>Round-trip cost</dt><dd class="mono">0.312% <span class="muted small">(fee 0.10%/side, half-spread 4.25 bp, slippage 1.37 bp)</span></dd>
+    <dt>Expected net (long)</dt><dd class="mono">-0.374%</dd>
     <dt>Trading opportunity?</dt><dd>NO - expected move is smaller than estimated round-trip costs; spot action = stay in cash</dd>
     <dt>Coins examined</dt><dd class="mono">22 analyzed · 11,785 markets screened</dd>
     <dt>Model</dt><dd class="mono">A_10min-v1-lgbm_reg_huber</dd>
   </dl>
   <div class="evidence">
-    <div><h4>Evidence for</h4><ul><li>Model signal (lgbm_reg_huber): z = -0.13, strongest of 22 coins; LightGBM with Huber loss (robust to fat tails).</li><li>10-min move (short-term reversal view): +0.61% over 10 min; large moves tend to partly revert</li><li>Trend MA(60) vs MA(1440): MA60 below 24h MA</li><li>Perp liquidations last hour (OKX, contrarian): 29 liquidations: longs 0 vs shorts 3,772 contracts (forced selling often overshoots)</li><li>Binance premium vs other exchanges: +21.6 bps (premiums tend to converge)</li></ul></div>
-    <div><h4>Evidence against</h4><ul><li>60-min momentum: +2.59% over 60 min</li><li>MACD histogram: positive</li><li>Taker buy imbalance (60m): +6.4 pp vs 50%</li><li>Order book imbalance (+/-10 bps): +0.37 (bid minus ask depth share)</li><li>Fear &amp; Greed index (daily, contrarian): 13 (Extreme Fear)</li></ul></div>
+    <div><h4>Evidence for</h4><ul><li>Model signal (lgbm_reg_huber): z = -0.12, strongest of 22 coins; LightGBM with Huber loss (robust to fat tails).</li><li>RSI(60, 1m): 63.0 (mean-reversion view: &lt;40 oversold, &gt;60 overbought)</li><li>10-min move (short-term reversal view): +2.15% over 10 min; large moves tend to partly revert</li><li>Trend MA(60) vs MA(1440): MA60 below 24h MA</li><li>RSI(14, 1m): 73.3 (overbought)</li><li>Bollinger %B(60): 1.08 (below lower band &lt;0, above upper &gt;1)</li><li>Order book imbalance (+/-10 bps): -0.51 (bid minus ask depth share)</li><li>Perp liquidations last hour (OKX, contrarian): 37 liquidations: longs 0 vs shorts 6,828 contracts (forced selling often overshoots)</li></ul></div>
+    <div><h4>Evidence against</h4><ul><li>60-min momentum: +4.43% over 60 min</li><li>MACD histogram: positive</li><li>Taker buy imbalance (60m): +9.9 pp vs 50%</li><li>Binance premium vs other exchanges: -21.2 bps (premiums tend to converge)</li><li>Fear &amp; Greed index (daily, contrarian): 13 (Extreme Fear)</li></ul></div>
   </div>
 </div>
   <h3>Forward results</h3>
-  <p class="muted">No forecast has expired and been verified yet.</p>
   
+<dl class="kv compact">
+  <dt>Mean abs. price error</dt><dd class="num">0.718% vs no-change 0.781% (ratio 0.919)</dd>
+  <dt>50% / 80% interval coverage</dt><dd class="num">0.0% / 100.0%</dd>
+  <dt>Brier score (skill vs 0.5)</dt><dd class="num">0.2257 (9.7%)</dd>
+  <dt>Balanced accuracy</dt><dd class="num">–</dd>
+  <dt>Paper spot long-only</dt><dd class="num">0 trades · net 0.000% of notional · max DD 0.000%</dd>
+  <dt>Hypothetical direction bets</dt><dd class="num">gross 0.775% · net 0.428% (1 theoretical shorts)</dd>
+  <dt>Buy &amp; hold same windows</dt><dd class="num">gross -0.775% · net -1.122%</dd>
+  <dt>Win / loss streaks</dt><dd class="num">1 / 0</dd>
+  <dt>Flat / approximate outcomes</dt><dd class="num">0 / 0</dd>
+</dl>
+  <div class="tablewrap"><table><thead><tr><th>Direction rule (same windows)</th><th>Correct</th><th>Accuracy</th><th>95% CI</th><th>p vs 50%</th></tr></thead><tbody><tr><td>This model</td><td class='num'>1/1</td><td class='num'>100.0%</td><td class='num'>20.7–100.0%</td><td class='num'>0.500</td></tr><tr><td>random direction(seeded)</td><td class='num'>1/1</td><td class='num'>100.0%</td><td class='num'>20.7–100.0%</td><td class='num'>0.500</td></tr><tr><td>always up</td><td class='num'>0/1</td><td class='num'>0.0%</td><td class='num'>0.0–79.3%</td><td class='num'>1.000</td></tr><tr><td>always down</td><td class='num'>1/1</td><td class='num'>100.0%</td><td class='num'>20.7–100.0%</td><td class='num'>0.500</td></tr><tr><td>simple momentum</td><td class='num'>0/1</td><td class='num'>0.0%</td><td class='num'>0.0–79.3%</td><td class='num'>1.000</td></tr><tr><td>simple mean reversion</td><td class='num'>1/1</td><td class='num'>100.0%</td><td class='num'>20.7–100.0%</td><td class='num'>0.500</td></tr></tbody></table></div>
   
   <h3>Recent forecasts</h3>
-  <div class="tablewrap"><table><thead><tr><th>#</th><th>Frozen (UTC)</th><th>Pair</th><th>Call</th><th>Price</th><th>Predicted</th><th>P(dir)</th><th>Actual</th><th>Result</th></tr></thead><tbody><tr><td class='num'>1</td><td class='mono'>05:13:02 UTC</td><td>MMT/USDT</td><td>DOWN</td><td class='num'>0.2322</td><td class='num'>0.232054</td><td class='num'>52.5%</td><td class='num'>–</td><td><span class="pill pill-neutral"><span aria-hidden="true">•</span> pending</span></td></tr></tbody></table></div>
+  <div class="tablewrap"><table><thead><tr><th>#</th><th>Frozen (UTC)</th><th>Pair</th><th>Call</th><th>Price</th><th>Predicted</th><th>P(dir)</th><th>Actual</th><th>Result</th></tr></thead><tbody><tr><td class='num'>2</td><td class='mono'>05:20:13 UTC</td><td>MMT/USDT</td><td>DOWN</td><td class='num'>0.2352</td><td class='num'>0.235056</td><td class='num'>52.3%</td><td class='num'>–</td><td><span class="pill pill-neutral"><span aria-hidden="true">•</span> pending</span></td></tr><tr><td class='num'>1</td><td class='mono'>05:13:02 UTC</td><td>MMT/USDT</td><td>DOWN</td><td class='num'>0.2322</td><td class='num'>0.232054</td><td class='num'>52.5%</td><td class='num'>0.2304 (-0.775%)</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> correct</span></td></tr></tbody></table></div>
 </section>
 <section class="panel exp" aria-labelledby="exp-B">
   <h2 id="exp-B">Experiment B · 60-minute forecasts</h2>
@@ -216,14 +227,14 @@ footer{color:var(--muted);font-size:.8rem}
 <section class="panel" aria-labelledby="ops-h">
   <h2 id="ops-h">Workers, data quality and integrity</h2>
   <dl class="kv compact">
-    <dt>Local worker</dt><dd><span class="pill pill-good"><span aria-hidden="true">✓</span> running</span> <span class="muted small">pid 199, last heartbeat 3 s ago</span></dd>
-    <dt>Ledger</dt><dd><span class="pill pill-good"><span aria-hidden="true">✓</span> hash chain intact</span> <span class="mono small">10 records · head 41a9f23f0cc1cd32…</span></dd>
+    <dt>Local worker</dt><dd><span class="pill pill-good"><span aria-hidden="true">✓</span> running</span> <span class="muted small">pid 199, last heartbeat 4 s ago</span></dd>
+    <dt>Ledger</dt><dd><span class="pill pill-good"><span aria-hidden="true">✓</span> hash chain intact</span> <span class="mono small">13 records · head 2b28a7a774983d70…</span></dd>
     <dt>HTTP failures (this worker)</dt><dd class="mono small">none</dd>
     <dt>Scan warnings</dt><dd class="small">none</dd>
-    <dt>Quality rejections</dt><dd class="small">coarse tick 10, excluded asset type 646, low 24h volume 6,188, no price 3, non-USD quote 2,252, not trading 2,444, price-banded (stablecoin/tokenized equity) 93, wide spread 17</dd>
+    <dt>Quality rejections</dt><dd class="small">coarse tick 9, excluded asset type 646, low 24h volume 6,188, no price 3, non-USD quote 2,252, not trading 2,444, price-banded (stablecoin/tokenized equity) 93, wide spread 22</dd>
   </dl>
   <div class="tablewrap"><table><thead><tr><th>Exchange</th><th>Status</th><th>Markets</th><th>Passed checks</th><th>Seconds</th></tr></thead>
-  <tbody><tr><td>binance</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>3,711</td><td class='num'>30</td><td class='num'>5.04</td></tr><tr><td>bitfinex</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>290</td><td class='num'>5</td><td class='num'>0.33</td></tr><tr><td>bitstamp</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>272</td><td class='num'>5</td><td class='num'>0.46</td></tr><tr><td>gate</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>2,159</td><td class='num'>18</td><td class='num'>1.71</td></tr><tr><td>kraken</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>1,436</td><td class='num'>10</td><td class='num'>0.46</td></tr><tr><td>kucoin</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>969</td><td class='num'>25</td><td class='num'>0.86</td></tr><tr><td>mexc</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>1,698</td><td class='num'>17</td><td class='num'>0.72</td></tr><tr><td>okx</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>1,250</td><td class='num'>22</td><td class='num'>0.86</td></tr></tbody></table></div>
+  <tbody><tr><td>binance</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>3,711</td><td class='num'>30</td><td class='num'>1.88</td></tr><tr><td>bitfinex</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>290</td><td class='num'>5</td><td class='num'>0.34</td></tr><tr><td>bitstamp</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>272</td><td class='num'>5</td><td class='num'>0.38</td></tr><tr><td>gate</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>2,159</td><td class='num'>17</td><td class='num'>1.46</td></tr><tr><td>kraken</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>1,436</td><td class='num'>10</td><td class='num'>0.41</td></tr><tr><td>kucoin</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>969</td><td class='num'>24</td><td class='num'>0.59</td></tr><tr><td>mexc</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>1,698</td><td class='num'>16</td><td class='num'>0.61</td></tr><tr><td>okx</td><td><span class="pill pill-good"><span aria-hidden="true">✓</span> ok</span></td><td class='num'>1,250</td><td class='num'>21</td><td class='num'>0.54</td></tr></tbody></table></div>
 </section>
 
 <section class="panel small" aria-labelledby="m-h">

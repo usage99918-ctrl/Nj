@@ -66,3 +66,15 @@ selection must be versioned (v2) and evaluated only on forecasts made after it i
 | `data/raw/`, `data/cache/`, `data/run/` | downloaded history and caches (regenerable) | no |
 | `reports/` | dashboard (HTML), summary JSON, CSV/JSON exports | yes |
 | `logs/` | worker logs | no |
+
+## Current state (2026-11-25)
+
+- Running: `cryptolab daemon` inside the Claude Code cloud session that built this project
+  (both experiments since 05:13 UTC), plus an hourly Claude scheduled task in that session
+  ("Crypto lab hourly watchdog") that restarts the daemon if it died, audits the ledger and
+  republishes the dashboard. Both depend on that session's container. They are a stopgap,
+  not a guaranteed 24/7 service.
+- Not running: the GitHub Actions workflow. It exists as code, but pushing to GitHub was
+  refused (403, Claude GitHub App access) during the build, so it has never executed.
+- To stop the stopgap: delete the scheduled task in the Claude app (or ask Claude to delete
+  trigger `trig_01XnYpnWESES5gEEfw7FjFdr`) and run `python -m cryptolab daemon stop`.

@@ -1,20 +1,165 @@
 {
- "generated_utc": "2026-11-25T05:15:00.278Z",
+ "generated_utc": "2026-11-25T05:24:22.341Z",
  "forward": {
   "A": {
    "experiment": "A_10min",
-   "forecasts": 1,
+   "forecasts": 2,
    "gaps": 0,
    "gap_reasons": {},
    "status_counts": {
+    "VERIFIED": 1,
     "PENDING": 1
    },
-   "scored": 0,
+   "scored": 1,
    "first_forecast_utc": "2026-11-25T05:13:02.956Z",
-   "last_forecast_utc": "2026-11-25T05:13:02.956Z",
+   "last_forecast_utc": "2026-11-25T05:20:13.506Z",
    "model_versions": [
     "A_10min-v1-lgbm_reg_huber"
-   ]
+   ],
+   "accuracy": {
+    "k": 1,
+    "n": 1,
+    "rate": 1.0,
+    "ci95": [
+     0.20654329147389294,
+     1.0
+    ],
+    "p_vs_50": 0.5
+   },
+   "flat_outcomes": 0,
+   "approximate_outcomes": 0,
+   "balanced_accuracy": null,
+   "frac_pred_up": 0.0,
+   "mean_abs_pred_error_pct": 0.7177584420801963,
+   "mean_no_change_error_pct": 0.78125,
+   "error_ratio_vs_no_change": 0.9187308058626513,
+   "coverage_pi50": {
+    "k": 0,
+    "n": 1,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.7934567085261071
+    ],
+    "p_vs_50": 1.0
+   },
+   "coverage_pi80": {
+    "k": 1,
+    "n": 1,
+    "rate": 1.0,
+    "ci95": [
+     0.20654329147389294,
+     1.0
+    ],
+    "p_vs_50": 0.5
+   },
+   "brier": 0.22571726486586507,
+   "brier_skill_vs_0.5": 0.0971309405365397,
+   "reliability": [
+    {
+     "lo": 0.4,
+     "hi": 0.6000000000000001,
+     "n": 1,
+     "mean_p": 0.4750971109845492,
+     "freq": 0.0
+    }
+   ],
+   "mean_p_direction": 0.5249028890154508,
+   "max_win_streak": 1,
+   "max_loss_streak": 0,
+   "paper_long_only": {
+    "trades": 0,
+    "total_net_pct_of_notional": 0.0,
+    "win_rate": null,
+    "max_drawdown_pct_of_notional": 0.0,
+    "note": "Spot long-only: positions only when the frozen forecast was UP with expected move > costs."
+   },
+   "hypothetical_direction_bets": {
+    "gross_total_pct": 0.7751937984496138,
+    "net_total_pct": 0.42820554650087284,
+    "mean_net_bps": 42.82055465008728,
+    "max_drawdown_net_pct": 0.0,
+    "short_count": 1,
+    "note": "Trades every forecast in its predicted direction. Shorts are theoretical (margin/borrow) and NOT executable on spot."
+   },
+   "gross_direction_return": {
+    "mean_bps": null,
+    "t_stat": NaN,
+    "p_gt_0": NaN
+   },
+   "benchmarks_accuracy": {
+    "random_direction(seeded)": {
+     "k": 1,
+     "n": 1,
+     "rate": 1.0,
+     "ci95": [
+      0.20654329147389294,
+      1.0
+     ],
+     "p_vs_50": 0.5
+    },
+    "always_up": {
+     "k": 0,
+     "n": 1,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.7934567085261071
+     ],
+     "p_vs_50": 1.0
+    },
+    "always_down": {
+     "k": 1,
+     "n": 1,
+     "rate": 1.0,
+     "ci95": [
+      0.20654329147389294,
+      1.0
+     ],
+     "p_vs_50": 0.5
+    },
+    "simple_momentum": {
+     "k": 0,
+     "n": 1,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.7934567085261071
+     ],
+     "p_vs_50": 1.0
+    },
+    "simple_mean_reversion": {
+     "k": 1,
+     "n": 1,
+     "rate": 1.0,
+     "ci95": [
+      0.20654329147389294,
+      1.0
+     ],
+     "p_vs_50": 0.5
+    }
+   },
+   "benchmarks_returns": {
+    "buy_and_hold_same_windows_gross_pct": -0.7751937984496138,
+    "buy_and_hold_same_windows_net_pct": -1.1218487170650213,
+    "stay_in_cash_pct": 0.0,
+    "no_change_forecast_mean_abs_error_pct": 0.78125
+   },
+   "by_asset": [
+    {
+     "symbol": "MMTUSDT",
+     "n": 1,
+     "accuracy": 1.0
+    }
+   ],
+   "by_market_condition": [
+    {
+     "regime": "BTC 24h down / vol calm",
+     "n": 1,
+     "accuracy": 1.0
+    }
+   ],
+   "sample_size_note": "n=1: far too small for any conclusion; results are anecdotal."
   },
   "B": {
    "experiment": "B_60min",

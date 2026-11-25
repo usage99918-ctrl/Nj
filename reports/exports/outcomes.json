@@ -1,1 +1,35 @@
-[]
+[
+ {
+  "abs_pred_error_pct": 0.7177584420801963,
+  "actual_direction": "DOWN",
+  "actual_return_pct": -0.7751937984496138,
+  "brier": 0.22571726486586507,
+  "correct": true,
+  "dir_gross_pct": 0.7751937984496138,
+  "dir_net_pct": 0.42820554650087284,
+  "exchange": "binance",
+  "experiment": "A_10min",
+  "expiry_ms": 1795584182956,
+  "expiry_utc": "2026-11-25T05:23:02.956Z",
+  "forecast_id": "A-000001",
+  "in_pi50": false,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.78125,
+  "p1": 0.2304,
+  "p1_trade_ms": 1795584182036,
+  "p1_trade_utc": "2026-11-25T05:23:02.036Z",
+  "pred_error_abs": 0.0016537154505527896,
+  "pred_error_pct": 0.7177584420801963,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "MMTUSDT",
+  "timing_gap_ms": 920,
+  "trade_id": 22137068,
+  "verified_ms": 1795584190542,
+  "verified_utc": "2026-11-25T05:23:10.542Z"
+ }
+]

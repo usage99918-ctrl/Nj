@@ -11,9 +11,17 @@ Nothing here is investment advice.
 
 ## Results so far
 
-See `reports/dashboard.html` (regenerated from the immutable records by
-`python -m cryptolab dashboard`) and `reports/summary.json`. Headline findings are written up in
-[`docs/RESULTS.md`](docs/RESULTS.md).
+- **Backtests (untouched test period, Oct 1 – Nov 22, 2026):** both pre-registered models show a
+  small but statistically significant directional signal. 10-minute horizon: 51.5% accuracy
+  (56.8% excluding flat outcomes), +3.1 bps gross per forecast. 60-minute horizon: 53.1%
+  accuracy. **Neither model is profitable after realistic costs** (about −22 bps per forecast
+  when every call is traded), and the cost-aware spot rule almost never trades.
+- **Forward tests** have been live since 2026-11-25 05:13 UTC. The sample is far too small to
+  interpret yet.
+
+Details are in [`docs/RESULTS.md`](docs/RESULTS.md), the dashboard `reports/dashboard.html`
+(rebuilt from the immutable records by `python -m cryptolab dashboard`) and
+`reports/summary.json`.
 
 ## What is in the box
 

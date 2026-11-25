@@ -1,1 +1,2 @@
 forecast_id,experiment,status,method,verified_utc,p1,p1_trade_utc,timing_gap_ms,actual_direction,correct,actual_return_pct,abs_pred_error_pct,no_change_error_pct,in_pi50,in_pi80,brier,long_taken,long_net_pct,dir_gross_pct,dir_net_pct
+A-000001,A_10min,VERIFIED,aggTrade at/before expiry (<= 60s),2026-11-25T05:23:10.542Z,0.2304,2026-11-25T05:23:02.036Z,920,DOWN,True,-0.7751937984496138,0.7177584420801963,0.78125,False,True,0.22571726486586507,False,0.0,0.7751937984496138,0.42820554650087284
