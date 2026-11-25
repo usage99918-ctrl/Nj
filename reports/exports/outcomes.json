@@ -404,5 +404,66 @@
   "trade_id": 102060396,
   "verified_ms": 1795588245306,
   "verified_utc": "2026-11-25T06:30:45.306Z"
+ },
+ {
+  "abs_pred_error_pct": 0.11209436569504794,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.08281573498964967,
+  "argmax_class3_correct": true,
+  "brier": 0.24751437925873346,
+  "brier3": 0.07742460380077662,
+  "correct": false,
+  "dir_gross_pct": -0.08281573498964967,
+  "dir_net_pct": -0.40407161651936235,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795588567418,
+  "expiry_utc": "2026-11-25T06:36:07.418Z",
+  "forecast_id": "G5-000001",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.08274720728175256,
+  "p1": 0.002417,
+  "p1_trade_ms": 1795588563017,
+  "p1_trade_utc": "2026-11-25T06:36:03.017Z",
+  "path_max_pct": 0.08281573498964967,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.08281573498963857,
+  "pred_error_abs": 2.7093208188493957e-06,
+  "pred_error_pct": -0.11209436569504794,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "PUMPUSDT",
+  "timing_gap_ms": 4401,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.034274433263069164,
+    "hit": false,
+    "p": 0.1851335552056114
+   },
+   "+0.5%": {
+    "brier": 0.0020112823711787462,
+    "hit": false,
+    "p": 0.04484732289868311
+   },
+   "-0.25%": {
+    "brier": 0.08560142106659265,
+    "hit": false,
+    "p": 0.29257720530928694
+   },
+   "-0.5%": {
+    "brier": 0.004939130010050776,
+    "hit": false,
+    "p": 0.07027894428668359
+   }
+  },
+  "trade_id": 34339851,
+  "verified_ms": 1795588574038,
+  "verified_utc": "2026-11-25T06:36:14.038Z"
  }
 ]

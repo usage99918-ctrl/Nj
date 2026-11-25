@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-25T06:35:50.836Z",
+ "generated_utc": "2026-11-25T06:37:09.984Z",
  "forward": {
   "A": {
    "experiment": "A_10min",
@@ -344,14 +344,194 @@
    "gaps": 0,
    "gap_reasons": {},
    "status_counts": {
-    "PENDING": 2
+    "VERIFIED": 1,
+    "PENDING": 1
    },
-   "scored": 0,
+   "scored": 1,
    "first_forecast_utc": "2026-11-25T06:31:07.418Z",
    "last_forecast_utc": "2026-11-25T06:35:13.525Z",
    "model_versions": [
     "G2_5min-v1-lgbm_reg_shallow"
-   ]
+   ],
+   "accuracy": {
+    "k": 0,
+    "n": 1,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.7934567085261071
+    ],
+    "p_vs_50": 1.0
+   },
+   "flat_outcomes": 0,
+   "approximate_outcomes": 0,
+   "balanced_accuracy": null,
+   "frac_pred_up": 0.0,
+   "mean_abs_pred_error_pct": 0.11209436569504794,
+   "mean_no_change_error_pct": 0.08274720728175256,
+   "error_ratio_vs_no_change": 1.354660409424682,
+   "coverage_pi50": {
+    "k": 1,
+    "n": 1,
+    "rate": 1.0,
+    "ci95": [
+     0.20654329147389294,
+     1.0
+    ],
+    "p_vs_50": 0.5
+   },
+   "coverage_pi80": {
+    "k": 1,
+    "n": 1,
+    "rate": 1.0,
+    "ci95": [
+     0.20654329147389294,
+     1.0
+    ],
+    "p_vs_50": 0.5
+   },
+   "brier": 0.24751437925873346,
+   "brier_skill_vs_0.5": 0.009942482965066168,
+   "reliability": [
+    {
+     "lo": 0.4,
+     "hi": 0.6000000000000001,
+     "n": 1,
+     "mean_p": 0.5024918299578052,
+     "freq": 1.0
+    }
+   ],
+   "mean_p_direction": 0.49750817004219483,
+   "max_win_streak": 0,
+   "max_loss_streak": 1,
+   "paper_long_only": {
+    "trades": 0,
+    "total_net_pct_of_notional": 0.0,
+    "win_rate": null,
+    "max_drawdown_pct_of_notional": 0.0,
+    "note": "Spot long-only: positions only when the frozen forecast was UP with expected move > costs."
+   },
+   "hypothetical_direction_bets": {
+    "gross_total_pct": -0.08281573498964967,
+    "net_total_pct": -0.40407161651936235,
+    "mean_net_bps": -40.407161651936235,
+    "max_drawdown_net_pct": 0.40407161651936235,
+    "short_count": 1,
+    "note": "Trades every forecast in its predicted direction. Shorts are theoretical (margin/borrow) and NOT executable on spot."
+   },
+   "gross_direction_return": {
+    "mean_bps": null,
+    "t_stat": NaN,
+    "p_gt_0": NaN
+   },
+   "benchmarks_accuracy": {
+    "random_direction(seeded)": {
+     "k": 0,
+     "n": 1,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.7934567085261071
+     ],
+     "p_vs_50": 1.0
+    },
+    "always_up": {
+     "k": 1,
+     "n": 1,
+     "rate": 1.0,
+     "ci95": [
+      0.20654329147389294,
+      1.0
+     ],
+     "p_vs_50": 0.5
+    },
+    "always_down": {
+     "k": 0,
+     "n": 1,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.7934567085261071
+     ],
+     "p_vs_50": 1.0
+    },
+    "simple_momentum": {
+     "k": 1,
+     "n": 1,
+     "rate": 1.0,
+     "ci95": [
+      0.20654329147389294,
+      1.0
+     ],
+     "p_vs_50": 0.5
+    },
+    "simple_mean_reversion": {
+     "k": 0,
+     "n": 1,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.7934567085261071
+     ],
+     "p_vs_50": 1.0
+    }
+   },
+   "benchmarks_returns": {
+    "buy_and_hold_same_windows_gross_pct": 0.08281573498964967,
+    "buy_and_hold_same_windows_net_pct": -0.23827347987339637,
+    "stay_in_cash_pct": 0.0,
+    "no_change_forecast_mean_abs_error_pct": 0.08274720728175256
+   },
+   "by_asset": [
+    {
+     "symbol": "PUMPUSDT",
+     "n": 1,
+     "accuracy": 0.0
+    }
+   ],
+   "by_market_condition": [
+    {
+     "regime": "BTC 24h down / vol calm",
+     "n": 1,
+     "accuracy": 0.0
+    }
+   ],
+   "three_class": {
+    "n": 1,
+    "brier3": 0.07742460380077662,
+    "outcomes": {
+     "SIDEWAYS": 1
+    },
+    "argmax_accuracy": 1.0,
+    "uniform_brier3": 0.6666666666666666
+   },
+   "touch": {
+    "+0.25%": {
+     "n": 1,
+     "mean_p": 0.1851335552056114,
+     "hit_rate": 0.0,
+     "brier": 0.034274433263069164
+    },
+    "+0.5%": {
+     "n": 1,
+     "mean_p": 0.04484732289868311,
+     "hit_rate": 0.0,
+     "brier": 0.0020112823711787462
+    },
+    "-0.25%": {
+     "n": 1,
+     "mean_p": 0.29257720530928694,
+     "hit_rate": 0.0,
+     "brier": 0.08560142106659265
+    },
+    "-0.5%": {
+     "n": 1,
+     "mean_p": 0.07027894428668359,
+     "hit_rate": 0.0,
+     "brier": 0.004939130010050776
+    }
+   },
+   "sample_size_note": "n=1: far too small for any conclusion; results are anecdotal."
   },
   "G10": {
    "experiment": "G2_10min",
