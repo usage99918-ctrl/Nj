@@ -3636,5 +3636,170 @@
   "trade_id": 29708326,
   "verified_ms": 1795671043608,
   "verified_utc": "2026-11-26T05:30:43.608Z"
+ },
+ {
+  "abs_pred_error_pct": 0.09415165450822327,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.1055074910318643,
+  "argmax_class3_correct": true,
+  "brier": 0.27042630818667224,
+  "brier3": 0.022287868760312437,
+  "correct": true,
+  "dir_gross_pct": 0.1055074910318643,
+  "dir_net_pct": -0.13673413439048138,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795671356546,
+  "expiry_utc": "2026-11-26T05:35:56.546Z",
+  "forecast_id": "G5-000023",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.1053962900505856,
+  "p1": 4.744,
+  "p1_trade_ms": 1795671355149,
+  "p1_trade_utc": "2026-11-26T05:35:55.149Z",
+  "path_max_pct": 0.168811985650974,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.0633044946191208,
+  "pred_error_abs": 0.004466554489869878,
+  "pred_error_pct": -0.09415165450822327,
+  "short_is_theoretical": false,
+  "status": "VERIFIED",
+  "symbol": "UNIUSDT",
+  "timing_gap_ms": 1397,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.021551976638449082,
+    "hit": false,
+    "p": 0.14680591486193287
+   },
+   "+0.5%": {
+    "brier": 0.0011791553091592176,
+    "hit": false,
+    "p": 0.03433883092301218
+   },
+   "-0.25%": {
+    "brier": 0.011482085213113629,
+    "hit": false,
+    "p": 0.10715449226753691
+   },
+   "-0.5%": {
+    "brier": 0.00046072683481516855,
+    "hit": false,
+    "p": 0.021464548325440452
+   }
+  },
+  "trade_id": 186862921,
+  "verified_ms": 1795707688669,
+  "verified_utc": "2026-11-26T15:41:28.669Z"
+ },
+ {
+  "abs_pred_error_pct": 0.14194185966029949,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "DOWN",
+  "actual_return_pct": -0.1486712506968857,
+  "argmax_class3_correct": true,
+  "brier": 0.24297932385236737,
+  "brier3": 0.10537035080200463,
+  "correct": true,
+  "dir_gross_pct": 0.1486712506968857,
+  "dir_net_pct": -0.10888203597427579,
+  "exchange": "binance",
+  "experiment": "G2_10min",
+  "expiry_ms": 1795671657821,
+  "expiry_utc": "2026-11-26T05:40:57.821Z",
+  "forecast_id": "G10-000015",
+  "in_pi50": false,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.14889261120416553,
+  "p1": 0.05373,
+  "p1_trade_ms": 1795671656429,
+  "p1_trade_utc": "2026-11-26T05:40:56.429Z",
+  "path_max_pct": 0.22300687604535074,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.1672551570340075,
+  "pred_error_abs": 7.626536119547528e-05,
+  "pred_error_pct": 0.14194185966029949,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "HBARUSDT",
+  "timing_gap_ms": 1392,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.060592261260770094,
+    "hit": false,
+    "p": 0.24615495376037042
+   },
+   "+0.5%": {
+    "brier": 0.006518770390091573,
+    "hit": false,
+    "p": 0.08073890258166488
+   },
+   "+1%": {
+    "brier": 0.000532649549829779,
+    "hit": false,
+    "p": 0.023079201672280152
+   },
+   "-0.25%": {
+    "brier": 0.06602741847107542,
+    "hit": false,
+    "p": 0.25695800915923095
+   },
+   "-0.5%": {
+    "brier": 0.006022397576783475,
+    "hit": false,
+    "p": 0.0776041079890973
+   },
+   "-1%": {
+    "brier": 0.0004023209052580473,
+    "hit": false,
+    "p": 0.020057938709100876
+   }
+  },
+  "trade_id": 175184494,
+  "verified_ms": 1795707688669,
+  "verified_utc": "2026-11-26T15:41:28.669Z"
+ },
+ {
+  "abs_pred_error_pct": 0.03613730939130422,
+  "actual_direction": "UP",
+  "actual_return_pct": 0.029819591471591522,
+  "brier": 0.25844018765626625,
+  "correct": false,
+  "dir_gross_pct": -0.029819591471591522,
+  "dir_net_pct": -0.26506383213362755,
+  "exchange": "binance",
+  "experiment": "A_10min",
+  "expiry_ms": 1795671665691,
+  "expiry_utc": "2026-11-26T05:41:05.691Z",
+  "forecast_id": "A-000020",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.0298107020420324,
+  "p1": 6.709,
+  "p1_trade_ms": 1795671664494,
+  "p1_trade_utc": "2026-11-26T05:41:04.494Z",
+  "pred_error_abs": 0.002424452087062434,
+  "pred_error_pct": -0.03613730939130422,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "AVAXUSDT",
+  "timing_gap_ms": 1197,
+  "trade_id": 248267662,
+  "verified_ms": 1795707688669,
+  "verified_utc": "2026-11-26T15:41:28.669Z"
  }
 ]
