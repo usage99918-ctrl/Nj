@@ -3575,5 +3575,66 @@
   "trade_id": 102084847,
   "verified_ms": 1795650331775,
   "verified_utc": "2026-11-25T23:45:31.775Z"
+ },
+ {
+  "abs_pred_error_pct": 0.9709470092002737,
+  "actual_class3": "UP",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.9259259259259522,
+  "argmax_class3_correct": false,
+  "brier": 0.23298139019228994,
+  "brier3": 0.6929877112873947,
+  "correct": false,
+  "dir_gross_pct": -0.9259259259259522,
+  "dir_net_pct": -1.2993390352824974,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795650683249,
+  "expiry_utc": "2026-11-25T23:51:23.249Z",
+  "forecast_id": "G5-000022",
+  "in_pi50": false,
+  "in_pi80": false,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.9174311926605672,
+  "p1": 2.289,
+  "p1_trade_ms": 1795650668145,
+  "p1_trade_utc": "2026-11-25T23:51:08.145Z",
+  "path_max_pct": 1.1022927689594564,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": 0.0,
+  "pred_error_abs": 0.02222497704059423,
+  "pred_error_pct": -0.9709470092002737,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "SSVUSDT",
+  "timing_gap_ms": 15104,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.05361288778560285,
+    "hit": true,
+    "p": 0.76845543023944
+   },
+   "+0.5%": {
+    "brier": 0.35184055619724336,
+    "hit": true,
+    "p": 0.4068385074895342
+   },
+   "-0.25%": {
+    "brier": 0.7273658295237427,
+    "hit": false,
+    "p": 0.8528574497087674
+   },
+   "-0.5%": {
+    "brier": 0.26462334367256146,
+    "hit": false,
+    "p": 0.5144155359945513
+   }
+  },
+  "trade_id": 29708326,
+  "verified_ms": 1795671043608,
+  "verified_utc": "2026-11-26T05:30:43.608Z"
  }
 ]
