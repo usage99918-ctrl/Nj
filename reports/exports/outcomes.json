@@ -3801,5 +3801,170 @@
   "trade_id": 248267662,
   "verified_ms": 1795707688669,
   "verified_utc": "2026-11-26T15:41:28.669Z"
+ },
+ {
+  "abs_pred_error_pct": 0.16070606642565322,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.14513788098693414,
+  "argmax_class3_correct": true,
+  "brier": 0.2344215282131619,
+  "brier3": 0.041888178888257306,
+  "correct": false,
+  "dir_gross_pct": -0.14513788098693414,
+  "dir_net_pct": -0.4136955469277331,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795708017767,
+  "expiry_utc": "2026-11-26T15:46:57.767Z",
+  "forecast_id": "G5-000024",
+  "in_pi50": false,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.14492753623188692,
+  "p1": 207.0,
+  "p1_trade_ms": 1795708009489,
+  "p1_trade_utc": "2026-11-26T15:46:49.489Z",
+  "path_max_pct": 0.14513788098693414,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.04837929366231508,
+  "pred_error_abs": 0.3326615575010976,
+  "pred_error_pct": -0.16070606642565322,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "BCHUSDT",
+  "timing_gap_ms": 8278,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.021589944212003345,
+    "hit": false,
+    "p": 0.1469351700989363
+   },
+   "+0.5%": {
+    "brier": 0.0011815068325366567,
+    "hit": false,
+    "p": 0.034373053872716296
+   },
+   "-0.25%": {
+    "brier": 0.03871809175241855,
+    "hit": false,
+    "p": 0.19676913312920435
+   },
+   "-0.5%": {
+    "brier": 0.0018365829463839012,
+    "hit": false,
+    "p": 0.04285537243314893
+   }
+  },
+  "trade_id": 177629543,
+  "verified_ms": 1795737679994,
+  "verified_utc": "2026-11-27T00:01:19.994Z"
+ },
+ {
+  "abs_pred_error_pct": 0.4774753943579513,
+  "actual_class3": "UP",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.3685318892900247,
+  "argmax_class3_correct": false,
+  "brier": 0.27253624597897946,
+  "brier3": 0.5780332813202935,
+  "correct": false,
+  "dir_gross_pct": -0.3685318892900247,
+  "dir_net_pct": -0.8012364022442517,
+  "exchange": "binance",
+  "experiment": "G2_10min",
+  "expiry_ms": 1795708319025,
+  "expiry_utc": "2026-11-26T15:51:59.025Z",
+  "forecast_id": "G10-000016",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.3671787186212194,
+  "p1": 0.13345,
+  "p1_trade_ms": 1795708319025,
+  "p1_trade_utc": "2026-11-26T15:51:59.025Z",
+  "path_max_pct": 3.6928399518652233,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.7220216606498076,
+  "pred_error_abs": 0.0006371909137706799,
+  "pred_error_pct": -0.4774753943579513,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "INITUSDT",
+  "timing_gap_ms": 0,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 0.002993317297614523,
+    "hit": true,
+    "p": 0.9452887827076154
+   },
+   "+0.5%": {
+    "brier": 0.03135524824269293,
+    "hit": true,
+    "p": 0.8229258679459562
+   },
+   "+1%": {
+    "brier": 0.19752427161096334,
+    "hit": true,
+    "p": 0.5555629722773278
+   },
+   "-0.25%": {
+    "brier": 0.0013780330915343978,
+    "hit": true,
+    "p": 0.9628781318959512
+   },
+   "-0.5%": {
+    "brier": 0.01871165758391023,
+    "hit": true,
+    "p": 0.8632094389809362
+   },
+   "-1%": {
+    "brier": 0.36670449188689835,
+    "hit": false,
+    "p": 0.6055613031617016
+   }
+  },
+  "trade_id": 26763991,
+  "verified_ms": 1795737679994,
+  "verified_utc": "2026-11-27T00:01:19.994Z"
+ },
+ {
+  "abs_pred_error_pct": 0.051913098341793695,
+  "actual_direction": "DOWN",
+  "actual_return_pct": -0.05239520958082444,
+  "brier": 0.22995661453656913,
+  "correct": true,
+  "dir_gross_pct": 0.05239520958082444,
+  "dir_net_pct": -0.5403031717636096,
+  "exchange": "binance",
+  "experiment": "A_10min",
+  "expiry_ms": 1795708328946,
+  "expiry_utc": "2026-11-26T15:52:08.946Z",
+  "forecast_id": "A-000021",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.05242267655207744,
+  "p1": 0.13353,
+  "p1_trade_ms": 1795708327097,
+  "p1_trade_utc": "2026-11-26T15:52:07.097Z",
+  "pred_error_abs": 6.931956021580254e-05,
+  "pred_error_pct": -0.051913098341793695,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "INITUSDT",
+  "timing_gap_ms": 1849,
+  "trade_id": 26764098,
+  "verified_ms": 1795737679994,
+  "verified_utc": "2026-11-27T00:01:19.994Z"
  }
 ]
