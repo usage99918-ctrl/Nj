@@ -25999,5 +25999,1416 @@
    }
   ],
   "z": 0.8154999867671542
+ },
+ {
+  "base": "SEI",
+  "code_commit": "7afd627a3ca6c1531b8724404ed092f53c12a754",
+  "context": {
+   "cross_exchange": {
+    "binance": 0.03842,
+    "binance_premium_bps": 2.603488674826071,
+    "divergence_flag": false,
+    "median_other": 0.03841,
+    "prices": {
+     "coinbase:SEI-USD": 0.03835,
+     "kraken:SEIUSD": 0.03841,
+     "okx:SEI-USDT": 0.03843
+    }
+   },
+   "derivatives": {
+    "available": true,
+    "funding_rate_8h": -5.97409628591e-05,
+    "inst_id": "SEI-USDT-SWAP",
+    "liquidations_1h_count": 1,
+    "liquidations_1h_long_contracts": 152.0,
+    "liquidations_1h_short_contracts": 0,
+    "open_interest_usd": 2463842.688,
+    "source": "okx"
+   },
+   "order_book": {
+    "ask_depth_10bps_usd": 780.455937,
+    "ask_depth_50bps_usd": 46919.252064,
+    "best_ask": 0.03846,
+    "best_bid": 0.03844,
+    "bid_depth_10bps_usd": 3482.601356,
+    "bid_depth_50bps_usd": 68959.641169,
+    "buy_impact_bps": 7.494752818710815,
+    "fetched_ms": 1795766820222,
+    "imbalance_10bps": 0.6338515373548841,
+    "imbalance_50bps": 0.1902019297050322,
+    "mid": 0.03845,
+    "ok": true,
+    "sell_impact_bps": 3.3217251052564123,
+    "spread_bps": 5.20156046814023
+   },
+   "sentiment": {
+    "available": true,
+    "classification": "Extreme Fear",
+    "source": "alternative.me (daily)",
+    "timestamp_ms": 1795737600000,
+    "value": 12
+   }
+  },
+  "costs": {
+   "assumptions": "Binance retail taker fee 0.10%/side (assumption); half-spread from the live order book; slippage = max(1 bp, book-walk impact for $1,000 beyond half-spread).",
+   "fee_per_side": 0.001,
+   "half_spread_measured": 0.00026007802340701153,
+   "round_trip": 0.003498950563742163,
+   "short_borrow_for_horizon": 1.6666666666666667e-06,
+   "slippage_per_side": 0.00048939725846407
+  },
+  "created_local_ms": 1795766821712,
+  "cycle_seconds": 16.62,
+  "data_timestamps": {
+   "book_fetched_ms": 1795766820222,
+   "features_bar_close_ms": 1795766760000,
+   "last_bar_close_ms": 1795766760000,
+   "server_clock_offset_ms": 1
+  },
+  "direction": "UP",
+  "evidence_against": [
+   {
+    "indicator": "60-min momentum",
+    "lean": -1,
+    "reading": "-0.60% over 60 min",
+    "value": -0.005971717084508832
+   },
+   {
+    "indicator": "MACD histogram",
+    "lean": -1,
+    "reading": "negative",
+    "value": -0.000615033167381295
+   },
+   {
+    "indicator": "Taker buy imbalance (60m)",
+    "lean": -1,
+    "reading": "-26.6 pp vs 50%",
+    "value": -0.26616575612621485
+   }
+  ],
+  "evidence_for": [
+   {
+    "indicator": "Model signal (lgbm_reg_shallow)",
+    "lean": 1,
+    "reading": "z = +0.16, strongest of 25 coins; LightGBM regression, 15 leaves, strong regularization.",
+    "value": 0.16209077532077834
+   },
+   {
+    "indicator": "Trend MA(60) vs MA(1440)",
+    "lean": 1,
+    "reading": "MA60 above 24h MA",
+    "value": 0.01134129583060492
+   },
+   {
+    "indicator": "Order book imbalance (+/-10 bps)",
+    "lean": 1,
+    "reading": "+0.63 (bid minus ask depth share)",
+    "value": 0.6338515373548841
+   },
+   {
+    "indicator": "Fear & Greed index (daily, contrarian)",
+    "lean": 1,
+    "reading": "12 (Extreme Fear)",
+    "value": 12
+   }
+  ],
+  "evidence_neutral": [
+   {
+    "indicator": "Model backtest record (untouched test period)",
+    "lean": 0,
+    "reading": "48.1% directional accuracy, n=15264",
+    "value": 0.48139412997903563
+   },
+   {
+    "indicator": "RSI(60, 1m)",
+    "lean": 0,
+    "reading": "45.2 (mean-reversion view: <40 oversold, >60 overbought)",
+    "value": 45.21657205383422
+   },
+   {
+    "indicator": "10-min move (short-term reversal view)",
+    "lean": 0,
+    "reading": "-0.23% over 10 min; large moves tend to partly revert",
+    "value": -0.002341007701973652
+   },
+   {
+    "indicator": "RSI(14, 1m)",
+    "lean": 0,
+    "reading": "36.5 (neutral)",
+    "value": 36.53117483356577
+   },
+   {
+    "indicator": "Bollinger %B(60)",
+    "lean": 0,
+    "reading": "0.03 (below lower band <0, above upper >1)",
+    "value": 0.031376934020391385
+   },
+   {
+    "indicator": "4h breakout",
+    "lean": 0,
+    "reading": "inside 4h range",
+    "value": 0.0
+   },
+   {
+    "indicator": "BTC 60-min trend",
+    "lean": 0,
+    "reading": "BTC +0.20% (beta 1.21)",
+    "value": 0.0019846456134882118
+   },
+   {
+    "indicator": "Perp funding rate (OKX, contrarian)",
+    "lean": 0,
+    "reading": "-0.0060% per 8h",
+    "value": -5.97409628591e-05
+   },
+   {
+    "indicator": "Binance premium vs other exchanges",
+    "lean": 0,
+    "reading": "+2.6 bps (premiums tend to converge)",
+    "value": 2.603488674826071
+   }
+  ],
+  "exchange": "binance",
+  "expected_move_pct": 0.05475619183277214,
+  "expected_net_long_pct": -0.29513886454144417,
+  "experiment": "G2_5min",
+  "expiry_ms": 1795767121630,
+  "expiry_utc": "2026-11-27T08:12:01.630Z",
+  "features": {
+   "ac_10": -0.010467783392299753,
+   "ac_60": -0.026369132649582915,
+   "atr_60": 0.0020827198815912876,
+   "bb_pctb_240": -0.012416209860378759,
+   "bb_pctb_60": 0.031376934020391385,
+   "bb_width_240": 0.019423874458073434,
+   "bb_width_60": 0.017325867623052306,
+   "beta_btc": 1.2114559688957354,
+   "breadth_60": 0.56,
+   "brk_1440": 0.0,
+   "brk_240": 0.0,
+   "brk_60": -0.001821257170522619,
+   "btc_r_10": 0.0028319474227398445,
+   "btc_r_240": 0.008915296611238688,
+   "btc_r_30": 0.0003830355077099057,
+   "btc_r_5": 0.0036909962755871106,
+   "btc_r_60": 0.0019846456134882118,
+   "btc_trend": 0.020511416593549825,
+   "btc_vol_1440": 0.0006162897033244619,
+   "btc_vol_ratio": 1.1306921347937755,
+   "corr_btc": 0.2976608819984422,
+   "dev_ma_1440": 0.0031888535883548563,
+   "dev_ma_240": -0.010002971450575604,
+   "dev_ma_30": -0.006351315405030533,
+   "dev_ma_60": -0.008152442242249869,
+   "disp_60": 0.005109869152620438,
+   "eth_r_10": 0.001865865577089565,
+   "eth_r_60": 0.0022060124200296016,
+   "ewm_drift_240": -2.2576265250580688e-05,
+   "ewm_drift_60": -9.674493434910348e-05,
+   "hod_cos": -0.4999999999999998,
+   "hod_sin": 0.8660254037844387,
+   "ma_x_10_60": -0.004357568559071447,
+   "ma_x_30_240": -0.003651656045545026,
+   "ma_x_60_1440": 0.01134129583060492,
+   "macd": -0.0008988034151468468,
+   "macd_hist": -0.000615033167381295,
+   "mkt_r_10": 0.001969059636172607,
+   "mkt_r_60": 0.001137042992334106,
+   "pos_1440": 0.5416012558869693,
+   "pos_240": 0.010869565217387123,
+   "pos_60": 0.0,
+   "r_1": -0.004158010148663571,
+   "r_10": -0.002341007701973652,
+   "r_1440": 0.08957146941334049,
+   "r_240": -0.008298802814695083,
+   "r_30": -0.016273121598842533,
+   "r_5": -0.0051948168771041026,
+   "r_60": -0.005971717084508832,
+   "rel_vol_10": 0.8103087810784889,
+   "rel_vol_60": 1.0886973558620978,
+   "resid_r_10": -0.005771787310850731,
+   "resid_r_240": -0.019099292108856115,
+   "resid_r_60": -0.008376027859111864,
+   "rsi_14": 36.53117483356577,
+   "rsi_60": 45.21657205383422,
+   "sig1m": 0.00195674034194194,
+   "tbr_10": -0.2215285191595982,
+   "tbr_30": -0.205635817359907,
+   "tbr_60": -0.26616575612621485,
+   "trades_rel_10": 0.5677025318832055,
+   "vol_1440": 0.002508249772858325,
+   "vol_240": 0.001839171125292011,
+   "vol_30": 0.002039956651654738,
+   "vol_60": 0.0017639751997927452,
+   "vol_ratio": 0.7032693549424995,
+   "xs_rank_r_10": -0.46,
+   "xs_rank_r_240": -0.33999999999999997,
+   "xs_rank_r_60": -0.42,
+   "xs_rank_rel_vol_60": -0.21999999999999997,
+   "xs_rank_resid_r_60": -0.42,
+   "xs_rank_tbr_60": -0.46,
+   "xs_rank_vol_60": 0.42000000000000004,
+   "xs_rel_r_10": -0.004310067338146259,
+   "xs_rel_r_60": -0.007108760076842938
+  },
+  "forecast_id": "G5-000026",
+  "horizon_min": 5,
+  "long_signal": false,
+  "model_sha256": "730cd884b89877f5de96387cd90784712caf394d7bd6334f4cb99f0195137595",
+  "model_version": "G2_5min-v1-lgbm_reg_shallow",
+  "mu_log": 0.0005474120610022133,
+  "n_examined": 25,
+  "opportunity_label": "NO - expected move is smaller than estimated round-trip costs; spot action = stay in cash",
+  "origin_ms": 1795766821630,
+  "origin_utc": "2026-11-27T08:07:01.630Z",
+  "p0": 0.03842,
+  "p_direction": 0.5041071858414553,
+  "p_up": 0.5041071858414553,
+  "pair": "SEI/USDT",
+  "pi50": [
+   0.03836090734253125,
+   0.038520645468989305
+  ],
+  "pi80": [
+   0.03828120302154904,
+   0.03860511398406699
+  ],
+  "pred_price": 0.03844103732890215,
+  "probability_status": "Calibrated on walk-forward out-of-sample backtest forecasts of this exact model; NOT yet validated on forward data (forward calibration is reported on the dashboard as outcomes accumulate).",
+  "quote": "USDT",
+  "ref_trade_id": 80739981,
+  "ref_trade_ms": 1795766821270,
+  "ref_trade_utc": "2026-11-27T08:07:01.270Z",
+  "rules": {
+   "flat": "Direction is scored against the last Binance trade at or before the expiry instant versus the reference trade price. If the two prices are identical the outcome is FLAT and counts as an INCORRECT direction for both UP and DOWN forecasts (rule fixed before testing).",
+   "verification": "Last Binance aggTrade at or before expiry_ms (same pair)."
+  },
+  "scan_counts": {
+   "binance_universe": 25,
+   "markets_analyzed": 25,
+   "markets_discovered": 11741,
+   "markets_quality_passed": 128,
+   "unique_assets_passed": 40
+  },
+  "scan_id": "SNAP:G2_shared:1795766760000",
+  "sigma_log": 0.004375404418898361,
+  "slot_ms": 1795766700000,
+  "slot_utc": "2026-11-27T08:05:00.000Z",
+  "strategy": "lgbm_reg_shallow",
+  "strategy_family": "tree_ml",
+  "strategy_hypothesis": "LightGBM regression, 15 leaves, strong regularization.",
+  "symbol": "SEIUSDT",
+  "test_number": 26,
+  "theoretical_short_signal": false,
+  "three_class": {
+   "definition": "SIDEWAYS = |log return| <= 0.250% over 5 min",
+   "p_down": 0.15680274396783478,
+   "p_sideways": 0.5741989614080789,
+   "p_up": 0.2689982946240863,
+   "sideways_tau_pct": 0.25
+  },
+  "top_candidates": [
+   {
+    "symbol": "SEIUSDT",
+    "z": 0.16209077532077834
+   },
+   {
+    "symbol": "HYPEUSDT",
+    "z": -0.043015912470574506
+   },
+   {
+    "symbol": "ZECUSDT",
+    "z": -0.04106923125400216
+   },
+   {
+    "symbol": "LTCUSDT",
+    "z": 0.038656184661855386
+   },
+   {
+    "symbol": "HBARUSDT",
+    "z": 0.030650582869767955
+   }
+  ],
+  "touch": {
+   "+0.25%": {
+    "p": 0.5383063300611303,
+    "price": 0.03851605
+   },
+   "+0.5%": {
+    "p": 0.19417067989443157,
+    "price": 0.038612099999999996
+   },
+   "-0.25%": {
+    "p": 0.3857482844089629,
+    "price": 0.03832395
+   },
+   "-0.5%": {
+    "p": 0.10296255733918919,
+    "price": 0.0382279
+   }
+  },
+  "z": 0.16209077532077834
+ },
+ {
+  "base": "INJ",
+  "code_commit": "7afd627a3ca6c1531b8724404ed092f53c12a754",
+  "context": {
+   "cross_exchange": {
+    "binance": 6.469,
+    "binance_premium_bps": 9.283614420547703,
+    "divergence_flag": false,
+    "median_other": 6.463,
+    "prices": {
+     "coinbase:INJ-USD": 6.461,
+     "kraken:INJUSD": 6.463,
+     "okx:INJ-USDT": 6.474
+    }
+   },
+   "derivatives": {
+    "available": true,
+    "funding_rate_8h": -1.70174306721e-05,
+    "inst_id": "INJ-USDT-SWAP",
+    "liquidations_1h_count": 2,
+    "liquidations_1h_long_contracts": 0,
+    "liquidations_1h_short_contracts": 2578.0,
+    "open_interest_usd": 6170931.2896,
+    "source": "okx"
+   },
+   "order_book": {
+    "ask_depth_10bps_usd": 7381.15164,
+    "ask_depth_50bps_usd": 203269.64592,
+    "best_ask": 6.47,
+    "best_bid": 6.469,
+    "bid_depth_10bps_usd": 10209.68633,
+    "bid_depth_50bps_usd": 240424.46048,
+    "buy_impact_bps": 3.6810645744678183,
+    "fetched_ms": 1795766821877,
+    "imbalance_10bps": 0.1607959038008239,
+    "imbalance_50bps": 0.08373970720833536,
+    "mid": 6.4695,
+    "ok": true,
+    "sell_impact_bps": 2.4611316861589128,
+    "spread_bps": 1.545714506529787
+   },
+   "sentiment": {
+    "available": true,
+    "classification": "Extreme Fear",
+    "source": "alternative.me (daily)",
+    "timestamp_ms": 1795737600000,
+    "value": 12
+   }
+  },
+  "costs": {
+   "assumptions": "Binance retail taker fee 0.10%/side (assumption); half-spread from the live order book; slippage = max(1 bp, book-walk impact for $1,000 beyond half-spread).",
+   "fee_per_side": 0.001,
+   "half_spread_measured": 7.728572532648936e-05,
+   "round_trip": 0.0027362129148935637,
+   "short_borrow_for_horizon": 2e-05,
+   "slippage_per_side": 0.00029082073212029246
+  },
+  "created_local_ms": 1795766822916,
+  "cycle_seconds": 17.82,
+  "data_timestamps": {
+   "book_fetched_ms": 1795766821877,
+   "features_bar_close_ms": 1795766760000,
+   "last_bar_close_ms": 1795766760000,
+   "server_clock_offset_ms": 1
+  },
+  "direction": "DOWN",
+  "evidence_against": [
+   {
+    "indicator": "60-min momentum",
+    "lean": 1,
+    "reading": "+1.39% over 60 min",
+    "value": 0.013853439705149961
+   },
+   {
+    "indicator": "Trend MA(60) vs MA(1440)",
+    "lean": 1,
+    "reading": "MA60 above 24h MA",
+    "value": 0.031226593859066017
+   },
+   {
+    "indicator": "MACD histogram",
+    "lean": 1,
+    "reading": "positive",
+    "value": 0.0005378804770985344
+   },
+   {
+    "indicator": "Taker buy imbalance (60m)",
+    "lean": 1,
+    "reading": "+16.6 pp vs 50%",
+    "value": 0.16569835923029153
+   },
+   {
+    "indicator": "Relative volume confirms move",
+    "lean": 1,
+    "reading": "2.0x normal volume behind the 60-min move",
+    "value": 1.9891219349891696
+   },
+   {
+    "indicator": "Fear & Greed index (daily, contrarian)",
+    "lean": 1,
+    "reading": "12 (Extreme Fear)",
+    "value": 12
+   }
+  ],
+  "evidence_for": [
+   {
+    "indicator": "Model signal (rsi_rev_60)",
+    "lean": -1,
+    "reading": "z = -0.69, strongest of 25 coins; RSI(60) overbought/oversold reverts.",
+    "value": -0.6924589885039716
+   }
+  ],
+  "evidence_neutral": [
+   {
+    "indicator": "Model backtest record (untouched test period)",
+    "lean": 0,
+    "reading": "53.1% directional accuracy, n=1272",
+    "value": 0.5314465408805031
+   },
+   {
+    "indicator": "RSI(60, 1m)",
+    "lean": 0,
+    "reading": "56.9 (mean-reversion view: <40 oversold, >60 overbought)",
+    "value": 56.924589885039715
+   },
+   {
+    "indicator": "10-min move (short-term reversal view)",
+    "lean": 0,
+    "reading": "+0.11% over 10 min; large moves tend to partly revert",
+    "value": 0.0010826696595418461
+   },
+   {
+    "indicator": "RSI(14, 1m)",
+    "lean": 0,
+    "reading": "58.7 (neutral)",
+    "value": 58.65226872419298
+   },
+   {
+    "indicator": "Bollinger %B(60)",
+    "lean": 0,
+    "reading": "0.77 (below lower band <0, above upper >1)",
+    "value": 0.7716005066957815
+   },
+   {
+    "indicator": "4h breakout",
+    "lean": 0,
+    "reading": "inside 4h range",
+    "value": 0.0
+   },
+   {
+    "indicator": "BTC 60-min trend",
+    "lean": 0,
+    "reading": "BTC +0.20% (beta 0.99)",
+    "value": 0.0019846456134882118
+   },
+   {
+    "indicator": "Order book imbalance (+/-10 bps)",
+    "lean": 0,
+    "reading": "+0.16 (bid minus ask depth share)",
+    "value": 0.1607959038008239
+   },
+   {
+    "indicator": "Perp funding rate (OKX, contrarian)",
+    "lean": 0,
+    "reading": "-0.0017% per 8h",
+    "value": -1.70174306721e-05
+   },
+   {
+    "indicator": "Binance premium vs other exchanges",
+    "lean": 0,
+    "reading": "+9.3 bps (premiums tend to converge)",
+    "value": 9.283614420547703
+   }
+  ],
+  "exchange": "binance",
+  "expected_move_pct": -0.0042596335910194405,
+  "expected_net_long_pct": -0.2778809250803758,
+  "experiment": "G2_60min",
+  "expiry_ms": 1795770422897,
+  "expiry_utc": "2026-11-27T09:07:02.897Z",
+  "features": {
+   "ac_10": 0.011933693735761124,
+   "ac_60": -0.042841487440623306,
+   "atr_60": 0.001920146741278064,
+   "bb_pctb_240": 1.052140589596194,
+   "bb_pctb_60": 0.7716005066957815,
+   "bb_width_240": 0.023125531372659585,
+   "bb_width_60": 0.0133952952207265,
+   "beta_btc": 0.9893207821037333,
+   "breadth_60": 0.56,
+   "brk_1440": 0.0,
+   "brk_240": 0.0,
+   "brk_60": 0.0,
+   "btc_r_10": 0.0028319474227398445,
+   "btc_r_240": 0.008915296611238688,
+   "btc_r_30": 0.0003830355077099057,
+   "btc_r_5": 0.0036909962755871106,
+   "btc_r_60": 0.0019846456134882118,
+   "btc_trend": 0.020511416593549825,
+   "btc_vol_1440": 0.0006162897033244619,
+   "btc_vol_ratio": 1.1306921347937755,
+   "corr_btc": 0.5184205133252177,
+   "dev_ma_1440": 0.03485816069989078,
+   "dev_ma_240": 0.01268771399381774,
+   "dev_ma_30": 0.0023266082011226263,
+   "dev_ma_60": 0.0036315668408248847,
+   "disp_60": 0.005109869152620438,
+   "eth_r_10": 0.001865865577089565,
+   "eth_r_60": 0.0022060124200296016,
+   "ewm_drift_240": 6.591117046850995e-05,
+   "ewm_drift_60": 0.00011472621547057861,
+   "hod_cos": -0.4999999999999998,
+   "hod_sin": 0.8660254037844387,
+   "ma_x_10_60": 0.0010001900419388306,
+   "ma_x_30_240": 0.010361105792695178,
+   "ma_x_60_1440": 0.031226593859066017,
+   "macd": 0.0037161941734229,
+   "macd_hist": 0.0005378804770985344,
+   "mkt_r_10": 0.001969059636172607,
+   "mkt_r_60": 0.001137042992334106,
+   "pos_1440": 0.9505154639175257,
+   "pos_240": 0.8471337579617834,
+   "pos_60": 0.7931034482758629,
+   "r_1": 0.0006185248380274899,
+   "r_10": 0.0010826696595418461,
+   "r_1440": 0.047160637722918564,
+   "r_240": 0.017464969107576556,
+   "r_30": -0.0003091190132806787,
+   "r_5": 0.006046998812320403,
+   "r_60": 0.013853439705149961,
+   "rel_vol_10": 1.0969647643890414,
+   "rel_vol_60": 1.9891219349891696,
+   "resid_r_10": -0.0017190347795997887,
+   "resid_r_240": 0.008644880891459135,
+   "resid_r_60": 0.01188998855461506,
+   "rsi_14": 58.65226872419298,
+   "rsi_60": 56.924589885039715,
+   "sig1m": 0.0014668476646272266,
+   "tbr_10": 0.020131802221430628,
+   "tbr_30": 0.036401842451689315,
+   "tbr_60": 0.16569835923029153,
+   "trades_rel_10": 1.427844588344126,
+   "vol_1440": 0.0011760881285053433,
+   "vol_240": 0.0011677989029796449,
+   "vol_30": 0.0013817618721957375,
+   "vol_60": 0.0017122377934620937,
+   "vol_ratio": 1.455875416103492,
+   "xs_rank_r_10": -0.14,
+   "xs_rank_r_240": 0.42000000000000004,
+   "xs_rank_r_60": 0.5,
+   "xs_rank_rel_vol_60": 0.33999999999999997,
+   "xs_rank_resid_r_60": 0.45999999999999996,
+   "xs_rank_tbr_60": 0.45999999999999996,
+   "xs_rank_vol_60": 0.38,
+   "xs_rel_r_10": -0.0008863899766307611,
+   "xs_rel_r_60": 0.012716396712815856
+  },
+  "forecast_id": "G60-000003",
+  "horizon_min": 60,
+  "long_signal": false,
+  "model_sha256": "1646bbf143f18b1164e6af014e732dc54d1660f368f77f97338652eaec285ae0",
+  "model_version": "G2_60min-v1-rsi_rev_60",
+  "mu_log": -4.2597243159919004e-05,
+  "n_examined": 25,
+  "opportunity_label": "NO - expected move is smaller than estimated round-trip costs; spot action = stay in cash",
+  "origin_ms": 1795766822897,
+  "origin_utc": "2026-11-27T08:07:02.897Z",
+  "p0": 6.469,
+  "p_direction": 0.5376974063117709,
+  "p_up": 0.4623025936882291,
+  "pair": "INJ/USDT",
+  "pi50": [
+   6.422949449467915,
+   6.509052292287089
+  ],
+  "pi80": [
+   6.379831649544871,
+   6.554315540140652
+  ],
+  "pred_price": 6.468724444302997,
+  "probability_status": "Calibrated on walk-forward out-of-sample backtest forecasts of this exact model; NOT yet validated on forward data (forward calibration is reported on the dashboard as outcomes accumulate).",
+  "quote": "USDT",
+  "ref_trade_id": 102180434,
+  "ref_trade_ms": 1795766817249,
+  "ref_trade_utc": "2026-11-27T08:06:57.249Z",
+  "rules": {
+   "flat": "Direction is scored against the last Binance trade at or before the expiry instant versus the reference trade price. If the two prices are identical the outcome is FLAT and counts as an INCORRECT direction for both UP and DOWN forecasts (rule fixed before testing).",
+   "verification": "Last Binance aggTrade at or before expiry_ms (same pair)."
+  },
+  "scan_counts": {
+   "binance_universe": 25,
+   "markets_analyzed": 25,
+   "markets_discovered": 11741,
+   "markets_quality_passed": 128,
+   "unique_assets_passed": 40
+  },
+  "scan_id": "SNAP:G2_shared:1795766760000",
+  "sigma_log": 0.011362153153048981,
+  "slot_ms": 1795766400000,
+  "slot_utc": "2026-11-27T08:00:00.000Z",
+  "strategy": "rsi_rev_60",
+  "strategy_family": "mean_reversion",
+  "strategy_hypothesis": "RSI(60) overbought/oversold reverts.",
+  "symbol": "INJUSDT",
+  "test_number": 3,
+  "theoretical_short_signal": false,
+  "three_class": {
+   "definition": "SIDEWAYS = |log return| <= 0.250% over 60 min",
+   "p_down": 0.4150259363224828,
+   "p_sideways": 0.2067585647970665,
+   "p_up": 0.3782154988804507,
+   "sideways_tau_pct": 0.25
+  },
+  "top_candidates": [
+   {
+    "symbol": "INJUSDT",
+    "z": -0.6924589885039716
+   },
+   {
+    "symbol": "SOLUSDT",
+    "z": -0.5543088839243033
+   },
+   {
+    "symbol": "SKYUSDT",
+    "z": -0.49833064048391196
+   },
+   {
+    "symbol": "SEIUSDT",
+    "z": 0.478342794616578
+   },
+   {
+    "symbol": "BTCUSDT",
+    "z": -0.474259475583046
+   }
+  ],
+  "touch": {
+   "+0.5%": {
+    "p": 0.637568000196837,
+    "price": 6.501345
+   },
+   "+1%": {
+    "p": 0.31441665771492333,
+    "price": 6.53369
+   },
+   "+2%": {
+    "p": 0.10679298567100123,
+    "price": 6.598380000000001
+   },
+   "-0.5%": {
+    "p": 0.6469201814951112,
+    "price": 6.436655
+   },
+   "-1%": {
+    "p": 0.32260895935486944,
+    "price": 6.404310000000001
+   },
+   "-2%": {
+    "p": 0.11015642117109116,
+    "price": 6.33962
+   }
+  },
+  "z": -0.6924589885039716
+ },
+ {
+  "base": "BTC",
+  "code_commit": "7afd627a3ca6c1531b8724404ed092f53c12a754",
+  "context": {
+   "cross_exchange": {
+    "binance": 61892.21,
+    "binance_premium_bps": 14.394065037033332,
+    "divergence_flag": false,
+    "median_other": 61803.25,
+    "prices": {
+     "coinbase:BTC-USD": 61803.25,
+     "kraken:XXBTZUSD": 61792.8,
+     "okx:BTC-USDT": 61887.5
+    }
+   },
+   "derivatives": {
+    "available": true,
+    "funding_rate_8h": 4.40543730502e-05,
+    "inst_id": "BTC-USDT-SWAP",
+    "liquidations_1h_count": 57,
+    "liquidations_1h_long_contracts": 175.67,
+    "liquidations_1h_short_contracts": 14.709999999999999,
+    "open_interest_usd": 1999232944.0032077,
+    "source": "okx"
+   },
+   "order_book": {
+    "ask_depth_10bps_usd": 362515.5590561,
+    "ask_depth_50bps_usd": 362515.5590561,
+    "best_ask": 61885.79,
+    "best_bid": 61885.78,
+    "bid_depth_10bps_usd": 1581749.9596727,
+    "bid_depth_50bps_usd": 1581749.9596727,
+    "buy_impact_bps": 0.000807939979363681,
+    "fetched_ms": 1795766823081,
+    "imbalance_10bps": 0.6270925389932133,
+    "imbalance_50bps": 0.6270925389932133,
+    "mid": 61885.785,
+    "ok": true,
+    "sell_impact_bps": 0.0008079399826943501,
+    "spread_bps": 0.0016158799637165898
+   },
+   "sentiment": {
+    "available": true,
+    "classification": "Extreme Fear",
+    "source": "alternative.me (daily)",
+    "timestamp_ms": 1795737600000,
+    "value": 12
+   }
+  },
+  "costs": {
+   "assumptions": "Binance retail taker fee 0.10%/side (assumption); half-spread from the live order book; slippage = max(1 bp, book-walk impact for $1,000 beyond half-spread).",
+   "fee_per_side": 0.001,
+   "half_spread_measured": 8.07939981858295e-08,
+   "round_trip": 0.0022001615879963716,
+   "short_borrow_for_horizon": 8e-05,
+   "slippage_per_side": 0.0001
+  },
+  "created_local_ms": 1795766824095,
+  "cycle_seconds": 19.0,
+  "data_timestamps": {
+   "book_fetched_ms": 1795766823081,
+   "features_bar_close_ms": 1795766760000,
+   "last_bar_close_ms": 1795766760000,
+   "server_clock_offset_ms": 1
+  },
+  "direction": "DOWN",
+  "evidence_against": [
+   {
+    "indicator": "60-min momentum",
+    "lean": 1,
+    "reading": "+0.20% over 60 min",
+    "value": 0.0019846456134882118
+   },
+   {
+    "indicator": "Trend MA(60) vs MA(1440)",
+    "lean": 1,
+    "reading": "MA60 above 24h MA",
+    "value": 0.013515354650168936
+   },
+   {
+    "indicator": "Relative volume confirms move",
+    "lean": 1,
+    "reading": "2.1x normal volume behind the 60-min move",
+    "value": 2.0808712066829305
+   },
+   {
+    "indicator": "Order book imbalance (+/-10 bps)",
+    "lean": 1,
+    "reading": "+0.63 (bid minus ask depth share)",
+    "value": 0.6270925389932133
+   },
+   {
+    "indicator": "Perp liquidations last hour (OKX, contrarian)",
+    "lean": 1,
+    "reading": "57 liquidations: longs 176 vs shorts 15 contracts (forced selling often overshoots)",
+    "value": 160.95999999999998
+   },
+   {
+    "indicator": "Fear & Greed index (daily, contrarian)",
+    "lean": 1,
+    "reading": "12 (Extreme Fear)",
+    "value": 12
+   }
+  ],
+  "evidence_for": [
+   {
+    "indicator": "Model signal (rv_rev_10)",
+    "lean": -1,
+    "reading": "z = -2.19, strongest of 25 coins; 10-min moves on high relative volume overshoot and revert.",
+    "value": -2.1928052219981695
+   },
+   {
+    "indicator": "MACD histogram",
+    "lean": -1,
+    "reading": "negative",
+    "value": -0.0001477983672301425
+   },
+   {
+    "indicator": "Binance premium vs other exchanges",
+    "lean": -1,
+    "reading": "+14.4 bps (premiums tend to converge)",
+    "value": 14.394065037033332
+   }
+  ],
+  "evidence_neutral": [
+   {
+    "indicator": "Model backtest record (untouched test period)",
+    "lean": 0,
+    "reading": "53.8% directional accuracy, n=318",
+    "value": 0.5377358490566038
+   },
+   {
+    "indicator": "RSI(60, 1m)",
+    "lean": 0,
+    "reading": "54.7 (mean-reversion view: <40 oversold, >60 overbought)",
+    "value": 54.74259475583046
+   },
+   {
+    "indicator": "10-min move (short-term reversal view)",
+    "lean": 0,
+    "reading": "+0.28% over 10 min; large moves tend to partly revert",
+    "value": 0.0028319474227398445
+   },
+   {
+    "indicator": "RSI(14, 1m)",
+    "lean": 0,
+    "reading": "67.9 (neutral)",
+    "value": 67.89187094418602
+   },
+   {
+    "indicator": "Bollinger %B(60)",
+    "lean": 0,
+    "reading": "0.84 (below lower band <0, above upper >1)",
+    "value": 0.8375648770494768
+   },
+   {
+    "indicator": "4h breakout",
+    "lean": 0,
+    "reading": "inside 4h range",
+    "value": 0.0
+   },
+   {
+    "indicator": "Taker buy imbalance (60m)",
+    "lean": 0,
+    "reading": "-2.3 pp vs 50%",
+    "value": -0.023193504068638682
+   },
+   {
+    "indicator": "BTC 60-min trend",
+    "lean": 0,
+    "reading": "BTC +0.20% (beta 1.00)",
+    "value": 0.0019846456134882118
+   },
+   {
+    "indicator": "Perp funding rate (OKX, contrarian)",
+    "lean": 0,
+    "reading": "+0.0044% per 8h",
+    "value": 4.40543730502e-05
+   }
+  ],
+  "exchange": "binance",
+  "expected_move_pct": -0.015722031619191945,
+  "expected_net_long_pct": -0.2357381904188291,
+  "experiment": "G2_240min",
+  "expiry_ms": 1795781224077,
+  "expiry_utc": "2026-11-27T12:07:04.077Z",
+  "features": {
+   "ac_10": -0.02422899004495103,
+   "ac_60": 0.005108506333976542,
+   "atr_60": 0.0007167647748671998,
+   "bb_pctb_240": 0.8768485177604862,
+   "bb_pctb_60": 0.8375648770494768,
+   "bb_width_240": 0.008634261977838467,
+   "bb_width_60": 0.006817887715895585,
+   "beta_btc": 0.9999999999999996,
+   "breadth_60": 0.56,
+   "brk_1440": 0.0,
+   "brk_240": 0.0,
+   "brk_60": 0.0,
+   "btc_r_10": 0.0028319474227398445,
+   "btc_r_240": 0.008915296611238688,
+   "btc_r_30": 0.0003830355077099057,
+   "btc_r_5": 0.0036909962755871106,
+   "btc_r_60": 0.0019846456134882118,
+   "btc_trend": 0.020511416593549825,
+   "btc_vol_1440": 0.0006162897033244619,
+   "btc_vol_ratio": 1.1306921347937755,
+   "corr_btc": 1.0,
+   "dev_ma_1440": 0.015814189731438333,
+   "dev_ma_240": 0.003248526647395167,
+   "dev_ma_30": 0.0034955068586377536,
+   "dev_ma_60": 0.0022988350812696012,
+   "disp_60": 0.005109869152620438,
+   "eth_r_10": 0.001865865577089565,
+   "eth_r_60": 0.0022060124200296016,
+   "ewm_drift_240": 2.7680878938910873e-05,
+   "ewm_drift_60": 3.533037496080354e-05,
+   "hod_cos": -0.4999999999999998,
+   "hod_sin": 0.8660254037844387,
+   "ma_x_10_60": 7.861735192762968e-05,
+   "ma_x_30_240": -0.0002469802112427812,
+   "ma_x_60_1440": 0.013515354650168936,
+   "macd": 0.00012938851762367637,
+   "macd_hist": -0.0001477983672301425,
+   "mkt_r_10": 0.001969059636172607,
+   "mkt_r_60": 0.001137042992334106,
+   "pos_1440": 0.934127962085309,
+   "pos_240": 0.7980589013032696,
+   "pos_60": 0.9453167165497259,
+   "r_1": 0.00035878840450997984,
+   "r_10": 0.0028319474227398445,
+   "r_1440": 0.020511416593549825,
+   "r_240": 0.008915296611238688,
+   "r_30": 0.0003830355077099057,
+   "r_5": 0.0036909962755871106,
+   "r_60": 0.0019846456134882118,
+   "rel_vol_10": 3.9850659750813358,
+   "rel_vol_60": 2.0808712066829305,
+   "resid_r_10": 1.3010426069826053e-18,
+   "resid_r_240": 3.469446951953614e-18,
+   "resid_r_60": 8.673617379884035e-19,
+   "rsi_14": 67.89187094418602,
+   "rsi_60": 54.74259475583046,
+   "sig1m": 0.0006560718943843108,
+   "tbr_10": -0.14289877870108864,
+   "tbr_30": -0.06075256261588463,
+   "tbr_60": -0.023193504068638682,
+   "trades_rel_10": 0.9383648327622091,
+   "vol_1440": 0.0006162897033244619,
+   "vol_240": 0.000610133795910356,
+   "vol_30": 0.0008915773431190451,
+   "vol_60": 0.0006968339203033585,
+   "vol_ratio": 1.1306921347937755,
+   "xs_rank_r_10": 0.26,
+   "xs_rank_r_240": 0.14,
+   "xs_rank_r_60": 0.09999999999999998,
+   "xs_rank_rel_vol_60": 0.42000000000000004,
+   "xs_rank_resid_r_60": 0.06000000000000005,
+   "xs_rank_tbr_60": -0.18,
+   "xs_rank_vol_60": -0.38,
+   "xs_rel_r_10": 0.0008628877865672372,
+   "xs_rel_r_60": 0.0008476026211541058
+  },
+  "forecast_id": "G240-000004",
+  "horizon_min": 240,
+  "long_signal": false,
+  "model_sha256": "608f1c9f43438a7909a2b93ed84242e04d0c1363cb35ff3856198a483a425df8",
+  "model_version": "G2_240min-v1-rv_rev_10",
+  "mu_log": -0.00015723267660142296,
+  "n_examined": 25,
+  "opportunity_label": "NO - expected move is smaller than estimated round-trip costs; spot action = stay in cash",
+  "origin_ms": 1795766824077,
+  "origin_utc": "2026-11-27T08:07:04.077Z",
+  "p0": 61892.21,
+  "p_direction": 0.5203956659104627,
+  "p_up": 0.4796043340895373,
+  "pair": "BTC/USDT",
+  "pi50": [
+   61522.8344495999,
+   62196.366583451745
+  ],
+  "pi80": [
+   61180.44162511905,
+   62567.44749025422
+  ],
+  "pred_price": 61882.479287173985,
+  "probability_status": "Calibrated on walk-forward out-of-sample backtest forecasts of this exact model; NOT yet validated on forward data (forward calibration is reported on the dashboard as outcomes accumulate).",
+  "quote": "USDT",
+  "ref_trade_id": 4134135063,
+  "ref_trade_ms": 1795766823473,
+  "ref_trade_utc": "2026-11-27T08:07:03.473Z",
+  "rules": {
+   "flat": "Direction is scored against the last Binance trade at or before the expiry instant versus the reference trade price. If the two prices are identical the outcome is FLAT and counts as an INCORRECT direction for both UP and DOWN forecasts (rule fixed before testing).",
+   "verification": "Last Binance aggTrade at or before expiry_ms (same pair)."
+  },
+  "scan_counts": {
+   "binance_universe": 25,
+   "markets_analyzed": 25,
+   "markets_discovered": 11741,
+   "markets_quality_passed": 128,
+   "unique_assets_passed": 40
+  },
+  "scan_id": "SNAP:G2_shared:1795766760000",
+  "sigma_log": 0.010163822083460748,
+  "slot_ms": 1795766400000,
+  "slot_utc": "2026-11-27T08:00:00.000Z",
+  "strategy": "rv_rev_10",
+  "strategy_family": "rel_volume",
+  "strategy_hypothesis": "10-min moves on high relative volume overshoot and revert.",
+  "symbol": "BTCUSDT",
+  "test_number": 4,
+  "theoretical_short_signal": false,
+  "three_class": {
+   "definition": "SIDEWAYS = |log return| <= 0.500% over 240 min",
+   "p_down": 0.2902625337289327,
+   "p_sideways": 0.4584356535334511,
+   "p_up": 0.2513018127376162,
+   "sideways_tau_pct": 0.5
+  },
+  "top_candidates": [
+   {
+    "symbol": "BTCUSDT",
+    "z": -2.1928052219981695
+   },
+   {
+    "symbol": "HYPEUSDT",
+    "z": -1.3336952425170667
+   },
+   {
+    "symbol": "AVAXUSDT",
+    "z": -1.112290407449348
+   },
+   {
+    "symbol": "XRPUSDT",
+    "z": 0.9626050218658295
+   },
+   {
+    "symbol": "LTCUSDT",
+    "z": 0.8074292265067109
+   }
+  ],
+  "touch": {
+   "+1%": {
+    "p": 0.25187147688235567,
+    "price": 62511.1321
+   },
+   "+2%": {
+    "p": 0.08449883007347726,
+    "price": 63130.0542
+   },
+   "+5%": {
+    "p": 0.016408483996009013,
+    "price": 64986.8205
+   },
+   "-1%": {
+    "p": 0.24777167721326732,
+    "price": 61273.287899999996
+   },
+   "-2%": {
+    "p": 0.07377049985025409,
+    "price": 60654.3658
+   },
+   "-5%": {
+    "p": 0.012047075899255823,
+    "price": 58797.5995
+   }
+  },
+  "z": -2.1928052219981695
+ },
+ {
+  "base": "INJ",
+  "code_commit": "7afd627a3ca6c1531b8724404ed092f53c12a754",
+  "context": {
+   "cross_exchange": {
+    "binance": 6.47,
+    "binance_premium_bps": 10.830883490637877,
+    "divergence_flag": false,
+    "median_other": 6.463,
+    "prices": {
+     "coinbase:INJ-USD": 6.461,
+     "kraken:INJUSD": 6.463,
+     "okx:INJ-USDT": 6.474
+    }
+   },
+   "derivatives": {
+    "available": true,
+    "funding_rate_8h": -1.70174306721e-05,
+    "inst_id": "INJ-USDT-SWAP",
+    "liquidations_1h_count": 2,
+    "liquidations_1h_long_contracts": 0,
+    "liquidations_1h_short_contracts": 2578.0,
+    "open_interest_usd": 6174506.5378,
+    "source": "okx"
+   },
+   "order_book": {
+    "ask_depth_10bps_usd": 12562.57086,
+    "ask_depth_50bps_usd": 204332.64084,
+    "best_ask": 6.471,
+    "best_bid": 6.47,
+    "bid_depth_10bps_usd": 3131.99093,
+    "bid_depth_50bps_usd": 217143.91400000002,
+    "buy_impact_bps": 2.6342652727628924,
+    "fetched_ms": 1795766831503,
+    "imbalance_10bps": -0.600882016088453,
+    "imbalance_50bps": 0.030396170351310287,
+    "mid": 6.4704999999999995,
+    "ok": true,
+    "sell_impact_bps": 3.151013686071291,
+    "spread_bps": 1.545475620122609
+   },
+   "sentiment": {
+    "available": true,
+    "classification": "Extreme Fear",
+    "source": "alternative.me (daily)",
+    "timestamp_ms": 1795737600000,
+    "value": 12
+   }
+  },
+  "costs": {
+   "assumptions": "Binance retail taker fee 0.10%/side (assumption); half-spread from the live order book; slippage = max(1 bp, book-walk impact for $1,000 beyond half-spread).",
+   "fee_per_side": 0.001,
+   "half_spread_measured": 7.727378100613045e-05,
+   "round_trip": 0.0026302027372142583,
+   "short_borrow_for_horizon": 2e-05,
+   "slippage_per_side": 0.00023782758760099867
+  },
+  "created_local_ms": 1795766832567,
+  "cycle_seconds": 8.46,
+  "data_timestamps": {
+   "book_fetched_ms": 1795766831503,
+   "features_bar_close_ms": 1795766820000,
+   "last_bar_close_ms": 1795766820000,
+   "server_clock_offset_ms": 1
+  },
+  "direction": "DOWN",
+  "evidence_against": [
+   {
+    "indicator": "60-min momentum",
+    "lean": 1,
+    "reading": "+1.42% over 60 min",
+    "value": 0.014166968473982466
+   },
+   {
+    "indicator": "Trend MA(60) vs MA(1440)",
+    "lean": 1,
+    "reading": "MA60 above 24h MA",
+    "value": 0.031428190461978985
+   },
+   {
+    "indicator": "MACD histogram",
+    "lean": 1,
+    "reading": "positive",
+    "value": 0.0005353552498949775
+   },
+   {
+    "indicator": "Taker buy imbalance (60m)",
+    "lean": 1,
+    "reading": "+16.5 pp vs 50%",
+    "value": 0.16531093329918745
+   },
+   {
+    "indicator": "Relative volume confirms move",
+    "lean": 1,
+    "reading": "2.0x normal volume behind the 60-min move",
+    "value": 1.9916535632766679
+   },
+   {
+    "indicator": "BTC 60-min trend",
+    "lean": 1,
+    "reading": "BTC +0.22% (beta 0.99)",
+    "value": 0.0021851164599251405
+   },
+   {
+    "indicator": "Fear & Greed index (daily, contrarian)",
+    "lean": 1,
+    "reading": "12 (Extreme Fear)",
+    "value": 12
+   }
+  ],
+  "evidence_for": [
+   {
+    "indicator": "Model signal (rsi_rev_60)",
+    "lean": -1,
+    "reading": "z = -0.69, strongest of 25 coins; RSI(60) overbought/oversold reverts.",
+    "value": -0.6924589885039716
+   },
+   {
+    "indicator": "Order book imbalance (+/-10 bps)",
+    "lean": -1,
+    "reading": "-0.60 (bid minus ask depth share)",
+    "value": -0.600882016088453
+   },
+   {
+    "indicator": "Binance premium vs other exchanges",
+    "lean": -1,
+    "reading": "+10.8 bps (premiums tend to converge)",
+    "value": 10.830883490637877
+   }
+  ],
+  "evidence_neutral": [
+   {
+    "indicator": "Model backtest record (untouched test period)",
+    "lean": 0,
+    "reading": "53.1% directional accuracy, n=1272",
+    "value": 0.5314465408805031
+   },
+   {
+    "indicator": "RSI(60, 1m)",
+    "lean": 0,
+    "reading": "56.9 (mean-reversion view: <40 oversold, >60 overbought)",
+    "value": 56.924589885039715
+   },
+   {
+    "indicator": "10-min move (short-term reversal view)",
+    "lean": 0,
+    "reading": "+0.25% over 10 min; large moves tend to partly revert",
+    "value": 0.0024763981081457054
+   },
+   {
+    "indicator": "RSI(14, 1m)",
+    "lean": 0,
+    "reading": "58.7 (neutral)",
+    "value": 58.65226872419298
+   },
+   {
+    "indicator": "Bollinger %B(60)",
+    "lean": 0,
+    "reading": "0.78 (below lower band <0, above upper >1)",
+    "value": 0.7757028889268464
+   },
+   {
+    "indicator": "4h breakout",
+    "lean": 0,
+    "reading": "inside 4h range",
+    "value": 0.0
+   },
+   {
+    "indicator": "Perp funding rate (OKX, contrarian)",
+    "lean": 0,
+    "reading": "-0.0017% per 8h",
+    "value": -1.70174306721e-05
+   }
+  ],
+  "exchange": "binance",
+  "expected_move_pct": -0.004255767780148023,
+  "expected_net_long_pct": -0.26727604150157386,
+  "experiment": "B_60min",
+  "expiry_ms": 1795770432547,
+  "expiry_utc": "2026-11-27T09:07:12.547Z",
+  "features": {
+   "ac_10": 0.011865590691132539,
+   "ac_60": -0.04281123105582775,
+   "atr_60": 0.0019303420229119022,
+   "bb_pctb_240": 1.0444652163688,
+   "bb_pctb_60": 0.7757028889268464,
+   "bb_width_240": 0.023307151298781633,
+   "bb_width_60": 0.012339602247183255,
+   "beta_btc": 0.9895129550957544,
+   "breadth_60": 0.56,
+   "brk_1440": 0.0,
+   "brk_240": 0.0,
+   "brk_60": 0.0,
+   "btc_r_10": 0.003543107749306884,
+   "btc_r_240": 0.008407115736758897,
+   "btc_r_30": 0.0034725699635238527,
+   "btc_r_5": 0.0025884320760543034,
+   "btc_r_60": 0.0021851164599251405,
+   "btc_trend": 0.020383510964595786,
+   "btc_vol_1440": 0.0006162830635979843,
+   "btc_vol_ratio": 1.129606380912592,
+   "corr_btc": 0.5186082085643446,
+   "dev_ma_1440": 0.03482448052185605,
+   "dev_ma_240": 0.012610090726889345,
+   "dev_ma_30": 0.002254303861797924,
+   "dev_ma_60": 0.0033962900598769608,
+   "disp_60": 0.005658912058855912,
+   "eth_r_10": 0.0016819989795218149,
+   "eth_r_60": 0.0020452673610042993,
+   "ewm_drift_240": 6.572108616823179e-05,
+   "ewm_drift_60": 0.00011340847249469429,
+   "hod_cos": -0.4999999999999998,
+   "hod_sin": 0.8660254037844387,
+   "ma_x_10_60": 0.001012867638656291,
+   "ma_x_30_240": 0.010355786865091272,
+   "ma_x_60_1440": 0.031428190461978985,
+   "macd": 0.003738003275760024,
+   "macd_hist": 0.0005353552498949775,
+   "mkt_r_10": 0.0018243517181678298,
+   "mkt_r_60": 0.0011473083256625261,
+   "pos_1440": 0.9505154639175257,
+   "pos_240": 0.8471337579617834,
+   "pos_60": 0.7913043478260872,
+   "r_1": 0.0,
+   "r_10": 0.0024763981081457054,
+   "r_1440": 0.04797120759788975,
+   "r_240": 0.01856672415724825,
+   "r_30": 0.002166512763242645,
+   "r_5": 0.003561753668602341,
+   "r_60": 0.014166968473982466,
+   "rel_vol_10": 1.0687760917086113,
+   "rel_vol_60": 1.9916535632766679,
+   "resid_r_10": -0.0010295529110936168,
+   "resid_r_240": 0.010247774220735932,
+   "resid_r_60": 0.012004767428493567,
+   "rsi_14": 58.65226872419298,
+   "rsi_60": 56.924589885039715,
+   "sig1m": 0.001465516327337889,
+   "tbr_10": 0.018738952236287965,
+   "tbr_30": 0.03383494712327917,
+   "tbr_60": 0.16531093329918745,
+   "trades_rel_10": 1.4204275076822304,
+   "vol_1440": 0.0011758781781037776,
+   "vol_240": 0.0011653253886006443,
+   "vol_30": 0.0013010166247658882,
+   "vol_60": 0.0017110261420274268,
+   "vol_ratio": 1.4551049367942428,
+   "xs_rank_r_10": 0.18000000000000005,
+   "xs_rank_r_240": 0.45999999999999996,
+   "xs_rank_r_60": 0.45999999999999996,
+   "xs_rank_rel_vol_60": 0.33999999999999997,
+   "xs_rank_resid_r_60": 0.45999999999999996,
+   "xs_rank_tbr_60": 0.45999999999999996,
+   "xs_rank_vol_60": 0.38,
+   "xs_rel_r_10": 0.0006520463899778756,
+   "xs_rel_r_60": 0.01301966014831994
+  },
+  "forecast_id": "B-000004",
+  "horizon_min": 60,
+  "long_signal": false,
+  "model_sha256": "94442b6d5d30d90b76e99b608a4d6ecbc28fa29faa49f5f9649f587a35047804",
+  "model_version": "B_60min-v1-rsi_rev_60",
+  "mu_log": -4.2558583405091775e-05,
+  "n_examined": 25,
+  "opportunity_label": "NO - expected move is smaller than estimated round-trip costs; spot action = stay in cash",
+  "origin_ms": 1795766832547,
+  "origin_utc": "2026-11-27T08:07:12.547Z",
+  "p0": 6.47,
+  "p_direction": 0.5376974062738474,
+  "p_up": 0.46230259372615257,
+  "pair": "INJ/USDT",
+  "pi50": [
+   6.423983984576629,
+   6.510022013669902
+  ],
+  "pi80": [
+   6.380898248978372,
+   6.555250774578118
+  ],
+  "pred_price": 6.469724651824624,
+  "probability_status": "Calibrated on walk-forward out-of-sample backtest forecasts of this exact model; NOT yet validated on forward data (forward calibration is reported on the dashboard as outcomes accumulate).",
+  "quote": "USDT",
+  "ref_trade_id": 102180442,
+  "ref_trade_ms": 1795766830331,
+  "ref_trade_utc": "2026-11-27T08:07:10.331Z",
+  "rules": {
+   "flat": "Direction is scored against the last Binance trade at or before the expiry instant versus the reference trade price. If the two prices are identical the outcome is FLAT and counts as an INCORRECT direction for both UP and DOWN forecasts (rule fixed before testing).",
+   "verification": "Last Binance aggTrade at or before expiry_ms (same pair)."
+  },
+  "scan_counts": {
+   "binance_universe": 25,
+   "markets_analyzed": 25,
+   "markets_discovered": 11741,
+   "markets_quality_passed": 131,
+   "unique_assets_passed": 41
+  },
+  "scan_id": "B_60min:1795766400000",
+  "sigma_log": 0.011351840658749404,
+  "slot_ms": 1795766400000,
+  "slot_utc": "2026-11-27T08:00:00.000Z",
+  "strategy": "rsi_rev_60",
+  "strategy_family": "mean_reversion",
+  "strategy_hypothesis": "RSI(60) overbought/oversold reverts.",
+  "symbol": "INJUSDT",
+  "test_number": 4,
+  "theoretical_short_signal": false,
+  "top_candidates": [
+   {
+    "symbol": "INJUSDT",
+    "z": -0.6924589885039716
+   },
+   {
+    "symbol": "SKYUSDT",
+    "z": -0.5961021995482227
+   },
+   {
+    "symbol": "BTCUSDT",
+    "z": -0.47352008234151055
+   },
+   {
+    "symbol": "SOLUSDT",
+    "z": -0.4547078079967008
+   },
+   {
+    "symbol": "SEIUSDT",
+    "z": 0.3778678318941978
+   }
+  ],
+  "z": -0.6924589885039716
  }
 ]
