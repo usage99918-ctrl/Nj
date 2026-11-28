@@ -4717,5 +4717,66 @@
   "trade_id": 102242828,
   "verified_ms": 1795829165474,
   "verified_utc": "2026-11-28T01:26:05.474Z"
+ },
+ {
+  "abs_pred_error_pct": 0.035581971974929516,
+  "actual_class3": "SIDEWAYS",
+  "actual_direction": "UP",
+  "actual_return_pct": 0.03323363243601385,
+  "argmax_class3_correct": true,
+  "brier": 0.22565502665276294,
+  "brier3": 0.0001177043671888409,
+  "correct": false,
+  "dir_gross_pct": -0.03323363243601385,
+  "dir_net_pct": -0.2866284100845676,
+  "exchange": "binance",
+  "experiment": "G2_5min",
+  "expiry_ms": 1795829479609,
+  "expiry_utc": "2026-11-28T01:31:19.609Z",
+  "forecast_id": "G5-000027",
+  "in_pi50": false,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 0.03322259136212535,
+  "p1": 0.301,
+  "p1_trade_ms": 1795829464720,
+  "p1_trade_utc": "2026-11-28T01:31:04.720Z",
+  "path_max_pct": 0.03323363243601385,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": 0.0,
+  "pred_error_abs": 0.00010710173564454362,
+  "pred_error_pct": -0.035581971974929516,
+  "short_is_theoretical": true,
+  "status": "VERIFIED",
+  "symbol": "TRXUSDT",
+  "timing_gap_ms": 14889,
+  "touch_results": {
+   "+0.25%": {
+    "brier": 5.7547461123819734e-05,
+    "hit": false,
+    "p": 0.007586004292367605
+   },
+   "+0.5%": {
+    "brier": 2.4877079024441354e-06,
+    "hit": false,
+    "p": 0.0015772469376873538
+   },
+   "-0.25%": {
+    "brier": 5.262641417590577e-05,
+    "hit": false,
+    "p": 0.007254406535058934
+   },
+   "-0.5%": {
+    "brier": 1.7790607691090107e-06,
+    "hit": false,
+    "p": 0.0013338143683095526
+   }
+  },
+  "trade_id": 271803337,
+  "verified_ms": 1795857149259,
+  "verified_utc": "2026-11-28T09:12:29.259Z"
  }
 ]

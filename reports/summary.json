@@ -1,20 +1,21 @@
 {
- "generated_utc": "2026-11-28T01:26:26.857Z",
+ "generated_utc": "2026-11-28T09:13:12.974Z",
  "forward": {
   "A": {
    "experiment": "A_10min",
-   "forecasts": 22,
-   "gaps": 388,
+   "forecasts": 23,
+   "gaps": 434,
    "gap_reasons": {
-    "no forecast in slot window": 376,
+    "no forecast in slot window": 422,
     "slot start missed by > 5 min": 12
    },
    "status_counts": {
-    "VERIFIED": 22
+    "VERIFIED": 22,
+    "PENDING": 1
    },
    "scored": 22,
    "first_forecast_utc": "2026-11-25T05:13:02.956Z",
-   "last_forecast_utc": "2026-11-27T00:01:47.028Z",
+   "last_forecast_utc": "2026-11-28T09:12:57.514Z",
    "model_versions": [
     "A_10min-v1-lgbm_reg_huber"
    ],
@@ -86,7 +87,7 @@
    },
    "gross_direction_return": {
     "mean_bps": 51.506747604561845,
-    "t_stat": 4.139028810550433,
+    "t_stat": 4.139028810550434,
     "p_gt_0": 1.743895764949599e-05
    },
    "benchmarks_accuracy": {
@@ -225,18 +226,19 @@
   },
   "B": {
    "experiment": "B_60min",
-   "forecasts": 5,
-   "gaps": 64,
+   "forecasts": 6,
+   "gaps": 71,
    "gap_reasons": {
     "slot start missed by > 20 min": 13,
-    "no forecast in slot window": 51
+    "no forecast in slot window": 58
    },
    "status_counts": {
-    "VERIFIED": 5
+    "VERIFIED": 5,
+    "PENDING": 1
    },
    "scored": 5,
    "first_forecast_utc": "2026-11-25T05:13:12.854Z",
-   "last_forecast_utc": "2026-11-27T18:09:40.991Z",
+   "last_forecast_utc": "2026-11-28T09:13:06.266Z",
    "model_versions": [
     "B_60min-v1-rsi_rev_60"
    ],
@@ -423,16 +425,15 @@
   "G5": {
    "experiment": "G2_5min",
    "forecasts": 27,
-   "gaps": 777,
+   "gaps": 870,
    "gap_reasons": {
-    "no forecast in slot window": 774,
-    "slot start missed by > 2 min": 3
+    "no forecast in slot window": 866,
+    "slot start missed by > 2 min": 4
    },
    "status_counts": {
-    "VERIFIED": 26,
-    "PENDING": 1
+    "VERIFIED": 27
    },
-   "scored": 26,
+   "scored": 27,
    "first_forecast_utc": "2026-11-25T06:31:07.418Z",
    "last_forecast_utc": "2026-11-28T01:26:19.609Z",
    "model_versions": [
@@ -440,53 +441,53 @@
    ],
    "accuracy": {
     "k": 10,
-    "n": 26,
-    "rate": 0.38461538461538464,
+    "n": 27,
+    "rate": 0.37037037037037035,
     "ci95": [
-     0.22428359511834428,
-     0.5746547996057992
+     0.21532287067936856,
+     0.5577109537655369
     ],
-    "p_vs_50": 0.9156812280416489
+    "p_vs_50": 0.9389609396457672
    },
    "flat_outcomes": 1,
    "approximate_outcomes": 0,
-   "balanced_accuracy": 0.3833333333333333,
-   "frac_pred_up": 0.5384615384615384,
-   "mean_abs_pred_error_pct": 0.3092196568735179,
-   "mean_no_change_error_pct": 0.3001141214098015,
-   "error_ratio_vs_no_change": 1.0303402433079212,
+   "balanced_accuracy": 0.36875,
+   "frac_pred_up": 0.5185185185185185,
+   "mean_abs_pred_error_pct": 0.2990849278031998,
+   "mean_no_change_error_pct": 0.29022924992655424,
+   "error_ratio_vs_no_change": 1.0305126994570208,
    "coverage_pi50": {
     "k": 11,
-    "n": 26,
-    "rate": 0.4230769230769231,
+    "n": 27,
+    "rate": 0.4074074074074074,
     "ci95": [
-     0.255441899027294,
-     0.6105170307888017
+     0.24514513372857344,
+     0.5927361694463591
     ],
-    "p_vs_50": 0.8365302085876465
+    "p_vs_50": 0.8761057183146477
    },
    "coverage_pi80": {
-    "k": 16,
-    "n": 26,
-    "rate": 0.6153846153846154,
+    "k": 17,
+    "n": 27,
+    "rate": 0.6296296296296297,
     "ci95": [
-     0.42534520039420076,
-     0.7757164048816557
+     0.442289046234463,
+     0.7846771293206314
     ],
-    "p_vs_50": 0.16346979141235352
+    "p_vs_50": 0.12389428168535233
    },
-   "brier": 0.25004172637633737,
-   "brier_skill_vs_0.5": -0.00016690550534947945,
+   "brier": 0.24913851527546427,
+   "brier_skill_vs_0.5": 0.0034459388981429306,
    "reliability": [
     {
      "lo": 0.4,
      "hi": 0.6000000000000001,
-     "n": 26,
-     "mean_p": 0.49978004013601207,
-     "freq": 0.5769230769230769
+     "n": 27,
+     "mean_p": 0.5007129421327746,
+     "freq": 0.5925925925925926
     }
    ],
-   "mean_p_direction": 0.48435553274372267,
+   "mean_p_direction": 0.48401020212178464,
    "max_win_streak": 3,
    "max_loss_streak": 5,
    "paper_long_only": {
@@ -497,48 +498,48 @@
     "note": "Spot long-only: positions only when the frozen forecast was UP with expected move > costs."
    },
    "hypothetical_direction_bets": {
-    "gross_total_pct": -1.941314601362909,
-    "net_total_pct": -9.496213278088419,
-    "mean_net_bps": -36.523897223416995,
-    "max_drawdown_net_pct": 9.924072831312927,
-    "short_count": 12,
+    "gross_total_pct": -1.9745482337989229,
+    "net_total_pct": -9.782841688172986,
+    "mean_net_bps": -36.23274699323328,
+    "max_drawdown_net_pct": 9.987977869869583,
+    "short_count": 13,
     "note": "Trades every forecast in its predicted direction. Shorts are theoretical (margin/borrow) and NOT executable on spot."
    },
    "gross_direction_return": {
-    "mean_bps": -7.466594620626573,
-    "t_stat": -1.031295833416228,
-    "p_gt_0": 0.84879894417966
+    "mean_bps": -7.313141606662678,
+    "t_stat": -1.0472837205130425,
+    "p_gt_0": 0.8525156289452724
    },
    "benchmarks_accuracy": {
     "random_direction(seeded)": {
-     "k": 12,
-     "n": 26,
-     "rate": 0.46153846153846156,
+     "k": 13,
+     "n": 27,
+     "rate": 0.48148148148148145,
      "ci95": [
-      0.28755582695234905,
-      0.6454236379556988
+      0.3074295064970908,
+      0.6601467541378958
      ],
-     "p_vs_50": 0.7214014530181885
+     "p_vs_50": 0.6494459807872772
     },
     "always_up": {
-     "k": 15,
-     "n": 26,
-     "rate": 0.5769230769230769,
+     "k": 16,
+     "n": 27,
+     "rate": 0.5925925925925926,
      "ci95": [
-      0.3894829692111983,
-      0.744558100972706
+      0.4072638305536409,
+      0.7548548662714265
      ],
-     "p_vs_50": 0.2785985469818115
+     "p_vs_50": 0.22103416919708252
     },
     "always_down": {
      "k": 10,
-     "n": 26,
-     "rate": 0.38461538461538464,
+     "n": 27,
+     "rate": 0.37037037037037035,
      "ci95": [
-      0.22428359511834428,
-      0.5746547996057992
+      0.21532287067936856,
+      0.5577109537655369
      ],
-     "p_vs_50": 0.9156812280416489
+     "p_vs_50": 0.9389609396457672
     },
     "simple_momentum": {
      "k": 16,
@@ -562,16 +563,16 @@
     }
    },
    "benchmarks_returns": {
-    "buy_and_hold_same_windows_gross_pct": 0.9758974695690759,
-    "buy_and_hold_same_windows_net_pct": -6.5770012071564325,
+    "buy_and_hold_same_windows_gross_pct": 1.0091311020050897,
+    "buy_and_hold_same_windows_net_pct": -6.796995685702306,
     "stay_in_cash_pct": 0.0,
-    "no_change_forecast_mean_abs_error_pct": 0.3001141214098015
+    "no_change_forecast_mean_abs_error_pct": 0.29022924992655424
    },
    "by_asset": [
     {
      "symbol": "TRXUSDT",
-     "n": 6,
-     "accuracy": 0.5
+     "n": 7,
+     "accuracy": 0.42857142857142855
     },
     {
      "symbol": "MMTUSDT",
@@ -652,8 +653,8 @@
    "by_market_condition": [
     {
      "regime": "BTC 24h down / vol calm",
-     "n": 12,
-     "accuracy": 0.5
+     "n": 13,
+     "accuracy": 0.46153846153846156
     },
     {
      "regime": "BTC 24h down / vol rising",
@@ -672,58 +673,59 @@
     }
    ],
    "three_class": {
-    "n": 26,
-    "brier3": 0.46226568670050217,
+    "n": 27,
+    "brier3": 0.44514909476223125,
     "outcomes": {
-     "SIDEWAYS": 16,
+     "SIDEWAYS": 17,
      "UP": 5,
      "DOWN": 5
     },
-    "argmax_accuracy": 0.6153846153846154,
+    "argmax_accuracy": 0.6296296296296297,
     "uniform_brier3": 0.6666666666666666
    },
    "touch": {
     "+0.25%": {
-     "n": 26,
-     "mean_p": 0.3367995980229122,
-     "hit_rate": 0.4230769230769231,
-     "brier": 0.10626114225714797
+     "n": 27,
+     "mean_p": 0.32460650195881796,
+     "hit_rate": 0.4074074074074074,
+     "brier": 0.10232767578322115
     },
     "+0.5%": {
-     "n": 26,
-     "mean_p": 0.15069935272496437,
-     "hit_rate": 0.23076923076923078,
-     "brier": 0.11184920545061167
+     "n": 27,
+     "mean_p": 0.14517631176988002,
+     "hit_rate": 0.2222222222222222,
+     "brier": 0.10770673442310391
     },
     "-0.25%": {
-     "n": 26,
-     "mean_p": 0.3435989596168892,
-     "hit_rate": 0.3076923076923077,
-     "brier": 0.1714405635604798
+     "n": 27,
+     "mean_p": 0.3311417539471918,
+     "hit_rate": 0.2962962962962963,
+     "brier": 0.16509286218469074
     },
     "-0.5%": {
-     "n": 26,
-     "mean_p": 0.1465798155729083,
-     "hit_rate": 0.15384615384615385,
-     "brier": 0.14748293819223096
+     "n": 27,
+     "mean_p": 0.14120033404681206,
+     "hit_rate": 0.14814814814814814,
+     "brier": 0.14202067303921387
     }
    },
-   "sample_size_note": "n=26: far too small for any conclusion; results are anecdotal."
+   "sample_size_note": "n=27: far too small for any conclusion; results are anecdotal."
   },
   "G10": {
    "experiment": "G2_10min",
-   "forecasts": 17,
-   "gaps": 387,
+   "forecasts": 18,
+   "gaps": 433,
    "gap_reasons": {
-    "no forecast in slot window": 375,
+    "no forecast in slot window": 421,
     "slot start missed by > 5 min": 12
    },
    "status_counts": {
-    "VERIFIED": 17
+    "VERIFIED": 17,
+    "PENDING": 1
    },
    "scored": 17,
    "first_forecast_utc": "2026-11-25T06:10:14.681Z",
-   "last_forecast_utc": "2026-11-27T00:01:36.906Z",
+   "last_forecast_utc": "2026-11-28T09:12:48.043Z",
    "model_versions": [
     "G2_10min-v1-lgbm_reg_huber"
    ],
@@ -795,7 +797,7 @@
    },
    "gross_direction_return": {
     "mean_bps": 51.110400741436266,
-    "t_stat": 3.514238485123207,
+    "t_stat": 3.5142384851232076,
     "p_gt_0": 0.00022050833916897883
    },
    "benchmarks_accuracy": {
@@ -978,18 +980,19 @@
   },
   "G60": {
    "experiment": "G2_60min",
-   "forecasts": 4,
-   "gaps": 64,
+   "forecasts": 5,
+   "gaps": 71,
    "gap_reasons": {
     "slot start missed by > 20 min": 13,
-    "no forecast in slot window": 51
+    "no forecast in slot window": 58
    },
    "status_counts": {
-    "VERIFIED": 4
+    "VERIFIED": 4,
+    "PENDING": 1
    },
    "scored": 4,
    "first_forecast_utc": "2026-11-25T06:05:18.167Z",
-   "last_forecast_utc": "2026-11-27T18:09:31.840Z",
+   "last_forecast_utc": "2026-11-28T09:12:49.448Z",
    "model_versions": [
     "G2_60min-v1-rsi_rev_60"
    ],
@@ -1219,10 +1222,10 @@
   "G240": {
    "experiment": "G2_240min",
    "forecasts": 4,
-   "gaps": 13,
+   "gaps": 15,
    "gap_reasons": {
-    "no forecast in slot window": 8,
-    "slot start missed by > 60 min": 5
+    "no forecast in slot window": 9,
+    "slot start missed by > 60 min": 6
    },
    "status_counts": {
     "VERIFIED": 4
@@ -1667,10 +1670,10 @@
   "KXB0": {
    "experiment": "KX_BTC_without",
    "forecasts": 3,
-   "gaps": 265,
+   "gaps": 296,
    "gap_reasons": {
-    "no forecast in slot window": 249,
-    "slot start missed by > 5 min": 16
+    "no forecast in slot window": 279,
+    "slot start missed by > 5 min": 17
    },
    "status_counts": {
     "VERIFIED": 3
@@ -1809,10 +1812,10 @@
   "KXB1": {
    "experiment": "KX_BTC_with",
    "forecasts": 3,
-   "gaps": 265,
+   "gaps": 296,
    "gap_reasons": {
-    "no forecast in slot window": 249,
-    "slot start missed by > 5 min": 16
+    "no forecast in slot window": 279,
+    "slot start missed by > 5 min": 17
    },
    "status_counts": {
     "VERIFIED": 3
@@ -1951,10 +1954,10 @@
   "KXE0": {
    "experiment": "KX_ETH_without",
    "forecasts": 3,
-   "gaps": 265,
+   "gaps": 296,
    "gap_reasons": {
-    "no forecast in slot window": 249,
-    "slot start missed by > 5 min": 16
+    "no forecast in slot window": 279,
+    "slot start missed by > 5 min": 17
    },
    "status_counts": {
     "VERIFIED": 3
@@ -2100,10 +2103,10 @@
   "KXE1": {
    "experiment": "KX_ETH_with",
    "forecasts": 3,
-   "gaps": 265,
+   "gaps": 296,
    "gap_reasons": {
-    "no forecast in slot window": 249,
-    "slot start missed by > 5 min": 16
+    "no forecast in slot window": 279,
+    "slot start missed by > 5 min": 17
    },
    "status_counts": {
     "VERIFIED": 3
