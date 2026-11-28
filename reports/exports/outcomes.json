@@ -4542,5 +4542,180 @@
   "trade_id": 4134284195,
   "verified_ms": 1795802957652,
   "verified_utc": "2026-11-27T18:09:17.652Z"
+ },
+ {
+  "abs_pred_error_pct": 1.4766433263947443,
+  "actual_class3": "DOWN",
+  "actual_direction": "DOWN",
+  "actual_return_pct": -1.4355593364525743,
+  "argmax_class3_correct": true,
+  "brier": 0.289297545564108,
+  "brier3": 0.4808891295770494,
+  "correct": false,
+  "dir_gross_pct": -1.4355593364525743,
+  "dir_net_pct": -1.8333866159881196,
+  "exchange": "binance",
+  "experiment": "G2_60min",
+  "expiry_ms": 1795806571840,
+  "expiry_utc": "2026-11-27T19:09:31.840Z",
+  "forecast_id": "G60-000004",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 1.4564677958787353,
+  "p1": 0.09269,
+  "p1_trade_ms": 1795806570481,
+  "p1_trade_utc": "2026-11-27T19:09:30.481Z",
+  "path_max_pct": 2.0842194810718917,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -2.2862611654615006,
+  "pred_error_abs": 0.0013687006992352813,
+  "pred_error_pct": 1.4766433263947443,
+  "short_is_theoretical": false,
+  "status": "VERIFIED",
+  "symbol": "INITUSDT",
+  "timing_gap_ms": 1359,
+  "touch_results": {
+   "+0.5%": {
+    "brier": 0.004088826941092766,
+    "hit": true,
+    "p": 0.9360560640788138
+   },
+   "+1%": {
+    "brier": 0.043108661178168424,
+    "hit": true,
+    "p": 0.7923737464139748
+   },
+   "+2%": {
+    "brier": 0.25127199117964044,
+    "hit": true,
+    "p": 0.49872962267889753
+   },
+   "-0.5%": {
+    "brier": 0.0038974460124136137,
+    "hit": true,
+    "p": 0.937570471630697
+   },
+   "-1%": {
+    "brier": 0.04158700286099245,
+    "hit": true,
+    "p": 0.7960710838037125
+   },
+   "-2%": {
+    "brier": 0.2463682385076317,
+    "hit": true,
+    "p": 0.503645047866316
+   }
+  },
+  "trade_id": 27127548,
+  "verified_ms": 1795829165474,
+  "verified_utc": "2026-11-28T01:26:05.474Z"
+ },
+ {
+  "abs_pred_error_pct": 1.3460092118919187,
+  "actual_direction": "DOWN",
+  "actual_return_pct": -1.3085106382978662,
+  "brier": 0.2892975455490576,
+  "correct": false,
+  "dir_gross_pct": -1.3085106382978662,
+  "dir_net_pct": -1.6828538661251669,
+  "exchange": "binance",
+  "experiment": "B_60min",
+  "expiry_ms": 1795806580991,
+  "expiry_utc": "2026-11-27T19:09:40.991Z",
+  "forecast_id": "B-000005",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 0.0,
+  "long_net_pct": 0.0,
+  "long_taken": false,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 1.325859652905037,
+  "p1": 0.09277,
+  "p1_trade_ms": 1795806580294,
+  "p1_trade_utc": "2026-11-27T19:09:40.294Z",
+  "pred_error_abs": 0.0012486927458721236,
+  "pred_error_pct": 1.3460092118919187,
+  "short_is_theoretical": false,
+  "status": "VERIFIED",
+  "symbol": "INITUSDT",
+  "timing_gap_ms": 697,
+  "trade_id": 27127562,
+  "verified_ms": 1795829165474,
+  "verified_utc": "2026-11-28T01:26:05.474Z"
+ },
+ {
+  "abs_pred_error_pct": 1.4734345780398006,
+  "actual_class3": "UP",
+  "actual_direction": "UP",
+  "actual_return_pct": 1.9781280154390624,
+  "argmax_class3_correct": true,
+  "brier": 0.215792906179628,
+  "brier3": 0.5775860127146902,
+  "correct": true,
+  "dir_gross_pct": 1.9781280154390624,
+  "dir_net_pct": 1.703036423176374,
+  "exchange": "binance",
+  "experiment": "G2_1440min",
+  "expiry_ms": 1795824100139,
+  "expiry_utc": "2026-11-28T00:01:40.139Z",
+  "forecast_id": "G1440-000001",
+  "in_pi50": true,
+  "in_pi80": true,
+  "long_gross_pct": 1.9781280154390624,
+  "long_net_pct": 1.703036423176374,
+  "long_taken": true,
+  "method": "aggTrade at/before expiry (<= 60s)",
+  "no_change_error_pct": 1.9397571360984078,
+  "p1": 6.341,
+  "p1_trade_ms": 1795824078266,
+  "p1_trade_utc": "2026-11-28T00:01:18.266Z",
+  "path_max_pct": 5.6770665808941745,
+  "path_method": "1m candles inside window + aggTrades for partial edge minutes",
+  "path_min_pct": -0.8845287873914365,
+  "pred_error_abs": 0.09343048659350384,
+  "pred_error_pct": -1.4734345780398006,
+  "short_is_theoretical": false,
+  "status": "VERIFIED",
+  "symbol": "INJUSDT",
+  "timing_gap_ms": 21873,
+  "touch_results": {
+   "+10%": {
+    "brier": 0.005479178628207079,
+    "hit": false,
+    "p": 0.07402147410182452
+   },
+   "+2%": {
+    "brier": 0.16047359604894004,
+    "hit": true,
+    "p": 0.5994084423643703
+   },
+   "+5%": {
+    "brier": 0.6081761412637536,
+    "hit": true,
+    "p": 0.22014351239234176
+   },
+   "-10%": {
+    "brier": 0.0023594444435036973,
+    "hit": false,
+    "p": 0.04857411289466538
+   },
+   "-2%": {
+    "brier": 0.3450069036358562,
+    "hit": false,
+    "p": 0.5873728829592461
+   },
+   "-5%": {
+    "brier": 0.03108343339081425,
+    "hit": false,
+    "p": 0.17630494431754956
+   }
+  },
+  "trade_id": 102242828,
+  "verified_ms": 1795829165474,
+  "verified_utc": "2026-11-28T01:26:05.474Z"
  }
 ]
